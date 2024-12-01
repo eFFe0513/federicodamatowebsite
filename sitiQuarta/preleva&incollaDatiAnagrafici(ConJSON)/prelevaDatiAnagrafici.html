@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserisci Dati</title>
+</head>
+<body>
+    <a href="../home2.html"><img src="../immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <h1>Inserisci i tuoi dati</h1>
+    <form id="form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" name="cognome"><br><br>
+
+        <label for="età">Età</label>
+        <input type="text" id="età" name="età"><br><br>
+
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" id="indirizzo" name="indirizzo"><br><br>
+
+        <label for="città">Città</label>
+        <input type="text" id="città" name="città"><br><br>
+
+        <button type="button" onclick="inviaDati()">Invia</button>
+    </form>
+    <script>
+        function inviaDati() {
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let età = document.getElementById("età").value;
+            let indirizzo = document.getElementById("indirizzo").value;
+            let città = document.getElementById("città").value;
+            
+            let datiUtente = {
+                nome: nome,
+                cognome: cognome,
+                età: età,
+                indirizzo: indirizzo,
+                città: città
+            };
+            
+            let datiJSON = JSON.stringify(datiUtente);
+            localStorage.setItem("datiUtente", datiJSON);
+            window.location.href = "incollaDatiAnagrafici.html";
+            document.getElementById('form').reset();
+        }
+    </script>
+</body>
+</html>

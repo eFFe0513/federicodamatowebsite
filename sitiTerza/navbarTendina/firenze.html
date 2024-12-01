@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            nav {
+                background-color: #0084ff;
+                overflow: hidden;
+                font-size: 20px;
+                height: 51px;
+            }
+        
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+        
+            nav li {
+                float: left;
+            }
+        
+            nav li a {
+                display: block;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                transition: transform .5s;
+            }
+        
+            nav li a:hover {
+                transform: scale(1.1);
+            }
+        
+            nav li ul.dropdown {
+                display: none;
+                position: absolute;
+                background-color: #0084ff;
+                box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+            }
+        
+            nav li:hover ul.dropdown {
+                display: block;
+                border-radius: 5px;
+            }
+        
+            nav li ul.dropdown li {
+                float: none;
+            }
+        
+            nav li ul.dropdown li a {
+                display: block;
+                color: black;
+            }
+            
+            body {
+                background-color: #00b7ff;
+                margin: 0;
+                font-family: monospace;
+                color: black;
+            }
+
+            .casella:hover {
+                background-color: white;
+            }
+
+            .ingrandimento {
+                transition: transform .5s;
+            }
+
+            .ingrandimento:hover {
+				transform: scale(1.01);
+			}
+        </style>
+        <title>Firenze</title>
+    </head>
+    <body>
+        <nav>
+			<ul>
+                <li><a href="../home1.html"> <img src="immagini\backIcon.png" width="23px"> </a> </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="navbarTendina.html" class="casella"> <b>Home</b> </a> </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="#" class="casella">Firenze</a>
+                <ul class="dropdown">
+                    <li><a href="rho.html" class="casella"> Rho </a></li>
+                    <li><a href="milano.html" class="casella"> Milano </a></li>
+                </ul>
+                </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="" class="casella">settings</a>
+                    <ul class="dropdown">
+                        <li><a href="login.html" class="casella"> login </a></li>
+                        <li><a href="feedback.html" class="casella"> feedback </a></li>
+                    </ul>
+                </li>
+			</ul>
+		</nav>
+        <br>
+        <center><table width="97vw" height="100vh">
+            <tr>
+                <td rowspan="2">
+                    <center><iframe src="https://www.ilmeteo.net/meteo_Firenze-Europa-Italia-Firenze--1-29832.html" frameborder="0" style="width:50vw; height:100vh; border-radius: 5px;"></iframe></center>
+                </td>
+                <td>
+                    <center><a href="https://www.google.com/maps/place/Firenze+FI/@43.7827028,11.1599259,12z/data=!4m6!3m5!1s0x132a56a680d2d6ad:0x93d57917efc72a03!8m2!3d43.7699685!4d11.2576706!16zL20vMDMxeTI?entry=ttu"> <img src="immagini/mappaFirenze.png" alt="mappa Firenze" class="ingrandimento" title="clicca per visuallizzare la mappa di Firenze" style="width:45vw; height:50vh; border-radius: 5px;"> </a></center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center><a href="https://www.accuweather.com/it/it/florence/216189/air-quality-index/216189#:~:text=41%20AQI,la%20maggior%20parte%20degli%20individui."> <img src="immagini/aqi.jpg" alt="aqi Firenze" class="ingrandimento" title="clicca per visuallizzare l'indice della qualità dell'aria di Firenze" style="width:45vw; height:49vh; border-radius: 5px;"> </a></center>
+                </td>
+            </tr>
+        </table></center>
+        <br>
+    </body>
+</html>

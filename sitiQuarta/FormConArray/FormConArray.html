@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagina di registazione Array</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body background="immagini/" style="background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <a href="../home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px"></a>
+    <div class="contenitore">
+    <center><h1>Inserisci i dati di 5 individui</h1></center>
+    <center><form id="myForm">
+        <label for="cognome">Cognome </label>
+        <input type="text" id="cognome" name="cognome"><br><br>
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"><br><br>
+
+        <label for="età">Età</label>
+        <input type="text" id="età" name="età"><br><br>
+
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" id="indirizzo" name="indirizzo"><br><br>
+
+        <label for="città">Città</label>
+        <input type="text" id="città" name="città"><br><br>
+
+        <label for="cap">CAP</label>
+        <input type="text" id="cap" name="cap"><br><br>
+
+        <button type="button" onclick="matrice()">Invia</button>
+    </form></center>
+    <center><div id="result" class="output"></div></center>
+    </div>
+    <script>
+	const dati = [];
+	let output = "<h2>Dati inseriti:</h2>";
+    dati[0] = null;
+    let contatore = 1;
+        function matrice(){
+            const cognome = document.getElementById("cognome").value;
+            const nome = document.getElementById("nome").value;
+            const indirizzo = document.getElementById("indirizzo").value;
+            const città = document.getElementById("città").value;
+            const cap = document.getElementById("cap").value;
+            const dato = [cognome, nome, indirizzo, città, cap];
+            dati.push(dato);
+            output += "<p>P" + contatore + ": " + dati[contatore] + "</p>";
+            document.getElementById("result").innerHTML = "<p>Dati persona " + contatore +" inseriti</p>";
+            contatore++;
+            if (contatore == 6) {
+                document.getElementById("result").innerHTML = output;
+            }
+        }
+	</script>
+</body>
+</html>

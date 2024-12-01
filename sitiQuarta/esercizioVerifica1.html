@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inversione di un Array</title>
+</head>
+<body>
+  <label for="numero1">Inserisci primo valore</label>
+  <input id="numero1"></input>
+  <br>
+  <br>
+  <label for="numero2">Inserisci secondo valore</label>
+  <input id="numero2"></input>
+  <br>
+  <br>
+  <label for="numero3">Inserisci terzo valore</label>
+  <input id="numero3"></input>
+  <br>
+  <br>
+  <button id="invia" name="invia" onclick="restituisciContrario()">Invia</button>
+  <br>
+  <br>
+  <div id="result"></div>
+  <script>
+    function restituisciContrario() {
+      let array = [];
+      array[0] = document.getElementById("numero1").value;
+      array[1] = document.getElementById("numero2").value;
+      array[2] = document.getElementById("numero3").value;
+      let output = "";
+      for (let i = array.length - 1; i >= 0; i--) {
+        output += array[i] + " ";
+      }
+      document.getElementById("result").innerHTML = output;
+    }
+  </script>
+</body>
+</html>

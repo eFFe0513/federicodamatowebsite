@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sequenza di Fibonacci</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            color: #333;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: #aaaaaa;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #divDiStampa {
+            font-weight: bold;
+            color: #ff5e00;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <a href="home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <center><h1>Sequenza di Fibonacci</h1>
+    <p>Clicca il pulsante per visualizzare la sequenza di Fibonacci fino al numero 100</p>
+    <input type="button" name="bottone" value="Sequenza di Fibonacci" onclick="sequenzaFibonacci()">
+    <br><br>
+    <div id="divDiStampa"></div></center>
+    <script>
+        function sequenzaFibonacci() {
+            let a = 0;
+            let b = 1;
+            let c;
+            let output = a + " " + b + " ";
+            do {
+                c = a + b;
+                a = b;
+                b = c;
+                if (c < 100) {
+                    let somma = c + "";
+                    output = output + somma + " ";
+                }
+            } while (c < 100);
+            document.getElementById("divDiStampa").innerHTML = output;
+        }
+    </script>
+</body>
+</html>

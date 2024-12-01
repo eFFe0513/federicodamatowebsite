@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ciclo For</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        input, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        #risultato {
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 5px;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <center><input type="number" id="numero" placeholder="Inserisci un numero">
+    <button onclick="creaSequenza()">Crea sequenza</button>
+    <div id="risultato"></div></center>
+    <script>
+        function creaSequenza() {
+            const numero = parseInt(document.getElementById('numero').value);
+            const risultato = document.getElementById('risultato');
+            for (let i = 0; i <= numero; i++) {
+                const coppia = `${i}-${numero - i}`;
+                risultato.innerHTML += `<p>${coppia}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

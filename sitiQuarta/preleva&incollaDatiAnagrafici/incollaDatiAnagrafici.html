@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualizza Dati</title>
+	<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f0f0f0;
+		justify-content: center;
+		min-height: 100vh;
+	}
+
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+		color: #333;
+	}
+
+	div {
+		margin: auto;
+        align-content: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        max-width: 55vh;
+        max-height: 40vh;
+	}
+
+	p {
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+
+    button {
+        background-color: #4caf91;
+        color: white;
+        padding: 15px 100px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background-color: #3e778e;
+        transform: scale(1.05);
+    }
+	</style>
+</head>
+<body>
+    <h1>I tuoi dati</h1>
+	<div>
+		<p id="nome"></p>
+		<p id="cognome"></p>
+		<p id="età"></p>
+		<p id="indirizzo"></p>
+		<p id="città"></p>
+	</div>
+	<br>
+	<center><button type="button" onclick="history.back()">Torna Indietro</button></center>
+    <script>
+        let datiUtente = localStorage.getItem("datiUtente");
+		let datiUtenteSplit = datiUtente.split(",");
+		document.getElementById("nome").innerHTML = "Nome: " + datiUtenteSplit[0];
+		document.getElementById("cognome").innerHTML = "Cognome: " + datiUtenteSplit[1];
+		document.getElementById("età").innerHTML = "Età: " + datiUtenteSplit[2];
+		document.getElementById("indirizzo").innerHTML = "Indirizzo: " + datiUtenteSplit[3];
+		document.getElementById("città").innerHTML = "Città: " + datiUtenteSplit[4]; 
+    </script>
+</body>
+</html>

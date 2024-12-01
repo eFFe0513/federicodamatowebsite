@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<style>
+			body {
+				background-attachment: fixed;
+				background-size: 100%;
+				color: #ffffff;
+			}
+			img {
+				border-radius: 3%;
+			}
+			h1 {
+				font-family: Monospace;
+				font-size: 350%;
+			}
+			
+		</style>		
+		<title> Sistema Solare Interattivo </title>
+	</head> 
+	<body background="immagini\sfondoSpazio.png";>
+		<h1> <a style="color:#538cc6; font-size: 100%; position: absolute;"; href="..\home1.html"> ⬅️ </a> </h1>
+		<h1 align="center"> 🌍 Interagisci con i pianeti del Sistema Solare 🪐 </h1>
+		<center> <img src="immagini\sistemaSolareMappa.png" usemap="#image-map"> </center>
+		<map name="image-map">
+			<area target="Informazioni" alt="Sole" title="Sole" href="https://it.wikipedia.org/wiki/Sole" coords="802,526,94" shape="circle">
+			<area target="Informazioni" alt="Mercurio" title="Mercurio" href="https://it.wikipedia.org/wiki/Mercurio" coords="599,551,23" shape="circle">
+			<area target="Informazioni" alt="Venere" title="Venere" href="https://it.wikipedia.org/wiki/Venere" coords="1028,634,37" shape="circle">
+			<area target="Informazioni" alt="Terra" title="Terra" href="https://it.wikipedia.org/wiki/Terra" coords="874,321,29" shape="circle">
+			<area target="Informazioni" alt="Marte" title="Marte" href="https://it.wikipedia.org/wiki/Marte" coords="652,779,26" shape="circle">
+			<area target="Informazioni" alt="Giove" title="Giove" href="https://it.wikipedia.org/wiki/Giove" coords="327,529,65" shape="circle">
+			<area target="Informazioni" alt="Saturno" title="Saturno" href="https://it.wikipedia.org/wiki/Saturno" coords="1277,650,1289,634,1303,617,1317,613,1330,617,1346,610,1365,603,1392,603,1393,616,1386,631,1379,641,1367,650,1360,670,1350,679,1337,689,1320,693,1307,700,1289,704,1272,713,1251,717,1250,694,1273,671" shape="poly">
+			<area target="Informazioni" alt="Urano" title="Urano" href="https://it.wikipedia.org/wiki/Urano" coords="400,227,36" shape="circle">
+			<area target="Informazioni" alt="Nettuno" title="Nettuno" href="https://it.wikipedia.org/wiki/Nettuno" coords="1304,222,30" shape="circle">
+			<area target="Informazioni" alt="Plutone" title="Plutone" href="https://it.wikipedia.org/wiki/Plutone" coords="1309,905,23" shape="circle">
+		</map>
+		<br> <br> <br> 
+		<center> <iframe name="Informazioni" width="1300" height="800px" src="immagini\Informazioni.png"> </center>
+	</body>
+</html>

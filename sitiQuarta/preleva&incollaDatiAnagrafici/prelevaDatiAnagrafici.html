@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserisci Dati</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        margin: auto;
+        align-content: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        max-width: 80vh;
+        max-height: 85vh;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        background-color: #4caf91;
+        color: white;
+        padding: 15px 100px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background-color: #3e778e;
+        transform: scale(1.05);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    </style>
+</head>
+<body>
+    <a href="../home2.html"><img src="../immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <h1>Inserisci i tuoi dati</h1>
+    <form id="form">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"><br><br>
+
+        <label for="cognome">Cognome</label>
+        <input type="text" id="cognome" name="cognome"><br><br>
+
+        <label for="età">Età</label>
+        <input type="text" id="età" name="età"><br><br>
+
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" id="indirizzo" name="indirizzo"><br><br>
+
+        <label for="città">Città</label>
+        <input type="text" id="città" name="città"><br><br>
+
+        <center><button type="button" onclick="inviaDati()">Invia</button></center>
+    </form>
+    <script>
+        function inviaDati() {
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let età = document.getElementById("età").value;
+            let indirizzo = document.getElementById("indirizzo").value;
+            let città = document.getElementById("città").value;
+            
+            const datiUtente = [];
+			datiUtente.push(nome);
+			datiUtente.push(cognome);
+			datiUtente.push(età);
+			datiUtente.push(indirizzo);
+			datiUtente.push(città);
+            
+            localStorage.setItem("datiUtente", datiUtente);
+            window.location.href = "incollaDatiAnagrafici.html";
+            document.getElementById('form').reset();
+        }
+    </script>
+</body>
+</html>

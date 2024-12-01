@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anagrafica personale</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="immagini/documentoImg.png" />
+    </head>
+    <body style="background-color: beige;">
+    <a href="../home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="40px" height="40px"></a>
+    <br>
+    <div class="contenitore">
+        <h1>Inserisci i tuoi dati</h1>
+        <form id="inputForm">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" name="cognome" required>
+            <label for="indirizzo">Indirizzo</label>
+            <input type="text" id="indirizzo" name="indirizzo" required>
+            <br>
+            <button type="submit"><b>Invia</b></button>
+        </form>
+        <br>
+        <h2>Risultati</h2>
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>

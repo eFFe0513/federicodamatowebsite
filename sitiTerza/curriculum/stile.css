@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 45%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+header {
+    text-align: center;
+}
+.section {
+    margin-bottom: 20px;
+}
+.section-title {
+    font-size: 24px;
+    border-bottom: 1px solid #000;
+}
+.ingrandimento {
+	transition: transform .5s;
+}
+.ingrandimento:hover {
+	transform: scale(1.1);
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 10%;
+                background-color: grey;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+            }
+
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: transform .5s;
+            }
+
+            li a:hover {
+                background-color: #555;
+                color: white;
+				transform: scale(1.1);
+            }
+
+            .animation {
+                width: 200px;
+                height: 200px;
+                border-radius: 50px;
+                background-color: red;
+                position: relative;
+                animation: a1 5s linear 2s infinite alternate;
+            }
+
+            @keyframes a1 {
+            0%   {background-color:red; left:0px; top:-75px;}
+            25%  {background-color:yellow; left:200px; top:-75px;}
+            50%  {background-color:blue; left:200px; top:85px;}
+            75%  {background-color:green; left:0px; top:85px;}
+            100% {background-color:red; left:0px; top:-75px;}
+            }
+
+            .casella {
+				background-color: rgba(41, 41, 41, 0.589);
+				border-radius: 20px;
+				border: 2px soldi black;
+				padding: 30px;
+                width: 350px;
+                height: 300px;
+			}
+        </style>
+        <title> Animazioni&NavbarVerticale </title>
+    </head>
+    <body style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; background-color: black;">
+        <b>
+        <ul>
+            <li><a href="../home1.html" style="background-color: #555; color: white;"><img src="immagini/back.png" alt="back" width="25px" height="20px"></a></li>
+            <li><a href="navbarVerticale.html" style="background-color: #555; color: white;">Home</a></li>
+            <li><a href="Animation1.html"> Animation 1</a></li>
+            <li><a href="Animation2.html"> Animation 2</a></li>
+            <li><a href="Animation3.html"> Animation 3</a></li>
+        </ul>
+        </b>
+        <div style="margin-left:21%;padding:1px 16px;height:auto; color: white;">
+            <table width="80%" cellspacing="20px">
+                <tr>
+                    <td colspan="2" height="40px">
+                        <center><b><h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 50px;"> Alternate animation </h1></b></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <center> <hr style="border: 4px solid white; width: 400px; border-radius: 50px;"> </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="casella">
+                    <center>
+                        <b>L'animazione in questione prevede il suo spostamento all'interno lo spazio della pagina web. 
+                        Nello specifico, essa provvederà a spostarsi in posizioni precise e al cambio graduale del colore dell'oggetto interessato da un punto all'altro. 
+                        Ciò è possibile grazie alla percentuale di completamento inserita nel codice, infatti, essa permette di eseguire un'azione ad un preciso stato di completamento dell'intera animazione. 
+                        Essa sfrutta, inoltre, la proprietà Shorthand delle animazioni e ripeterà i suoi spostamenti all'infinito e in modo alternato.</b>
+                    </center>
+                    </td>
+                    <td>
+                        <div class="animation"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>

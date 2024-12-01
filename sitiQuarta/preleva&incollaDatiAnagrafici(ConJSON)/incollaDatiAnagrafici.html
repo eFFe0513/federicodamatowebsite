@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualizza Dati</title>
+</head>
+<body>
+    <h1>I tuoi dati sono:</h1>
+    <p id="risultato"></p>
+    <script>
+        let datiJSON = localStorage.getItem("datiUtente");
+        let datiUtente = JSON.parse(datiJSON);
+        document.getElementById("risultato").innerHTML = "Nome: " + datiUtente.nome + "<br>Cognome: " + datiUtente.cognome + "<br>Età: " + datiUtente.età + "<br>Indirizo: " + datiUtente.indirizzo + "<br>Città: " + datiUtente.città;
+    </script>
+</body>
+</html>

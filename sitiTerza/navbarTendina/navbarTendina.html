@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            nav {
+                background-color: #0084ff;
+                overflow: hidden;
+                font-size: 20px;
+                height: 51px;
+            }
+        
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+        
+            nav li {
+                float: left;
+            }
+        
+            nav li a {
+                display: block;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                transition: transform .5s;
+            }
+        
+            nav li a:hover {
+                transform: scale(1.1);
+            }
+        
+            nav li ul.dropdown {
+                display: none;
+                position: absolute;
+                background-color: #0084ff;
+                box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+            }
+        
+            nav li:hover ul.dropdown {
+                display: block;
+                border-radius: 5px;
+            }
+        
+            nav li ul.dropdown li {
+                float: none;
+            }
+        
+            nav li ul.dropdown li a {
+                display: block;
+                color: black;
+            }
+            
+            body {
+                background-color: #00b7ff;
+                margin: 0;
+                font-family: monospace;
+                color: black;
+            }
+
+            .casella:hover {
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+			<ul>
+                <li><a href="../home1.html"> <img src="immagini\backIcon.png" width="23px"> </a> </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="navbarTendina.html" class="casella"> <b>Home</b> </a> </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="#" class="casella">località</a>
+                <ul class="dropdown">
+                    <li><a href="rho.html" class="casella"> Rho </a></li>
+                    <li><a href="milano.html" class="casella"> Milano </a></li>
+                    <li><a href="firenze.html" class="casella"> Firenze </a></li>
+                </ul>
+                </li>
+                <li style="padding: 14px 16px;"> | </li>
+				<li><a href="feedback.html" class="casella">settings</a>
+                    <ul class="dropdown">
+                        <li><a href="login.html" class="casella"> login </a></li>
+                        <li><a href="feedback.html" class="casella"> feedback </a></li>
+                    </ul>
+                </li>
+			</ul>
+		</nav>
+        <br>
+        <center><iframe src="https://www.meteoam.it/it/mappa-previsioni-osservazioni" frameborder="0" style="width:97vw; height:100vh; border-radius: 5px;" style="border-radius: 10px;"></iframe></center>
+        <br>
+    </body>
+</html>

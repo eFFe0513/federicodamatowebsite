@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conta cifre</title>
+    <style>
+        a {
+            text-align: left;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #myForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="button"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        input[type="button"] {
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <center><form id="myForm">
+        <label for="cap">Inserisci un numero </label>
+        <input type="text" id="numero" name="numero">
+        <input type="button" value="Invia" onclick="contaCifre()">
+    </form></center>
+    <br>
+    <center><div id="output"></div></center>
+    <script>
+        function contaCifre() {
+            let numero = document.getElementById("numero").value;
+            numero = Math.abs(numero);
+            let contatore = 0;
+            while (numero > 0) {
+                numero = Math.floor(numero / 10);
+                contatore++;
+            }
+            document.getElementById("output").innerHTML = contatore;
+        }
+    </script>
+</body>
+</html>
