@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina con Stili ed Effetti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="../home2.html"><img src="../immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <header>
+        <h1>Benvenuti nella mia pagina</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#sezione-lista">Liste</a></li>
+                <li><a href="#sezione-tabella">Tabelle</a></li>
+                <li><a href="#sezione-form">Form</a></li>
+                <li><a href="#sezione-immagini">Immagini</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="sezione-lista">
+        <center>
+        <h2>Liste</h2>
+        <h3>Lista ordinata</h3>
+        <ol>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+        </ol>
+        <h3>Lista non ordinata</h3>
+        <ul>
+            <li>Elemento A</li>
+            <li>Elemento B</li>
+            <li>Elemento C</li>
+        </ul>
+        </center>
+    </section>
+    <section id="sezione-tabella">
+        <h2>Tabella</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Studente</th>
+                    <th>Classe</th>
+                    <th>Sezione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2°</td>
+                    <td>D</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>4°</td>
+                    <td>B</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="sezione-form">
+        <h2>Form</h2>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Inserisci la tua email">
+            <label for="messaggio">Messaggio:</label>
+            <textarea id="messaggio" name="messaggio" rows="4" placeholder="Scrivi qui il tuo messaggio"></textarea>
+            <button type="submit">Invia</button>
+        </form>
+    </section>
+    <section id="sezione-immagini">
+        <h2>Immagini</h2>
+        <table class="tabellaImg">
+            <tr>
+                <td>
+                    <div class="immagine-animata">
+                        <img src="immagini/immagine1.jpeg" alt="Immagine con animazione">
+                    </div>
+                </td>
+                <td>
+                    <div class="immagine-collegamento">
+                        <a href="https://it.wikipedia.org/wiki/HTML" target="_blank">
+                            <img src="immagini/immagine2.jpg" alt="Collegamento a wikipedia">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+    </section>
+</body>
+</html>
