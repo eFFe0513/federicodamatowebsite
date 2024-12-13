@@ -23,7 +23,7 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        max-width: 55vh;
+        max-width: 100vh;
         max-height: 40vh;
 	}
 
@@ -51,22 +51,42 @@
 <body>
     <h1>I tuoi dati</h1>
 	<div>
-		<p id="nome"></p>
-		<p id="cognome"></p>
-		<p id="età"></p>
-		<p id="indirizzo"></p>
-		<p id="città"></p>
+		<center>
+		<table id="tabella">
+			<thead>
+				<tr>
+					<td id="nome"></td>
+					<td id="cognome"></tr>
+					<td id="età"></td>
+					<td id="indirizzo"></td>
+					<td id="città"></td>
+				</tr>
+			</thead>
+			<tbody>
+            </tbody>
+		</table>
+		</center>
 	</div>
 	<br>
 	<center><button type="button" onclick="history.back()">Torna Indietro</button></center>
     <script>
-        let datiUtente = localStorage.getItem("datiUtente");
-		let datiUtenteSplit = datiUtente.split(",");
-		document.getElementById("nome").innerHTML = "Nome: " + datiUtenteSplit[0];
-		document.getElementById("cognome").innerHTML = "Cognome: " + datiUtenteSplit[1];
-		document.getElementById("età").innerHTML = "Età: " + datiUtenteSplit[2];
-		document.getElementById("indirizzo").innerHTML = "Indirizzo: " + datiUtenteSplit[3];
-		document.getElementById("città").innerHTML = "Città: " + datiUtenteSplit[4]; 
+		let datiUtenteSplit = "";
+		let datiUtente = JSON.parse(localStorage.getItem("datiUtente"));
+		for (let i = 0; i <= datiUtente.length; i++){
+			let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+			let newRow = table.insertRow();
+			let cell1 = newRow.insertCell(0);
+			let cell2 = newRow.insertCell(1);
+			let cell3 = newRow.insertCell(2);
+			let cell4 = newRow.insertCell(3);
+			let cell5 = newRow.insertCell(4);
+			datiUtenteSplit = datiUtente[i].toString().split(",");
+    		cell1.textContent = "Nome: " + datiUtenteSplit[0] + " | ";
+			cell2.textContent = "Cognome: " + datiUtenteSplit[1] + " | ";
+			cell3.textContent = "Età: " + datiUtenteSplit[2] + " | ";
+			cell4.textContent = "Indirizzo: " + datiUtenteSplit[3] + " | ";
+			cell5.textContent = "Città: " + datiUtenteSplit[4];
+		}
     </script>
 </body>
 </html>

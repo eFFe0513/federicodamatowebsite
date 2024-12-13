@@ -80,23 +80,21 @@
         <center><button type="button" onclick="inviaDati()">Invia</button></center>
     </form>
     <script>
+        let datiUtente = [];
+        let contatore = 0;
         function inviaDati() {
             let nome = document.getElementById("nome").value;
             let cognome = document.getElementById("cognome").value;
             let età = document.getElementById("età").value;
             let indirizzo = document.getElementById("indirizzo").value;
             let città = document.getElementById("città").value;
-            
-            const datiUtente = [];
-			datiUtente.push(nome);
-			datiUtente.push(cognome);
-			datiUtente.push(età);
-			datiUtente.push(indirizzo);
-			datiUtente.push(città);
-            
-            localStorage.setItem("datiUtente", datiUtente);
-            window.location.href = "incollaDatiAnagrafici.html";
+            datiUtente.push([nome, cognome, età, indirizzo, città]);
             document.getElementById('form').reset();
+            if (contatore == 2){
+                localStorage.setItem('datiUtente', JSON.stringify(datiUtente));
+                window.location.href = "incollaDatiAnagrafici.html";
+            }
+            contatore++;
         }
     </script>
 </body>
