@@ -83,6 +83,7 @@
         let datiUtente = [];
         let contatore = 0;
         function inviaDati() {
+            contatore++;
             let nome = document.getElementById("nome").value;
             let cognome = document.getElementById("cognome").value;
             let età = document.getElementById("età").value;
@@ -90,11 +91,11 @@
             let città = document.getElementById("città").value;
             datiUtente.push([nome, cognome, età, indirizzo, città]);
             document.getElementById('form').reset();
-            if (contatore == 2){
+            if (contatore == 3){
                 localStorage.setItem('datiUtente', JSON.stringify(datiUtente));
                 window.location.href = "incollaDatiAnagrafici.html";
+                contatore = 0;
             }
-            contatore++;
         }
     </script>
 </body>
