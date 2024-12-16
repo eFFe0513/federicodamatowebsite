@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordina Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .contenitore {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .input {
+            margin-bottom: 20px;
+        }
+        .input label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            transition: all 0.3s ease-in-out;
+        }
+        input:hover {
+            transform: scale(1.05);
+        }
+        .risultato {
+            margin-top: 20px;
+        }
+        .risultato div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../home2.html"><img src="../immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <div class="contenitore">
+        <h1>Ordina un Array</h1>
+        <div class="input">
+        <label for="arrayInput">Inserisci numeri separati da spazio</label>
+        <input type="text" id="arrayInput" placeholder="Es: 5 3 8 1">
+        </div>
+        <button id="bottoneOrdina" onclick="ordinamento()">Ordina Array</button>
+        <div class="risultato">
+        <div id="ordineCrescente">
+            <strong>Ordine Crescente --></strong> <span id="risultatoCrescente"></span>
+        </div>
+        <div id="ordineDecrescente">
+            <strong>Ordine Decrescente --></strong> <span id="risultatoDecrescente"></span>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        function ordinamento() {
+        const arrayInput = document.getElementById('arrayInput').value;
+        const array = arrayInput.split(' ').map(Number);
+        const ordineCrescente = [...array].sort((a, b) => a - b);
+        const ordineDecrescente = [...array].sort((a, b) => b - a);
+        document.getElementById('risultatoCrescente').textContent = ordineCrescente.join(', ');
+        document.getElementById('risultatoDecrescente').textContent = ordineDecrescente.join(', ');
+        }
+    </script>
+</body>
+</html>
