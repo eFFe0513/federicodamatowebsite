@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Tabella Migranti</title>
+    </head>
+    <body>
+        <div class="contenitore">
+            <a href="../home2.html"><img src="immagini/backIcon.png" class="back" alt="Torna Indietro" width="40px" height="40px"></a>
+            <h1>Tabella Flussi Migratori</h1>
+            <h5>Seleziona il file table.csv</h5>
+            <label class="pulsanteSovrapposto" for="inputFile">
+                <input type="file" id="inputFile" class="inputFile" onchange="leggiTabella(this)">
+                Seleziona un file
+            </label>
+            <a href="table.csv"><img src="immagini/downloadLogo.png" alt="pulsante scarica table.csv" title="scarica table.csv" width="175px"></a>
+            <table id="tabellaRisultati">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+        function leggiTabella(input) {
+            let file = input.files[0];
+            let reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function() {
+                console.log(reader.result);
+                let risultato = reader.result;
+                const risultatoSplit = risultato.split("\n");
+                const table = document.getElementById('tabellaRisultati').getElementsByTagName('tbody')[0];
+                for (let i = 0; i < risultatoSplit.length; i++) {
+                    let newRow = table.insertRow();
+                    let cell1 = newRow.insertCell(0);
+                    let cell2 = newRow.insertCell(1);
+                    const split = risultatoSplit[i].split(",");
+                    cell1.textContent = split[0].slice(1, -1);
+                    cell2.textContent = split[1].slice(1, -1);
+                }
+            }
+        }
+    </script>
+</html>
+
+
