@@ -36,6 +36,10 @@ img:hover {
     position: absolute;
     right: 50px;
 }
+canvas {
+    position: absolute;
+    right: 200px;
+}
 .pulsanteSovrapposto {
     position: absolute;
     padding: 14px 20px;
@@ -53,8 +57,4 @@ img:hover {
 }
 input[type="file"] {
     display: none;
-}
-canvas {
-    position: absolute;
-    right: 200px;
 }
