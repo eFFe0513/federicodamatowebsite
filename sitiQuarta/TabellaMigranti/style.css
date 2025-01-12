@@ -36,7 +36,6 @@ img:hover {
     position: absolute;
     right: 50px;
 }
-
 .pulsanteSovrapposto {
     position: absolute;
     padding: 14px 20px;
@@ -48,12 +47,14 @@ img:hover {
     border: none;
     transition: 1s;
 }
-
 .pulsanteSovrapposto:hover {
     background-color: #0056b3;
     transform: scale(1.1);
 }
-
 input[type="file"] {
-    display: none; /* Nascondi l'input file originale */
+    display: none;
+}
+canvas {
+    position: absolute;
+    right: 200px;
 }
