@@ -29,16 +29,56 @@
 				background-color: rgb(170, 170, 170);
 				transform: scale(1.2);
 			}
-
 			a {
 				text-decoration: none;
 				color: black;
 				font-family: monospace;
 				font-size: 30px;
 			}
+			div{
+				width: 45px;
+				height: 75px;
+				padding: 10px;
+				font-weight: bold;
+				border-radius: 15px;
+				position: absolute;
+				right: 6px;
+				animation: movimento 5s;
+				animation-timing-function: ease;
+				animation-fill-mode: forwards;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes movimento {
+				0%   {background-color:cornflowerblue; top:1%;}
+				50%  {background-color:chartreuse; top:100%;}
+				100% {background-color:cornflowerblue; top:1%;}
+			}
+
+			.div2 {
+				width: 45px;
+				height: 35px;
+				padding: 10px;
+				font-weight: bold;
+				border-radius: 15px;
+				position: absolute;
+				left: 6px;
+				animation: movimento2 5s;
+				animation-timing-function: ease;
+				animation-fill-mode: forwards;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes movimento2 {
+				0%   {background-color:blue; top:14%;}
+				50%  {background-color:yellow; top:105%;}
+				100% {background-color:blue; top:14%;}
+			}
 		</style>
 	</head>
-	<body background="..\immagini\sfondo.png"; style="background-attachment: fixed; background-size: cover"; text="#ffffff">
+	<body background="..\immagini\sfondo.png"; style="background-attachment: fixed; background-size: cover; font-family: sans-serif;"; text="#ffffff">
+		<div><center>H<br>T<br>M<br>L<br></center></div>
+		<div class="div2"><center>J<br>S</center></div>
 		<table width="90%">
 			<tr>
 				<td width="140px">
