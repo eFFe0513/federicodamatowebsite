@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Stella Con Canvas</title>
+        <link rel="shortcut icon" type="image/x-icon" href="immagini/starIcon.png">
+    </head>
+    <body>
+        <table width="100%" class="tableBar">
+            <tr>
+                <td>
+                    <a href="https://www.w3schools.com/graphics/canvas_intro.asp"><img src="immagini/w3SchoolLogo.png" alt="w3school canvas tutorial" title="w3school canvas tutorial" width="40px" height="40px"></a>
+                </td>
+                <td widht="80%">
+                    <center><div class="divBar">Stella Con Canvas</div></center>
+                </td>
+                <td align="right">
+                    <a href="../home2.html"><img src="immagini/backIcon.png" class="back" alt="Torna Indietro" width="40px" height="40px"></a>
+                </td>
+            </tr>
+        </table>
+        <center>
+            <table width="100%">
+                <tr  height="450px">
+                    <td width="550px">
+                        <center><canvas id="canvas" width="450px" height="450px"></canvas></center>
+                    </td>
+                    <td align="right">
+                        <br><br>
+                        <center><iframe src="https://it.wikipedia.org/wiki/Stella" frameborder="4" width="700px" height="450px"></iframe></center>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <br><br>
+    </body>
+    <script>
+        //stella
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const gradient = ctx.createLinearGradient(0, 0, 450, 400);
+        gradient.addColorStop(0, "yellow");
+        gradient.addColorStop(0.5, "orange");
+        gradient.addColorStop(1, "red");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.moveTo(50, 165);
+        ctx.lineTo(400, 165);
+        ctx.lineTo(105,375);
+        ctx.lineTo(225,45);
+        ctx.lineTo(345,375);
+        ctx.lineTo(50,165);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        //cerchio
+        ctx.beginPath();
+        ctx.arc(225, 225, 220, 0, 360);
+        ctx.closePath();
+        ctx.lineWidth = 5;
+        ctx.stroke();
+    </script>
+</html>
