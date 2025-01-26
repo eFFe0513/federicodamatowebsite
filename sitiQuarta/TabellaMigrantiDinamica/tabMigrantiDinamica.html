@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Tabella Migranti</title>
+    </head>
+    <body>
+        <div class="contenitore">
+            <a href="../home2.html"><img src="immagini/backIcon.png" class="back" alt="Torna Indietro" width="40px" height="40px"></a>
+            <h1>Tabella Flussi Migratori</h1>
+            <h5>Seleziona il file table.csv</h5>
+            <label class="pulsanteSovrapposto" for="inputFile">
+                <input type="file" id="inputFile" class="inputFile" onchange="leggiTabella(this)">
+                Seleziona un file
+            </label>
+            <a href="table.csv"><img src="immagini/downloadLogo.png" alt="pulsante scarica table.csv" title="scarica table.csv" width="175px"></a>
+            <br><br>
+            <table>
+                <tr>
+                    <td width="900px">
+                        <center><canvas id="canvas" width="900px" height="500px"></canvas></center>
+                        <h1>Scarica dati sulla situazione migratoria italiana</h1>
+                        <center>
+                        <div class="divGenerale" width="900px" height="500px">
+                            <div class="ScaricaBox">
+                                <p>Dati Stranieri 1</p>
+                                <a href="Stranieri/NI2024-Stranieri.xls" download>Scarica</a>
+                            </div>
+                            <div class="ScaricaBox">
+                                <p>Dati Stranieri 2</p>
+                                <a href="Stranieri/NI2024-Stranieri_altri dati_1.xlsx" download>Scarica</a>
+                            </div>
+                            <div class="ScaricaBox">
+                                <p>Dati Stranieri 3</p>
+                                <a href="Stranieri/NI2024-Stranieri_altri_dati_2.xls" download>Scarica</a>
+                            </div>
+                        </div>
+                        </center>
+                    </td>
+                    <td class="td1">
+                        <table id="tabellaRisultati" class="tabella">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script>
+        // Leggi dati file e crea tabella
+        function leggiTabella(input) {
+            let file = input.files[0];
+            let reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function() {
+                let risultato = reader.result;
+                const risultatoSplit = risultato.split("\n");
+                const table = document.getElementById('tabellaRisultati').getElementsByTagName('tbody')[0];
+                const anni = [];
+                const sbarchi = [];
+                for (let i = 0; i < risultatoSplit.length; i++) {
+                    if (risultatoSplit[i].trim() !== "") {
+                        let newRow = table.insertRow();
+                        let cell1 = newRow.insertCell(0);
+                        let cell2 = newRow.insertCell(1);
+                        const split = risultatoSplit[i].split(",");
+                        const anno = split[0].slice(1, -1);
+                        const sbarco = split[1].slice(1, -1);
+                        cell1.textContent = anno;
+                        cell2.textContent = sbarco;
+                        if (i != 0){
+                            anni.push(anno);
+                            sbarchi.push(sbarco);
+                        }
+                    }
+                }
+                disegnaGrafico(anni, sbarchi);
+            }
+        }
+
+        // Grafico
+        function disegnaGrafico(anni, sbarchi) {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const margin = 50;
+            const width = canvas.width - margin * 2;
+            const height = canvas.height - margin * 2;
+            const maxSbarchi = Math.max(...sbarchi);
+
+            // X & Y
+            ctx.beginPath();
+            ctx.moveTo(margin, margin);
+            ctx.lineTo(margin, canvas.height - margin);
+            ctx.lineTo(canvas.width - margin, canvas.height - margin);
+            ctx.stroke();
+
+            ctx.font = "12px Arial";
+            ctx.textAlign = "center";
+            for (let i = 0; i < anni.length; i++) {
+                const x = margin + (i * (width / (anni.length - 1)));
+                ctx.fillText(anni[i], x, canvas.height - margin + 20);
+            }
+
+            ctx.textAlign = "right";
+            for (let i = 0; i <= 5; i++) {
+                const y = canvas.height - margin - (i * (height / 5));
+                const valore = Math.round((maxSbarchi / 5) * i);
+                ctx.fillText(valore, margin - 10, y);
+            }
+
+            // Linea in tempo reale
+            let i = 0;
+            function disegnaInTempoReale() {
+                ctx.lineWidth = 3;
+                const x = margin + (i * (width / (anni.length - 1)));
+                const y = canvas.height - margin - (sbarchi[i] / maxSbarchi * height);
+
+                if (i === 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                    ctx.strokeStyle = "blue";
+                    ctx.stroke();
+                }
+
+                i++;
+                setTimeout(disegnaInTempoReale, 300);
+            }
+            disegnaInTempoReale();
+        }
+    </script>
+</html>
+
+

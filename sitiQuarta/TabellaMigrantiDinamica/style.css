@@ -1,0 +1,86 @@
+body {
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+    margin: 20px;
+}
+h1 {
+    color: #343a40;
+}
+h5 {
+    color: #6c757d;
+}
+.contenitore {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+table {
+    width: 100%;
+}
+.tabella {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+img {
+    transition: 1s;
+    margin-left: 190px;
+}
+img:hover {
+    transform: scale(1.1);
+}
+.back {
+    position: absolute;
+    right: 50px;
+}
+canvas {
+    color: black;
+    border: 2px solid grey;
+    background-color: white;
+    border-radius: 10px;
+    background-image: url('immagini/sfondoCanvas.jpg');
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.divGenerale {
+    border-radius: 10px;
+    padding: 10px;
+}
+.ScaricaBox {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.ScaricaBox a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+.pulsanteSovrapposto {
+    position: absolute;
+    padding: 14px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    transition: 1s;
+}
+.pulsanteSovrapposto:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+input[type="file"] {
+    display: none;
+}
