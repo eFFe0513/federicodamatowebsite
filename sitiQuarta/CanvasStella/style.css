@@ -24,7 +24,7 @@ body{
     background-image: url('immagini/sfondo.jpg');
     background-position: top right;
     animation: movimentoSfondo 35s infinite;
-    }
+}
 @keyframes movimentoSfondo {
     50% {background-position: center;}
 }
