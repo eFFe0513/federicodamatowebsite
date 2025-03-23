@@ -7,7 +7,7 @@
 </head>
 <body>
     <a href="../home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
-    <table width="100%" align="center">
+    <br><table width="100%" align="center">
         <tr>
             <td colspan="3">
                 <table widht="100%" align="center">
@@ -17,7 +17,7 @@
                             <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
                             <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
                             <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
-                            <td><p><b>~ Meteo e Notizie ~</b></p></td>
+                            <td><b class="titolo">~ Meteo e Notizie ~</b></td>
                             <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
                             <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
                             <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
@@ -25,6 +25,7 @@
                         </td>
                     </tr>
                 </table>
+                <br>
             </td>
         </tr>
         <tr>
@@ -33,14 +34,14 @@
                     <b class="carica">Carica i dati degli account</b><br><br><br><br>
                     <img src="immagini/caricaFile.png" alt="Seleziona un file" title="seleziona un file" onclick="document.getElementById('inputFile').click();" style="cursor: pointer;" width="200px">
                     <input type="file" id="inputFile" class="inputFile" onchange="prelevaDati(this)" style="display: none;"><br><br><br><br>
-                    <a class="scarica" href="accounts.txt">Scarica un file di esempio⬇</a>
+                    <a class="scarica" href="accounts.txt" download>Scarica un file di esempio⬇</a>
                 </div>
             </td>
             <td align="center">
-                <iframe src="https://www.3bmeteo.com/moduli_esterni/italia_7_giorni/ffffff/0040aa/5e5e5e/ffffff/it" frameborder="0" width="400px" height="450px" scrolling="no"></iframe>
+                <iframe src="https://www.3bmeteo.com/moduli_esterni/italia_7_giorni/ffffff/0040aa/5e5e5e/ffffff/it" frameborder="0" width="425px" height="450px" scrolling="no"></iframe>
             </td>
             <td align="center">
-                <iframe src="https://it.euronews.com/embed/timeline" frameborder="0" width="400px" height="450px" scrolling="no"></iframe>
+                <iframe src="https://it.euronews.com/embed/timeline" frameborder="0" width="425px" height="450px" scrolling="no"></iframe>
             </td>
         </tr>
     </table>

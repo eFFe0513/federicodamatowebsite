@@ -35,7 +35,7 @@ iframe {
     100% {transform: rotate(360deg);}
 }
 
-p {
+.titolo {
     font-size: 50px;
 }
 
