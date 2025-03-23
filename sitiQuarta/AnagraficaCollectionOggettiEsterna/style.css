@@ -5,7 +5,6 @@ body {
     min-height: 100vh;
     background-image: url('immagini/sfondo.jpg');
     background-size: cover;
-    overflow: hidden;
 }
 img {
     transition: all 0.5s ease-in-out;
@@ -15,7 +14,7 @@ img:hover {
 }
 .contenitore {
 	width: 460px;
-    height: 450px;
+    height: 500px;
     margin: 0 auto;
     background-color: #2172f3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
