@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('immagini/sfondo.jpg');
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+table {
+    width: 90%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid lightgray;
+}
+
+div {
+    margin: auto;
+    align-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 130vh;
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: lightgray;
+    color: black;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: gray;
+    transform: scale(1.05);
+}

@@ -1,0 +1,37 @@
+[
+  {
+    nome: "Mario",
+    cognome: "Rossi",
+    età: "25",
+    email: "mario.rossi@gmail.com",
+    città: "Roma"
+  },
+  {
+    nome: "Laura",
+    cognome: "Verdi",
+    età: "30",
+    email: "laura.verdi@gmail.com",
+    città: "Milano"
+  },
+  {
+    nome: "Giovanni",
+    cognome: "Bianchi",
+    età: "22",
+    email: "giovanni.bianchi@gmail.com",
+    città: "Napoli"
+  },
+  {
+    nome: "Anna",
+    cognome: "Neri",
+    età: "28",
+    email: "anna.neri@gmail.com",
+    città: "Torino"
+  },
+  {
+    nome: "Luca",
+    cognome: "Gialli",
+    età: "33",
+    email: "luca.gialli@gmail.com",
+    città: "Palermo"
+  }
+]

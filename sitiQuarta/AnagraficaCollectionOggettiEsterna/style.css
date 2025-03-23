@@ -1,0 +1,49 @@
+body {
+	font-family: Arial, sans-serif;
+    justify-content: center;
+    color: white;
+    min-height: 100vh;
+    background-image: url('immagini/sfondo.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+img {
+    transition: all 0.5s ease-in-out;
+}
+img:hover {
+    transform: scale(1.1);
+}
+.contenitore {
+	width: 460px;
+    height: 450px;
+    margin: 0 auto;
+    background-color: #2172f3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+iframe {
+    border-radius: 20px;
+}
+
+.rotazione {
+    animation: movimento 50s infinite;
+    width: 100px;
+}
+
+@keyframes movimento {
+    100% {transform: rotate(360deg);}
+}
+
+p {
+    font-size: 50px;
+}
+
+.carica {
+    font-size: 25px;
+}
+
+.scarica {
+    font-size: 15px;
+    color: white;
+}

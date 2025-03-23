@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anagrafica con collection oggetti</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="immagini/icona.png">
+</head>
+<body>
+    <a href="../home2.html"><img src="immagini/backIcon.png" alt="Torna Indietro" width="30px" height="30px" style="position: absolute;"></a>
+    <table width="100%" align="center">
+        <tr>
+            <td colspan="3">
+                <table widht="100%" align="center">
+                    <tr>
+                        <td>
+                            <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
+                            <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
+                            <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
+                            <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
+                            <td><p><b>~ Meteo e Notizie ~</b></p></td>
+                            <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
+                            <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
+                            <td><img src="immagini/luna.png" alt="luna" class="rotazione"></td>
+                            <td><img src="immagini/sole.png" alt="sole" class="rotazione"></td>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="contenitore" align="center"><br><br>
+                    <b class="carica">Carica i dati degli account</b><br><br><br><br>
+                    <img src="immagini/caricaFile.png" alt="Seleziona un file" title="seleziona un file" onclick="document.getElementById('inputFile').click();" style="cursor: pointer;" width="200px">
+                    <input type="file" id="inputFile" class="inputFile" onchange="prelevaDati(this)" style="display: none;"><br><br><br><br>
+                    <a class="scarica" href="accounts.txt">Scarica un file di esempio⬇</a>
+                </div>
+            </td>
+            <td align="center">
+                <iframe src="https://www.3bmeteo.com/moduli_esterni/italia_7_giorni/ffffff/0040aa/5e5e5e/ffffff/it" frameborder="0" width="400px" height="450px" scrolling="no"></iframe>
+            </td>
+            <td align="center">
+                <iframe src="https://it.euronews.com/embed/timeline" frameborder="0" width="400px" height="450px" scrolling="no"></iframe>
+            </td>
+        </tr>
+    </table>
+    <script>
+        const datiAccount = []
+        function prelevaDati(input){
+            let file = input.files[0];
+            let reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function() {
+                let risultato = reader.result;
+                let contatore = risultato.split("{").length - 1;
+                for (let i = 0; i < contatore; i++){
+                    risultato = risultato.slice(2, risultato.length);
+                    indiceFineOggetto = risultato.indexOf("}");
+                    stringaOggetto = risultato.slice(0,indiceFineOggetto);
+                    risultato = risultato.slice(indiceFineOggetto+1,risultato.length);
+                    let vett = [];
+                    for (let i = 0; i < 5; i++){
+                        inizioAtt = stringaOggetto.indexOf('"');
+                        stringaOggetto = stringaOggetto.slice(inizioAtt+1,stringaOggetto.length);
+                        fineAtt = stringaOggetto.indexOf('"');
+                        attributo = stringaOggetto.slice(0,fineAtt);
+                        vett.push(attributo);
+                        stringaOggetto = stringaOggetto.slice(fineAtt+1,stringaOggetto.length);
+                    }
+                    let nome = vett[0];
+                    let cognome = vett[1];
+                    let eta = vett[2];
+                    let indirizzo = vett[3];
+                    let citta = vett[4];
+                    account = {Nome:nome,Cognome:cognome,Eta:eta,Indirizzo:indirizzo, Citta:citta};
+                    datiAccount.push(account);
+                }
+                localStorage.setItem("datiAccount", JSON.stringify(datiAccount));
+                window.location.href = "RiceviDati.html";
+            }
+        }
+	</script>
+</body>
+</html>
