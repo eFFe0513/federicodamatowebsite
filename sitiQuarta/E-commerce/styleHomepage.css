@@ -1,61 +1,77 @@
-nav {
-    background-color: #0084ff;
-    overflow: hidden;
-    font-size: 20px;
-    height: 51px;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
+.kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
-
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
 nav ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
+    transform: translateX(10px);
 }
-
 nav li {
     float: left;
 }
-
 nav li a {
-    display: block;
-    color: rgb(0, 0, 0);
+    color: rgb(175, 175, 175);
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     text-decoration: none;
-    transition: transform .5s;
+    font-family: Kanit;
+    transition: all 0.3s ease-in-out;
 }
-
 nav li a:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
-
 nav li ul.dropdown {
     display: none;
     position: absolute;
-    background-color: #0084ff;
-    box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+    border-radius: 10px;
 }
-
 nav li:hover ul.dropdown {
     display: block;
     border-radius: 5px;
 }
-
 nav li ul.dropdown li {
     float: none;
 }
-
 nav li ul.dropdown li a {
     display: block;
     color: black;
 }
-
 body {
-    background-color: #00b7ff;
-    margin: 0;
-    font-family: monospace;
-    color: black;
-}
-
-.casella:hover {
     background-color: white;
+    margin: 0;
+    font-family: Roboto;
+    color: black;
+    font-size: 17px;
+}
+.casella:hover {
+    background-color: rgb(210, 210, 210);
+}
+.startImg {
+    width: 95%;
+    height: 70%;
+    border-radius: 40px;
+}
+.profilo {
+    position: fixed;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+
+}
+.profilo:hover {
+    transform: scale(1.05);
 }

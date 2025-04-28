@@ -5,6 +5,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
     </head>
     <body>
         <center>
@@ -16,7 +17,7 @@
                             <center>
                             <input type="text" id="email" name="email" placeholder="Email o numero di telefono"><br><br>
                             <input type="text" id="password" name="password" placeholder="Password"><br><br>
-                            <button type="button" onclick="funzioneJs()" class="continua"><b>Continua</b></button>
+                            <button type="button" onclick="vai()" class="continua"><b>Continua</b></button>
                             </center>
                         </td>
                         <td>
@@ -30,5 +31,10 @@
                 </table>
             </center>
         </center>
+        <script>
+            function vai(){
+                window.location.href = "Homepage.html"
+            }
+        </script>
     </body>
 </html>
