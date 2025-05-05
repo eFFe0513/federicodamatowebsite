@@ -79,7 +79,6 @@ body::-webkit-scrollbar {
 table {
     width: 95%;
     height: 50%;
-    border: 1px solid black;
 }
 .freccia {
     width: 40px;
@@ -94,8 +93,13 @@ table {
 .logo {
     width: 50%;
     height: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.205);
+    border-radius: 40px;
+}
+.logo2 {
+    width: 50%;
+    height: 50%;
 }
 td {
-    border: 1px solid black;
     width: 25%;
 }

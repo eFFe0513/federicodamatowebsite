@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Autenticazione</title>
+        <link rel="stylesheet" href="styleAutenticazione.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
+    </head>
+    <body>
+        <center>
+            <br><center><h1>Join the virtual reality community</h1></center>
+            <center><h5 class="h5Titolo">Autenticazione a due fattori</h5></center>
+            <center>
+                <table width="75%" cellspacing="20px">
+                    <tr>
+                        <td>
+                            <center>
+                            <h5>Inserisci il codice ricevuto tramite email</h5>
+                            <input type="text" id="codice" name="codice" placeholder="Codice di verifica"><br><br>
+                            <button type="button" onclick="convalida()" class="continua"><b>Continua</b></button><br><br>
+                            <button type="button" onclick="funzioneJS()" class="continua"><b>Reivia codice</b></button>
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                                <img src="" alt="">
+                                immagini che scorrono
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </center>
+        <script>
+            function convalida(){
+                window.location.href = "Homepage.html"
+            }
+        </script>
+    </body>
+</html>
