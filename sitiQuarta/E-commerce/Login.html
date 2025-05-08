@@ -73,8 +73,9 @@
                 let testoCriptato = "";
                 for (let i = 0; i < dato.length; i++) {
                     let carattere = dato.charAt(i);
-                    let risposta = await fetch(`https://cripta.glitch.me/cripta?x=${carattere}`);
-                    let numeroCriptato = await risposta.text();
+                    let risposta = await fetch(`https://cripta.glitch.me/cripta?x=${carattere.charCodeAt(0)}`);
+                    let risultatoTesto = await risposta.text();
+                    let numeroCriptato = Number(risultatoTesto);
                     testoCriptato += numeroCriptato + "-";
                 }
                 testoCriptato = testoCriptato.slice(0, -1);
