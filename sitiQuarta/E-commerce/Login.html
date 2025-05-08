@@ -37,8 +37,7 @@
             let nomeFile = "datiAccounts.txt";
             fetch(nomeFile)
             .then(response => response.text())
-            .then(risultato => {
-
+            .then(async risultato => {
                 let contatore = risultato.split("{").length - 1;
                 for (let i = 0; i < contatore; i++) {
                     risultato = risultato.slice(2, risultato.length);
@@ -55,13 +54,13 @@
                         stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
                     }
                     
-                    let username = cripta(vett[0]);
-                    let nome = cripta(vett[1]);
-                    let cognome = cripta(vett[2]);
-                    let dataNascita = cripta(vett[3]);
-                    let residenza = cripta(vett[4]);
-                    let email = cripta(vett[5]);
-                    let password = cripta(vett[6]);
+                    let username = await cripta(vett[0]);
+                    let nome = await cripta(vett[1]);
+                    let cognome = await cripta(vett[2]);
+                    let dataNascita = await cripta(vett[3]);
+                    let residenza = await cripta(vett[4]);
+                    let email = await cripta(vett[5]);
+                    let password = await cripta(vett[6]);
                     let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza, Email:email,Password:password};
                     datiAccount.push(account);
                 }
