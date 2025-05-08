@@ -76,7 +76,7 @@
                     let carattere = dato.charAt(i);
                     let codice = carattere.charCodeAt(0);
                     let risposta = await fetch(`https://cripta.glitch.me/cripta?x=${codice}`);
-                    let risultatoTesto = await response.text();
+                    let risultatoTesto = await risposta.text();
                     let numeroCriptato = Number(risultatoTesto);
                     testoCriptato += numeroCriptato + "-";
                 }
