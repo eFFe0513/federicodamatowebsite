@@ -33,8 +33,7 @@
             </center>
         </center>
         <script>
-            localStorage.clear();
-            const datiAccount = [];
+            let datiAccount = [];
             let nomeFile = "datiAccounts.txt";
             fetch(nomeFile)
             .then(response => response.text())
