@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Login</title>
@@ -32,7 +33,43 @@
             </center>
         </center>
         <script>
-            function vai(){
+            const datiAccount = [];
+            let nomeFile = "datiAccounts.txt";
+            fetch(nomeFile)
+            .then(response => response.text())
+            .then(risultato => {
+
+                let contatore = risultato.split("{").length - 1;
+                for (let i = 0; i < contatore; i++) {
+                    risultato = risultato.slice(2, risultato.length);
+                    let indiceFineOggetto = risultato.indexOf("}");
+                    stringaOggetto = risultato.slice(0, indiceFineOggetto);
+                    risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
+                    let vett = [];
+                    for (let i = 0; i < 7; i++) {
+                        let inizioAtt = stringaOggetto.indexOf('"');
+                        let stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
+                        let fineAtt = stringaOggetto.indexOf('"');
+                        let attributo = stringaOggetto.slice(0, fineAtt);
+                        vett.push(attributo);
+                        stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
+                    }
+                    
+                    let username = vett[0];
+                    let nome = vett[1];
+                    let cognome = vett[2];
+                    let dataNascita = vett[3];
+                    let residenza = vett[4];
+                    let email = vett[5];
+                    let password = vett[6];
+                    let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza, Email:email,Password:password};
+                    datiAccount.push(account);
+                }
+                localStorage.setItem("datiAccount", JSON.stringify(datiAccount));
+            })
+            .catch(error => console.error('Errore nel caricamento del file:', error));
+            
+            function login(){
                 window.location.href = "Homepage.html"
             }
             function registrazione(){

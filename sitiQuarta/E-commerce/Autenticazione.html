@@ -24,8 +24,17 @@
                         </td>
                         <td>
                             <center>
-                                <img src="" alt=""> 
-                                immagini che scorrono
+                                <div class="slider">
+                                    <div class="slides" id="slideContainer">
+                                        <img src="immagini/img1.jpg" alt="Immagine 1">
+                                        <img src="immagini/img2.jpg" alt="Immagine 2">
+                                        <img src="immagini/img3.jpg" alt="Immagine 3">
+                                    </div>
+                                    <div class="controls">
+                                        <button onclick="prevSlide()">&#10094;</button>
+                                        <button onclick="nextSlide()">&#10095;</button>
+                                    </div>
+                                </div>
                             </center>
                         </td>
                     </tr>
@@ -33,6 +42,23 @@
             </center>
         </center>
         <script>
+            // scorrimento immagini
+            let index = 0;
+            const slides = document.getElementById("slideContainer");
+            const totalSlides = slides.children.length;
+            function showSlide(i) {
+                index = (i + totalSlides) % totalSlides;
+                slides.style.transform = `translateX(${-index * 407}px)`;
+            }
+            function nextSlide() {
+                showSlide(index + 1);
+            }
+            function prevSlide() {
+                showSlide(index - 1);
+            }
+            setInterval(nextSlide, 3500);
+
+            // verifica codice
             function convalida(){
                 window.location.href = "Homepage.html"
             }

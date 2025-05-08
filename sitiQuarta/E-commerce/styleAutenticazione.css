@@ -88,3 +88,39 @@ td {
     position: absolute;
     transform: translate(-35px, -5px);
 }
+
+.slider {
+    width: 95%;
+    height: 70%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    border-radius: 20px;
+}
+.slides {
+    display: flex;
+    width: 110%;
+    height: 100%;
+    transition: transform 2s ease-in-out;
+}
+.slides img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    transform: translateY(-50%);
+}
+.controls button {
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
