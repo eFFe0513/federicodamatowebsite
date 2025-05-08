@@ -43,12 +43,12 @@
                 for (let i = 0; i < contatore; i++) {
                     risultato = risultato.slice(2, risultato.length);
                     let indiceFineOggetto = risultato.indexOf("}");
-                    stringaOggetto = risultato.slice(0, indiceFineOggetto);
+                    let stringaOggetto = risultato.slice(0, indiceFineOggetto);
                     risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
                     let vett = [];
                     for (let i = 0; i < 7; i++) {
                         let inizioAtt = stringaOggetto.indexOf('"');
-                        let stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
+                        stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
                         let fineAtt = stringaOggetto.indexOf('"');
                         let attributo = stringaOggetto.slice(0, fineAtt);
                         vett.push(attributo);
