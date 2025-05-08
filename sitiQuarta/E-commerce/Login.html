@@ -75,8 +75,10 @@
                 for (let i = 0; i < dato.length; i++) {
                     let carattere = dato.charAt(i);
                     let codice = carattere.charCodeAt(0);
-                    let numeroCriptato = await fetch('cripta.php?x=' + codice);
-                    testoCriptato += Number(numeroCriptato) + "-";
+                    let risposta = await fetch('cripta.php?x=' + codice);
+                    let risultatoTesto = await response.text();
+                    let numeroCriptato = Number(risultatoTesto);
+                    testoCriptato += numeroCriptato + "-";
                 }
                 testoCriptato = testoCriptato.slice(0, -1);
                 return testoCriptato;
