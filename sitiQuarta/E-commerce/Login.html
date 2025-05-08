@@ -69,6 +69,7 @@
             .catch(error => console.error('Errore nel caricamento del file:', error));
 
             // per decriptare bisogna eseguire decprita.php e convertire il risultato da int a String
+            // sistemare
             async function cripta(dato) {
                 let testoCriptato = "";
                 for (let i = 0; i < dato.length; i++) {
@@ -76,7 +77,7 @@
                     let codice = carattere.charCodeAt(0);
                     let risposta = await fetch('cripta.php?x=' + codice);
                     let numeroCriptato = await risposta.text();
-                    testoCriptato += Number(numeroCriptato) + "-";
+                    testoCriptato += numeroCriptato + "-";
                 }
                 testoCriptato = testoCriptato.slice(0, -1);
                 return testoCriptato;
