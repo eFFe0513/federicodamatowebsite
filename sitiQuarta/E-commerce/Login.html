@@ -75,8 +75,11 @@
                 for (let i = 0; i < dato.length; i++) {
                     let carattere = dato.charAt(i);
                     let codice = carattere.charCodeAt(0);
-                    let risposta = await fetch('cripta.php?x=' + codice);
-                    let risultatoTesto = await risposta.text();
+                    let response = await fetch('cripta.php?x=' + codice);
+                    let risultatoTesto = await response.text();
+
+                    console.log("Risposta da PHP:", risultatoTesto);
+
                     let numeroCriptato = Number(risultatoTesto);
                     testoCriptato += numeroCriptato + "-";
                 }
