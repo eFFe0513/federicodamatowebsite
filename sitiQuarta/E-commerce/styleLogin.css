@@ -86,8 +86,7 @@ td {
 #loader {
     display: none;
     text-align: center;
-    margin-top: 20px;
-    background-color: rgba(211, 211, 211, 0.562);
+    margin-top: 10px;
 }
 .dot {
     display: inline-block;
