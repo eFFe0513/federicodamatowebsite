@@ -87,6 +87,7 @@ td {
     display: none;
     text-align: center;
     margin-top: 20px;
+    background-color: rgba(211, 211, 211, 0.562);
 }
 .dot {
     display: inline-block;

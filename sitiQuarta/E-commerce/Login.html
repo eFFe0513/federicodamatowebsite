@@ -10,7 +10,7 @@
     </head>
     <body>
         <center>
-            <br><br><br><center><h1>Join the virtual reality community</h1></center><br><br><br>
+            <br><br><br><center><h1>Join the virtual reality community</h1></center><br><br>
             <center>
                 <div id="loader">
                     <span class="dot"></span>
@@ -75,7 +75,6 @@
             })
             .catch(error => console.error('Errore nel caricamento del file:', error));
 
-            // per decriptare bisogna eseguire decprita.nodejs e convertire il risultato da int a String
             async function cripta(dato) {
                 let testoCriptato = "";
                 let account = JSON.stringify(dato);
@@ -88,7 +87,6 @@
                 testoCriptato = testoCriptato.slice(0, -1);
                 return testoCriptato;
             }
-
 
             async function login() {
                 const bottone = document.getElementById("LoginButton");
@@ -118,7 +116,7 @@
                     alert("Si è verificato un errore durante il login");
                 } finally {
                     loader.style.display = "none";
-                    btn.disabled = false;
+                    bottone.disabled = false;
                 }
             }
 
