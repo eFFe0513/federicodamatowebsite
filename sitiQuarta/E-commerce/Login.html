@@ -12,13 +12,20 @@
         <center>
             <br><br><br><center><h1>Join the virtual reality community</h1></center><br><br><br>
             <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
+            <center>
                 <table width="75%" cellspacing="20px">
                     <tr>
                         <td>
                             <center>
                             <input type="text" id="email" name="email" placeholder="Email o numero di telefono"><br><br>
                             <input type="text" id="password" name="password" placeholder="Password"><br><br>
-                            <button type="button" id="LoginButton" onclick="login()" class="continua"><b>Continua</b></button>
+                            <button type="button" id="LoginButton" onclick="login()" class="continua" disabled><b>Continua</b></button>
                             </center>
                         </td>
                         <td>
@@ -64,7 +71,7 @@
                     let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza, Email:email,Password:password};
                     datiAccount.push(account);
                 }
-                //document.getElementById("LoginButton").disabled = false;
+                document.getElementById("LoginButton").disabled = false;
             })
             .catch(error => console.error('Errore nel caricamento del file:', error));
 
@@ -83,30 +90,38 @@
             }
 
 
-            async function login(){
+            async function login() {
+                const bottone = document.getElementById("LoginButton");
+                const loader = document.getElementById("loader");
+                bottone.disabled = true;
+                loader.style.display = "block";
                 let username = document.getElementById("email").value;
                 let password = document.getElementById("password").value;
-                let controllo = false;
-                for (let i = 0; i < datiAccount.length; i++){
-                    if (datiAccount[i].Username === username){
-                        if (datiAccount[i].Password === password){
-                            let account = await cripta(datiAccount[i]);
-                            localStorage.setItem("accountCriptato", account);
-                            datiAccount = null;
+                try {
+                    for (let i = 0; i < datiAccount.length; i++) {
+                        if (datiAccount[i].Username === username) {
                             controllo = true;
-                            window.location.href = "Homepage.html";
-                        } else {
-                            alert("Password errata, riprova")
-                            controllo = true;
-                            break;
+                            if (datiAccount[i].Password === password) {
+                                let account = await cripta(datiAccount[i]);
+                                localStorage.setItem("accountCriptato", account);
+                                datiAccount = null;
+                                return window.location.href = "Homepage.html";
+                            } else {
+                                alert("Password errata, riprova");
+                                return;
+                            }
                         }
                     }
+                    alert("Account non registrato");
+                } catch (e) {
+                    console.error(e);
+                    alert("Si è verificato un errore durante il login");
+                } finally {
+                    loader.style.display = "none";
+                    btn.disabled = false;
                 }
-                if (controllo == false) {
-                    alert("Account non registrato")
-                }
-
             }
+
             function registrazione(){
                 window.location.href = "Registration.html";
             }
