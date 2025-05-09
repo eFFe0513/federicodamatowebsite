@@ -18,7 +18,7 @@
                             <center>
                             <input type="text" id="email" name="email" placeholder="Email o numero di telefono"><br><br>
                             <input type="text" id="password" name="password" placeholder="Password"><br><br>
-                            <button type="button" id="LoginButton" onclick="login()" class="continua" disabled><b>Continua</b></button>
+                            <button type="button" id="LoginButton" onclick="login()" class="continua"><b>Continua</b></button>
                             </center>
                         </td>
                         <td>
@@ -64,7 +64,7 @@
                     let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza, Email:email,Password:password};
                     datiAccount.push(account);
                 }
-                document.getElementById("LoginButton").disabled = false;
+                //document.getElementById("LoginButton").disabled = false;
             })
             .catch(error => console.error('Errore nel caricamento del file:', error));
 
