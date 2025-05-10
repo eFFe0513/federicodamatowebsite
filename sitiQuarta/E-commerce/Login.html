@@ -52,7 +52,7 @@
                     let stringaOggetto = risultato.slice(0, indiceFineOggetto);
                     risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
                     let vett = [];
-                    for (let j = 0; j < 7; j++) {
+                    for (let j = 0; j < 8; j++) {
                         let inizioAtt = stringaOggetto.indexOf('"');
                         stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
                         let fineAtt = stringaOggetto.indexOf('"');
@@ -68,7 +68,8 @@
                     let residenza = vett[4];
                     let email = vett[5];
                     let password = vett[6];
-                    let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza, Email:email,Password:password};
+                    let img = vett [7];
+                    let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza,Email:email,Password:password,Img:img};
                     datiAccount.push(account);
                 }
                 document.getElementById("LoginButton").disabled = false;

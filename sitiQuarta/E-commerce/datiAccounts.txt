@@ -6,7 +6,8 @@
     dataNascita: "25/03/2001",
     residenza: "Roma",
     email: "mario.rossi@gmail.com",
-    password: "password"
+    password: "password",
+    img: "utente.png"
   },
   {
     username: "Laura30",
@@ -15,7 +16,8 @@
     dataNascita: "10/04/2006",
     residenza: "Milano",
     email: "laura.verdi@gmail.com",
-    password: "password"
+    password: "password",
+    img: "utente.png"
   },
   {
     username: "Giovanni22",
@@ -24,6 +26,7 @@
     dataNascita: "10/08/1992",
     residenza: "Venezia",
     email: "giovanni.bianchi@gmail.com",
-    password: "password"
+    password: "password",
+    img: "utente.png"
   }
 ]
