@@ -85,7 +85,7 @@
             function aggiungiAlCarrello(device){
                 let carrello = JSON.parse(localStorage.getItem("carrello"));
                 carrello.push(device);
-                localStorage.setItem("carrello", carrello);
+                localStorage.setItem("carrello", JSON.stringify(carrello));
             }
         </script>
     </body>

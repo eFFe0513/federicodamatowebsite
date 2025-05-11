@@ -79,10 +79,10 @@ body::-webkit-scrollbar {
     width: 90%;
 }
 tbody {
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: 40%;
 }
 .img {
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
 }
