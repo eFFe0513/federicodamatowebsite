@@ -60,26 +60,29 @@ body::-webkit-scrollbar {
 .casella:hover {
     background-color: rgb(210, 210, 210);
 }
-.profilo, .carrello {
+.profilo {
     position: fixed;
     right: 30px;
     width: 30px;
     height: 30px;
     transition: all 0.3s ease-in-out;
-
+}
+.carrello {
+    width: 15px;
+    height: 15px;
+    transition: all 0.3s ease-in-out;
 }
 .profilo:hover, .carrello:hover {
     transform: scale(1.05);
 }
 table {
     width: 90%;
-    border: none;
 }
-td {
+tbody {
     width: 30%;
     height: 30%;
 }
 .img {
-    width: 60%;
-    height: 60%;
+    width: 45%;
+    height: 45%;
 }
