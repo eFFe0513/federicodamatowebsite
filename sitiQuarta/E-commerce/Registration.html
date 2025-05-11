@@ -25,7 +25,7 @@
                         <td>
                             <center>
                                 <input type="text" id="citta" name="citta" placeholder="Luogo di residenza"><br><br>
-                                <input type="email" id="email" name="email" placeholder="Email o numero di telefono"><br><br>
+                                <input type="email" id="email" name="email" placeholder="Email"><br><br>
                                 <input type="password" id="password" name="password" placeholder="Password"><br><br>
                                 <input type="password" id="passwordComferma" name="passwordComferma" placeholder="Comferma password"><br><br>
                             </center>
@@ -33,39 +33,88 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <center><button type="button" onclick="autenticazione()" class="continua"><b>Continua</b></button></center>
+                            <center><button type="button" onclick="crea()" class="continua"><b>Continua</b></button></center>
                         </td>
                     </tr>
                 </table>
             </center>
         </center>
         <script>
-            async function autenticazione() {
-                const username  = document.getElementById("username").value.trim();
-                const nome      = document.getElementById("nome").value.trim();
-                const cognome   = document.getElementById("cognome").value.trim();
-                const data      = document.getElementById("data").value;
-                const citta     = document.getElementById("citta").value.trim();
-                const email     = document.getElementById("email").value.trim();
-                const password  = document.getElementById("password").value;
-                const conferma  = document.getElementById("passwordComferma").value;
+            async function crea() {
+                let username = document.getElementById("username").value.trim();
+                let nome = document.getElementById("nome").value.trim();
+                let cognome = document.getElementById("cognome").value.trim();
+                let data = document.getElementById("data").value;
+                let citta = document.getElementById("citta").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let password = document.getElementById("password").value;
+                let conferma = document.getElementById("passwordComferma").value;
                 if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
                     return alert("Compila correttamente tutti i campi");
                 }
-
-                const riga = [
-                    username,
-                    nome,
-                    cognome,
-                    data,
-                    citta,
-                    email,
-                    password
-                ].join(";") + "\n";
-
-                
-                vecchio += riga;
-                localStorage.setItem("datiRegistrati", vecchio);
+                let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
+                let datiAccount = [];
+                let nomeFile = "datiAccounts.txt";
+                fetch(nomeFile)
+                .then(response => response.text())
+                .then(risultato => {
+                    let contatore = risultato.split("{").length - 1;
+                    for (let i = 0; i < contatore; i++) {
+                        risultato = risultato.slice(2, risultato.length);
+                        let indiceFineOggetto = risultato.indexOf("}");
+                        let stringaOggetto = risultato.slice(0, indiceFineOggetto);
+                        risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
+                        let vett = [];
+                        for (let j = 0; j < 8; j++) {
+                            let inizioAtt = stringaOggetto.indexOf('"');
+                            stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
+                            let fineAtt = stringaOggetto.indexOf('"');
+                            let attributo = stringaOggetto.slice(0, fineAtt);
+                            vett.push(attributo);
+                            stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
+                        }
+                        let username = vett[0];
+                        let nome = vett[1];
+                        let cognome = vett[2];
+                        let dataNascita = vett[3];
+                        let residenza = vett[4];
+                        let email = vett[5];
+                        let password = vett[6];
+                        let img = vett [7];
+                        let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza,Email:email,Password:password,Img:img};
+                        datiAccount.push(account);
+                    }
+                    datiAccount.push(nuovoAccount);
+                    let datiAccountsStringa = "[";
+                    for (let i = 0; i < datiAccount.length; i++){
+                        datiAccountsStringa += '\n{\n'
+                                                    + 'username: "' + datiAccount[i].Username + '",\n'
+                                                    + 'nome: "' + datiAccount[i].Nome + '",\n'
+                                                    + 'cognome: "' + datiAccount[i].Cognome + '",\n'
+                                                    + 'dataNascita: "' + datiAccount[i].DataDiNascita + '",\n'
+                                                    + 'residenza: "' + datiAccount[i].Residenza + '",\n'
+                                                    + 'email: "' + datiAccount[i].Email + '",\n'
+                                                    + 'password: "' + datiAccount[i].Password + '",\n'
+                                                    + 'img: "utente.png"\n'
+                                                + '},';
+                    }
+                    datiAccountsStringa = datiAccountsStringa.slice(0,-1);
+                    datiAccountsStringa += '\n]';
+                    return fetch('/saveAccounts', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: datiAccountsStringa
+                    });
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error('Salvataggio fallito: ' + res.status);
+                    alert('Account salvato correttamente!');
+                    window.location.href = "Autenticazione.html";
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Errore durante il salvataggio');
+                });
             }
         </script>
     </body>
