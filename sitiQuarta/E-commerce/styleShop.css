@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
 .profilo:hover, .carrello:hover {
     transform: scale(1.05);
 }
-table {
+.tabella {
     width: 90%;
 }
 tbody {
