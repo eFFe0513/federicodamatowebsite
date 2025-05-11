@@ -101,7 +101,7 @@
 
             function cerca(){
                 document.getElementById('tabella').getElementsByTagName('tbody')[0].innerHTML = '';
-                let cerca = document.getElementById("barraRicerca").value;
+                const cerca = document.getElementById("barraRicerca").value;
                 console.log(cerca);
                 if (cerca == ""){
                     let datiDevice = JSON.parse(localStorage.getItem("datiDevice"));
@@ -156,7 +156,7 @@
                         keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo']
                     });
                     let filtrati = fuse.search(cerca);
-                    for (let i = 0; i < filtrati.length; i++){
+                    for (let i = 0; i < filtrati.length-1; i++){
                         let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
                         let newRow = table.insertRow();
                         let cell1 = newRow.insertCell(0);
