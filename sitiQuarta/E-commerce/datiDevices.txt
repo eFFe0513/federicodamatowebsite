@@ -1,0 +1,41 @@
+[
+  {
+    marca: "Meta",
+    modello: "Quest 2",
+    annoUscita: "2020",
+    memoria: "256Gb",
+    ram: "6Gb",
+    processore: "Snapdragon XR2",
+    display: "LCD",
+    risoluzione: "1832 × 1920 per occhio",
+    lenti: "Fresnel",
+    tipo: "Standalone",
+    img: "metaQ2.jpg"
+  },
+  {
+    marca: "Meta",
+    modello: "Quest 2",
+    annoUscita: "2020",
+    memoria: "256Gb",
+    ram: "6Gb",
+    processore: "Snapdragon XR2",
+    display: "LCD",
+    risoluzione: "1832 × 1920 per occhio",
+    lenti: "Fresnel",
+    tipo: "Standalone",
+    img: "metaQ2.jpg"
+  },
+  {
+    marca: "Meta",
+    modello: "Quest 2",
+    annoUscita: "2020",
+    memoria: "256Gb",
+    ram: "6Gb",
+    processore: "Snapdragon XR2",
+    display: "LCD",
+    risoluzione: "1832 × 1920 per occhio",
+    lenti: "Fresnel",
+    tipo: "Standalone",
+    img: "metaQ2.jpg"
+  }
+]

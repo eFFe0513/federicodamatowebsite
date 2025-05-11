@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
+.kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translateX(10px);
+}
+nav li {
+    float: left;
+}
+nav li a {
+    color: rgb(175, 175, 175);
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-family: Roboto;
+    transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+    transform: scale(1.05);
+}
+nav li ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+}
+nav li:hover ul.dropdown {
+    display: block;
+}
+nav li ul.dropdown li {
+    float: none;
+}
+nav li ul.dropdown li a {
+    display: block;
+    color: black;
+}
+body {
+    background-color: white;
+    margin: 0;
+    font-family: Roboto;
+    color: black;
+    font-size: 18px;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.casella:hover {
+    background-color: rgb(210, 210, 210);
+}
+.profilo, .carrello {
+    position: fixed;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+
+}
+.profilo:hover, .carrello:hover {
+    transform: scale(1.05);
+}
+table {
+    width: 90%;
+    border: none;
+}
+td {
+    width: 30%;
+    height: 30%;
+}
+.img {
+    width: 60%;
+    height: 60%;
+}
