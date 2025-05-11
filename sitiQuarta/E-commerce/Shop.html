@@ -105,6 +105,24 @@
                     keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
                 })
                 console.log(fuse.search(cerca));
+                for (let i = 0; i < datiDevice.length; i++){
+                    let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                    let newRow = table.insertRow();
+                    let cell1 = newRow.insertCell(0);
+                    cell1.innerHTML = `
+                        <center>
+                        <div class="prodotto">
+                            <img src="immagini/${datiDevice[i].Img}" class="imgCerca">
+                            <div class="nomeProdotto">
+                                ${datiDevice[i].Marca} ${datiDevice[i].Modello}
+                                <button onclick="aggiungiAlCarrello('${datiDevice[i]}')">
+                                    <img src="immagini/carrello.png" class="carrello">
+                                </button>
+                            </div>
+                        </div>
+                        </center>
+                    `;
+                }
             }
         </script>
     </body>
