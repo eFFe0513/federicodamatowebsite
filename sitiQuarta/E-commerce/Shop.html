@@ -157,7 +157,7 @@
                     });
                     let filtrati = fuse.search(cerca);
                     console.log(filtrati);
-                    for (let i = 0; i < filtrati.length-1; i++){
+                    for (let i = 0; i < filtrati.length; i++){
                         let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
                         let newRow = table.insertRow();
                         let cell1 = newRow.insertCell(0);
