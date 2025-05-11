@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Sign up</title>
@@ -11,6 +12,13 @@
         <center>
             <br><center><h1>Join the virtual reality community</h1></center>
             <center><h5>Sign Up</h5></center>
+            <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
             <center>
                 <table width="75%" cellspacing="20px">
                     <tr>
@@ -33,7 +41,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <center><button type="button" onclick="crea()" class="continua"><b>Continua</b></button></center>
+                            <center><button type="button" id="CreaButton" onclick="crea()" class="continua"><b>Continua</b></button></center>
                         </td>
                     </tr>
                 </table>
@@ -41,6 +49,10 @@
         </center>
         <script>
             async function crea() {
+                const bottone = document.getElementById("CreaButton");
+                const loader = document.getElementById("loader");
+                bottone.disabled = true;
+                loader.style.display = "block";
                 let username = document.getElementById("username").value.trim();
                 let nome = document.getElementById("nome").value.trim();
                 let cognome = document.getElementById("cognome").value.trim();
@@ -114,6 +126,7 @@
                 .catch(err => {
                     console.error(err);
                     alert('Errore durante il salvataggio');
+                    bottone.disabled = false;
                 });
             }
         </script>
