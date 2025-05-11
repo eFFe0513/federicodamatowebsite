@@ -83,7 +83,7 @@ body::-webkit-scrollbar {
     height: 70%;
 }
 .barraRicerca {
-    width: 120%;
+    width: 100%;
     padding: 16px 20px;
     cursor: pointer;
     background-color: rgba(230, 227, 227, 0.74);
@@ -105,7 +105,7 @@ body::-webkit-scrollbar {
     transform: scale(1.1);
 }
 .tabellaCerca {
-    width: 85%;
+    width: 90%;
 }
 .imgCerca {
     width: 100%;

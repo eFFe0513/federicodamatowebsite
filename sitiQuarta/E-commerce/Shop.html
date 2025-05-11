@@ -105,6 +105,7 @@
                     keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
                 })
                 let filtrati = fuse.search(cerca);
+                console.log(filtrati);
                 tbody.innerHTML = '';
                 for (let i = 0; i < filtrati.length; i++){
                     let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
