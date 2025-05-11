@@ -26,9 +26,20 @@
 			</ul>
 		</nav>
         <br><br><br><br>
-        <center></center>
         <center>
-            <table id="tabella">
+            <table class="tabellaCerca">
+                <tr>
+                    <td>
+                        <center><input type="text" id="barraRicerca" class="barraRicerca" placeholder="🔎Vuoi trovare qualcosa? Scrivi qui"></center>
+                    </td>
+                    <td>
+                        <button class="cerca" onclick="cerca()"><b>Cerca</b></button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <center>
+            <table id="tabella" class="tabella">
 			    <tbody>
                 </tbody>
 		    </table>
@@ -86,6 +97,14 @@
                 let carrello = JSON.parse(localStorage.getItem("carrello"));
                 carrello.push(device);
                 localStorage.setItem("carrello", JSON.stringify(carrello));
+            }
+
+            function cerca(){
+                let cerca = document.getElementById("barraRicerca").value;
+                const fuse = new Fuse(datiDevice, {
+                    keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
+                })
+                console.log(fuse.search(cerca));
             }
         </script>
     </body>
