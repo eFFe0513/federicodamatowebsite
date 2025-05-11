@@ -66,7 +66,7 @@
                 loader.style.display = "block";
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
                 let datiAccount = [];
-                let nomeFile = "https://sovrascrivitxt.glitch.me/datiAccounts.txt";
+                let nomeFile = "http://localhost:3000/datiAccounts.txt";
                 fetch(nomeFile)
                 .then(response => response.text())
                 .then(risultato => {
