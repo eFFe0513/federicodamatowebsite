@@ -66,7 +66,7 @@
                 loader.style.display = "block";
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
                 let datiAccount = [];
-                let nomeFile = "https://sovrascrivitxt.glitch.me/datiAccounts.txt";
+                let nomeFile = "https://sovrascrivitxt.glitch.me/src/datiAccounts.txt";
                 fetch(nomeFile)
                 .then(response => response.text())
                 .then(risultato => {
@@ -127,6 +127,7 @@
                     console.error(err);
                     alert('Errore durante il salvataggio');
                     bottone.disabled = false;
+                    loader.style.display = "block";
                 });
             }
         </script>
