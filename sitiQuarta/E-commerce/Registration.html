@@ -100,7 +100,7 @@
                     }
                     datiAccountsStringa = datiAccountsStringa.slice(0,-1);
                     datiAccountsStringa += '\n]';
-                    return fetch('/saveAccounts', {
+                    return fetch('https://sovrascrivitxt.glitch.me/saveAccounts', {
                         method: 'POST',
                         headers: { 'Content-Type': 'text/plain' },
                         body: datiAccountsStringa
