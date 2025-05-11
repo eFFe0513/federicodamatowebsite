@@ -40,8 +40,32 @@
             </center>
         </center>
         <script>
-            function autenticazione(){
-                window.location.href = "Autenticazione.html"
+            async function autenticazione() {
+                const username  = document.getElementById("username").value.trim();
+                const nome      = document.getElementById("nome").value.trim();
+                const cognome   = document.getElementById("cognome").value.trim();
+                const data      = document.getElementById("data").value;
+                const citta     = document.getElementById("citta").value.trim();
+                const email     = document.getElementById("email").value.trim();
+                const password  = document.getElementById("password").value;
+                const conferma  = document.getElementById("passwordComferma").value;
+                if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
+                    return alert("Compila correttamente tutti i campi");
+                }
+
+                const riga = [
+                    username,
+                    nome,
+                    cognome,
+                    data,
+                    citta,
+                    email,
+                    password
+                ].join(";") + "\n";
+
+                
+                vecchio += riga;
+                localStorage.setItem("datiRegistrati", vecchio);
             }
         </script>
     </body>
