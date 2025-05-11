@@ -49,10 +49,6 @@
         </center>
         <script>
             async function crea() {
-                const bottone = document.getElementById("CreaButton");
-                const loader = document.getElementById("loader");
-                bottone.disabled = true;
-                loader.style.display = "block";
                 let username = document.getElementById("username").value.trim();
                 let nome = document.getElementById("nome").value.trim();
                 let cognome = document.getElementById("cognome").value.trim();
@@ -64,6 +60,10 @@
                 if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
                     return alert("Compila correttamente tutti i campi");
                 }
+                const bottone = document.getElementById("CreaButton");
+                const loader = document.getElementById("loader");
+                bottone.disabled = true;
+                loader.style.display = "block";
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
                 let datiAccount = [];
                 let nomeFile = "https://sovrascrivitxt.glitch.me/datiAccounts.txt";
