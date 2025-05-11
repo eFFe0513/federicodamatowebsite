@@ -153,8 +153,8 @@
                     }
                 } else {
                     const fuse = new Fuse(datiDevice, {
-                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
-                    })
+                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo']
+                    });
                     let filtrati = fuse.search(cerca);
                     for (let i = 0; i < filtrati.length; i++){
                         let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
