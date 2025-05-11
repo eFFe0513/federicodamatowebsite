@@ -102,28 +102,78 @@
             function cerca(){
                 document.getElementById('tabella').getElementsByTagName('tbody')[0].innerHTML = '';
                 let cerca = document.getElementById("barraRicerca").value;
-                const fuse = new Fuse(datiDevice, {
-                    keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
-                })
-                let filtrati = fuse.search(cerca);
-                console.log(filtrati);
-                for (let i = 0; i < filtrati.length; i++){
-                    let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
-                    let newRow = table.insertRow();
-                    let cell1 = newRow.insertCell(0);
-                    cell1.innerHTML = `
-                        <center>
-                        <div class="prodotto">
-                            <img src="immagini/${filtrati[i].Img}" class="imgCerca">
-                            <div class="nomeProdotto">
-                                ${filtrati[i].Marca} ${filtrati[i].Modello}
-                                <button onclick="aggiungiAlCarrello('${filtrati[i]}')">
-                                    <img src="immagini/carrello.png" class="carrello">
-                                </button>
+                console.log(cerca);
+                if (cerca == ""){
+                    let datiDevice = JSON.parse(localStorage.getItem("datiDevice"));
+                    for (let i = 0; i < datiDevice.length; i = i + 3){
+                        let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                        let newRow = table.insertRow();
+                        let cell1 = newRow.insertCell(0);
+                        let cell2 = newRow.insertCell(1);
+                        let cell3 = newRow.insertCell(2);
+                        cell1.innerHTML = `
+                            <center>
+                            <div class="prodotto">
+                                <img src="immagini/${datiDevice[i].Img}" class="img">
+                                <div class="nomeProdotto">
+                                    ${datiDevice[i].Marca} ${datiDevice[i].Modello}
+                                    <button onclick="aggiungiAlCarrello('${datiDevice[i]}')">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        </center>
-                    `;
+                            </center>
+                        `;
+                        cell2.innerHTML = `
+                            <center>
+                            <div class="prodotto">
+                                <img src="immagini/${datiDevice[i+1].Img}" class="img">
+                                <div class="nomeProdotto">
+                                    ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
+                                    <button onclick="aggiungiAlCarrello('${datiDevice[i+1]}')">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell3.innerHTML = `
+                            <center>
+                            <div class="prodotto">
+                                <img src="immagini/${datiDevice[i+2].Img}" class="img">
+                                <div class="nomeProdotto">
+                                    ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
+                                    <button onclick="aggiungiAlCarrello('${datiDevice[i+2]}')">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                    }
+                } else {
+                    const fuse = new Fuse(datiDevice, {
+                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Img']
+                    })
+                    let filtrati = fuse.search(cerca);
+                    for (let i = 0; i < filtrati.length; i++){
+                        let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                        let newRow = table.insertRow();
+                        let cell1 = newRow.insertCell(0);
+                        cell1.innerHTML = `
+                            <center>
+                            <div class="prodotto">
+                                <img src="immagini/${filtrati[i].item.Img}" class="imgCerca">
+                                <div class="nomeProdotto">
+                                    ${filtrati[i].item.Marca} ${filtrati[i].item.Modello}
+                                    <button onclick="aggiungiAlCarrello('${filtrati[i].item}')">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                    }
                 }
             }
         </script>
