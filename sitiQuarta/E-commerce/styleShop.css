@@ -76,11 +76,7 @@ body::-webkit-scrollbar {
     transform: scale(1.05);
 }
 .tabella {
-    width: 90%;
-}
-tbody {
-    width: 40%;
-    height: 40%;
+    width: 95%;
 }
 .img {
     width: 70%;
