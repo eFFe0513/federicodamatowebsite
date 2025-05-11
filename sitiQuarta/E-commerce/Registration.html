@@ -66,7 +66,7 @@
                 loader.style.display = "block";
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
                 let datiAccount = [];
-                let nomeFile = "https://sovrascrivitxt.glitch.me/datiAccounts.txt";
+                let nomeFile = "datiAccounts.txt";
                 fetch(nomeFile)
                 .then(response => response.text())
                 .then(risultato => {
@@ -112,11 +112,13 @@
                     }
                     datiAccountsStringa = datiAccountsStringa.slice(0,-1);
                     datiAccountsStringa += '\n]';
+                    /*
                     return fetch('https://sovrascrivitxt.glitch.me/saveAccounts', {
                         method: 'POST',
                         headers: { 'Content-Type': 'text/plain' },
                         body: datiAccountsStringa
                     });
+                    */
                 })
                 .then(res => {
                     if (!res.ok) throw new Error('Salvataggio fallito: ' + res.status);
