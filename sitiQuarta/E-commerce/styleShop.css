@@ -78,6 +78,10 @@ body::-webkit-scrollbar {
 .tabella {
     width: 95%;
 }
+.img {
+    width: 70%;
+    height: 70%;
+}
 .barraRicerca {
     width: 100%;
     padding: 16px 20px;
@@ -104,5 +108,5 @@ body::-webkit-scrollbar {
     width: 90%;
 }
 .imgCerca {
-    width: 200px;
+    width: 400px;
 }
