@@ -68,8 +68,9 @@ body::-webkit-scrollbar {
     transition: all 0.3s ease-in-out;
 }
 .carrello {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
     transition: all 0.3s ease-in-out;
 }
 .profilo:hover, .carrello:hover {
