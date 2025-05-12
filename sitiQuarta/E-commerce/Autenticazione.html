@@ -2,6 +2,7 @@
     <head>
         <title>Autenticazione</title>
         <link rel="stylesheet" href="styleAutenticazione.css">
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
@@ -58,6 +59,28 @@
             }
             setInterval(nextSlide, 3500);
 
+
+            function genera8CifreStringa() {
+                const randomNumber = Math.floor(Math.random() * 100_000_000);
+                return String(randomNumber).padStart(8, '0');
+            }
+
+            // codice verifica
+            function sendEmail() {
+                let random = genera8CifreStringa();
+                Email.send({
+                    Host: "smtp.tuoisp.com",
+                    Username: "nomeutente",
+                    Password: "password",
+                    To: 'destinatario@esempio.comm',
+                    From: "mittente@esempio.com",
+                    Subject: "Codice di verifica",
+                    Body: "Ecco il tuo codice di verifica -->" + random
+                })
+                .then(function (message) {
+                    alert("Email inviata con successo")
+                });
+            }
             // verifica codice
             function convalida(){
                 window.location.href = "Homepage.html"

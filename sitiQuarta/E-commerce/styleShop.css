@@ -67,11 +67,18 @@ body::-webkit-scrollbar {
     height: 30px;
     transition: all 0.3s ease-in-out;
 }
+.carrell {
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
 .carrello {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 20px;
-    transform: translateY(5px);
+    transform: translateY(3px);
     transition: all 0.3s ease-in-out;
 }
 .profilo:hover, .carrello:hover {
