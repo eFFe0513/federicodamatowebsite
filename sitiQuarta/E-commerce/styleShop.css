@@ -110,3 +110,7 @@ body::-webkit-scrollbar {
 .imgCerca {
     width: 400px;
 }
+td{
+    width: 30%;
+    height: 40%;
+}
