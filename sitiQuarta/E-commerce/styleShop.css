@@ -70,7 +70,8 @@ body::-webkit-scrollbar {
 .carrello {
     width: 20px;
     height: 20px;
-    background: transparent;
+    border-radius: 20px;
+    transform: translateY(5px);
     transition: all 0.3s ease-in-out;
 }
 .profilo:hover, .carrello:hover {
