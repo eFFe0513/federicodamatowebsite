@@ -60,77 +60,9 @@
                 if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
                     return alert("Compila correttamente tutti i campi");
                 }
-                const bottone = document.getElementById("CreaButton");
-                const loader = document.getElementById("loader");
-                bottone.disabled = true;
                 loader.style.display = "block";
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
-                let datiAccount = [];
-                let nomeFile = "datiAccounts.txt";
-                fetch(nomeFile)
-                .then(response => response.text())
-                .then(risultato => {
-                    let contatore = risultato.split("{").length - 1;
-                    for (let i = 0; i < contatore; i++) {
-                        risultato = risultato.slice(2, risultato.length);
-                        let indiceFineOggetto = risultato.indexOf("}");
-                        let stringaOggetto = risultato.slice(0, indiceFineOggetto);
-                        risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
-                        let vett = [];
-                        for (let j = 0; j < 8; j++) {
-                            let inizioAtt = stringaOggetto.indexOf('"');
-                            stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
-                            let fineAtt = stringaOggetto.indexOf('"');
-                            let attributo = stringaOggetto.slice(0, fineAtt);
-                            vett.push(attributo);
-                            stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
-                        }
-                        let username = vett[0];
-                        let nome = vett[1];
-                        let cognome = vett[2];
-                        let dataNascita = vett[3];
-                        let residenza = vett[4];
-                        let email = vett[5];
-                        let password = vett[6];
-                        let img = vett [7];
-                        let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza,Email:email,Password:password,Img:img};
-                        datiAccount.push(account);
-                    }
-                    datiAccount.push(nuovoAccount);
-                    let datiAccountsStringa = "[";
-                    for (let i = 0; i < datiAccount.length; i++){
-                        datiAccountsStringa += '\n{\n'
-                                                    + 'username: "' + datiAccount[i].Username + '",\n'
-                                                    + 'nome: "' + datiAccount[i].Nome + '",\n'
-                                                    + 'cognome: "' + datiAccount[i].Cognome + '",\n'
-                                                    + 'dataNascita: "' + datiAccount[i].DataDiNascita + '",\n'
-                                                    + 'residenza: "' + datiAccount[i].Residenza + '",\n'
-                                                    + 'email: "' + datiAccount[i].Email + '",\n'
-                                                    + 'password: "' + datiAccount[i].Password + '",\n'
-                                                    + 'img: "utente.png"\n'
-                                                + '},';
-                    }
-                    datiAccountsStringa = datiAccountsStringa.slice(0,-1);
-                    datiAccountsStringa += '\n]';
-                    /*
-                    return fetch('https://sovrascrivitxt.glitch.me/saveAccounts', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'text/plain' },
-                        body: datiAccountsStringa
-                    });
-                    */
-                })
-                .then(res => {
-                    if (!res.ok) throw new Error('Salvataggio fallito: ' + res.status);
-                    alert('Account salvato correttamente!');
-                    window.location.href = "Autenticazione.html";
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert('Errore durante il salvataggio');
-                    bottone.disabled = false;
-                    loader.style.display = "none";
-                });
+                localStorage.setItem("accountRegistrato", JSON.stringify(nuovoAccount));
             }
         </script>
     </body>

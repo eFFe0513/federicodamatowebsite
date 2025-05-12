@@ -20,7 +20,7 @@
                             <h5>Inserisci il codice ricevuto tramite email</h5>
                             <input type="text" id="codice" name="codice" placeholder="Codice di verifica"><br><br>
                             <button type="button" onclick="convalida()" class="continua"><b>Continua</b></button><br><br>
-                            <button type="button" onclick="funzioneJS()" class="continua"><b>Reivia codice</b></button>
+                            <button type="button" onclick="sendEmail()" class="continua"><b>Reivia codice</b></button>
                             </center>
                         </td>
                         <td>
@@ -64,16 +64,30 @@
                 const randomNumber = Math.floor(Math.random() * 100_000_000);
                 return String(randomNumber).padStart(8, '0');
             }
+            const random = genera8CifreStringa();
+            Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "vrcommunityservice@gmail.com",
+                    Password: "hwmcvulraqqhgtmv",
+                    To: account.Email,
+                    From: 'vrcommunityservice@gmail.com',
+                    Subject: "Codice di verifica",
+                    Body: "Ecco il tuo codice di verifica -->" + random
+                })
+                .then(function (message) {
+                    alert("Email inviata con successo")
+                });
 
-            // codice verifica
+            // invia codice
+            let account = JSON.parse(localStorage.getItem("accountRegistrato"));
             function sendEmail() {
-                let random = genera8CifreStringa();
+                random = genera8CifreStringa();
                 Email.send({
-                    Host: "smtp.tuoisp.com",
-                    Username: "nomeutente",
-                    Password: "password",
-                    To: 'destinatario@esempio.comm',
-                    From: "mittente@esempio.com",
+                    Host: "smtp.gmail.com",
+                    Username: "vrcommunityservice@gmail.com",
+                    Password: "hwmcvulraqqhgtmv",
+                    To: account.Email,
+                    From: 'vrcommunityservice@gmail.com',
                     Subject: "Codice di verifica",
                     Body: "Ecco il tuo codice di verifica -->" + random
                 })
@@ -81,9 +95,31 @@
                     alert("Email inviata con successo")
                 });
             }
+
+            async function cripta(dato) {
+                let testoCriptato = "";
+                let account = JSON.stringify(dato);
+                for (let i = 0; i < account.length; i++) {
+                    let carattere = account.charAt(i);
+                    let risposta = await fetch(`https://cripta.glitch.me/cripta?x=${carattere.charCodeAt(0)}`);
+                    let numeroCriptato = await risposta.text();
+                    testoCriptato += numeroCriptato + "-";
+                }
+                testoCriptato = testoCriptato.slice(0, -1);
+                return testoCriptato;
+            }
+
             // verifica codice
-            function convalida(){
-                window.location.href = "Homepage.html"
+            async function convalida(){
+                if (getElementById("codice").value == random){
+                    let accountStringa = await cripta(account);
+                    localStorage.setItem("accountRegistrato", null);
+                    localStorage.setItem("accountRegistratoCriptato", accountStringa);
+                    window.location.href = "Homepage.html"
+                } else {
+                    alert("Codice errato");
+                }
+                
             }
         </script>
     </body>
