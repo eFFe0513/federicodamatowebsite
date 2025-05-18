@@ -134,19 +134,25 @@
             .catch(error => console.error('Errore nel caricamento del file:', error));
 
             // decripta account
-            let accountCriptato = localStorage.getItem("accountCriptato");
-            let account = accountCriptato.split("-");
-            let accountDecriptato = "";
-            for (let i = 0; i < account.length; i++){
-                let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
-                let numeroDecriptato = await risposta.text();
-                accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
-            }
-            let oggettoAccount = JSON.parse(accountDecriptato);
-            const img = document.getElementById('profilo');
-            console.log(oggettoAccount);
-            console.log(oggettoAccount.Img);
-            img.src = "immagini/" + oggettoAccount.Img;
+            (async function() {
+                try {
+                    let accountCriptato = localStorage.getItem("accountCriptato");
+                    let account = accountCriptato.split("-");
+                    let accountDecriptato = "";
+                    for (let i = 0; i < account.length; i++){
+                        let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
+                        let numeroDecriptato = await risposta.text();
+                        accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                    }
+                    let oggettoAccount = JSON.parse(accountDecriptato);
+                    const img = document.getElementById('profilo');
+                    console.log(oggettoAccount);
+                    console.log(oggettoAccount.Img);
+                    img.src = "immagini/" + oggettoAccount.Img;
+                } catch {
+                    alert("errore nel caricamento delle risorse");
+                }
+            })();
         </script>
     </body>
 </html>
