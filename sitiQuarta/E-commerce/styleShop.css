@@ -79,7 +79,7 @@ body::-webkit-scrollbar {
     width: 25px;
     height: 25px;
     border-radius: 20px;
-    transform: translate(3px,3px);
+    transform: translate(6px,3px);
     transition: all 0.3s ease-in-out;
 }
 .profilo:hover, .carrello:hover {
