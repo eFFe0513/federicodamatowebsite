@@ -104,3 +104,20 @@ td {
     0%, 80%, 100% { opacity: 0; }
     40%          { opacity: 1; }
 }
+.pulsanteSovrapposto {
+    font-family: Kanit;
+    padding: 14px 20px;
+    cursor: pointer;
+    background-color: rgb(218, 217, 217);
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    transition: 1s;
+}
+.pulsanteSovrapposto:hover {
+    background-color: rgb(199, 199, 199);
+    transform: scale(1.1);
+}
+input[type="file"] {
+    display: none;
+}

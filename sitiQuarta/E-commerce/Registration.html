@@ -40,8 +40,17 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <center><button type="button" id="CreaButton" onclick="crea()" class="continua"><b>Continua</b></button></center>
+                        </td>
+                        <td>
+                            <center>
+                                <a href="caricaImgProfilo.html">
+                                    <label class="pulsanteSovrapposto">
+                                        Carica immagine profilo
+                                    </label>
+                                </a>
+                            </center>
                         </td>
                     </tr>
                 </table>
@@ -57,10 +66,13 @@
                 let email = document.getElementById("email").value.trim();
                 let password = document.getElementById("password").value;
                 let conferma = document.getElementById("passwordComferma").value;
+                const input = document.getElementById("immagine");
+                const file = input.files[0];
+                let img = localStorage.getItem("imgProfilo");
                 if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
                     return alert("Compila correttamente tutti i campi");
                 }
-                let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
+                let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:img};
                 localStorage.setItem("accountRegistrato", JSON.stringify(nuovoAccount));
                 window.location.href = "Autenticazione.html";
             }
