@@ -64,7 +64,8 @@
                 const randomNumber = Math.floor(Math.random() * 100_000_000);
                 return String(randomNumber).padStart(8, '0');
             }
-            const random = genera8CifreStringa();
+            let random = genera8CifreStringa();
+            let account = JSON.parse(localStorage.getItem("accountRegistrato"));
             Email.send({
                     Host: "smtp.gmail.com",
                     Username: "vrcommunityservice@gmail.com",
@@ -79,7 +80,6 @@
                 });
 
             // invia codice
-            let account = JSON.parse(localStorage.getItem("accountRegistrato"));
             function sendEmail() {
                 random = genera8CifreStringa();
                 Email.send({
@@ -111,7 +111,7 @@
 
             // verifica codice
             async function convalida(){
-                if (getElementById("codice").value == random){
+                if (document.getElementById("codice").value == random){
                     let accountStringa = await cripta(account);
                     localStorage.setItem("accountRegistrato", null);
                     localStorage.setItem("accountRegistratoCriptato", accountStringa);
