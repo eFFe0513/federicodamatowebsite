@@ -53,49 +53,49 @@
                 let cell2 = newRow.insertCell(1);
                 let cell3 = newRow.insertCell(2);
                 cell1.innerHTML = `
-                    <center>
-                    <div class="prodotto">
-                        <img src="immagini/${datiDevice[i].Img}" class="img">
-                        <div class="nomeProdotto">
-                            ${datiDevice[i].Marca} ${datiDevice[i].Modello}
-                            <button onclick="aggiungiAlCarrello('${datiDevice[i]}')">
-                                <img src="immagini/carrello.png" class="carrello">
-                            </button>
-                        </div>
-                    </div>
-                    </center>
-                `;
-                cell2.innerHTML = `
-                    <center>
-                    <div class="prodotto">
-                        <img src="immagini/${datiDevice[i+1].Img}" class="img">
-                        <div class="nomeProdotto">
-                            ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
-                            <button onclick="aggiungiAlCarrello('${datiDevice[i+1]}')">
-                                <img src="immagini/carrello.png" class="carrello">
-                            </button>
-                        </div>
-                    </div>
-                    </center>
-                `;
-                cell3.innerHTML = `
-                    <center>
-                    <div class="prodotto">
-                        <img src="immagini/${datiDevice[i+2].Img}" class="img">
-                        <div class="nomeProdotto">
-                            ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
-                            <button onclick="aggiungiAlCarrello('${datiDevice[i+2]}')">
-                                <img src="immagini/carrello.png" class="carrello">
-                            </button>
-                        </div>
-                    </div>
-                    </center>
-                `;
+                            <center>
+                            <div>
+                                <img src="immagini/${datiDevice[i].Img}" class="img">
+                                <div>
+                                    ${datiDevice[i].Marca} ${datiDevice[i].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell2.innerHTML = `
+                            <center>
+                            <div>
+                                <img src="immagini/${datiDevice[i+1].Img}" class="img">
+                                <div>
+                                    ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell3.innerHTML = `
+                            <center>
+                            <div>
+                                <img src="immagini/${datiDevice[i+2].Img}" class="img">
+                                <div>
+                                    ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
             }
 
             function aggiungiAlCarrello(device){
                 let carrello = JSON.parse(localStorage.getItem("carrello"));
-                carrello.push(device);
+                carrello.push(JSON.parse(device));
                 localStorage.setItem("carrello", JSON.stringify(carrello));
             }
 
@@ -117,7 +117,7 @@
                                 <img src="immagini/${datiDevice[i].Img}" class="img">
                                 <div>
                                     ${datiDevice[i].Marca} ${datiDevice[i].Modello}
-                                    <button onclick="aggiungiAlCarrello(datiDevice[i])" class="carrell">
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
                                         <img src="immagini/carrello.png" class="carrello">
                                     </button>
                                 </div>
@@ -130,7 +130,7 @@
                                 <img src="immagini/${datiDevice[i+1].Img}" class="img">
                                 <div>
                                     ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
-                                    <button onclick="aggiungiAlCarrello('${datiDevice[i+1]}')">
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
                                         <img src="immagini/carrello.png" class="carrello">
                                     </button>
                                 </div>
@@ -143,7 +143,7 @@
                                 <img src="immagini/${datiDevice[i+2].Img}" class="img">
                                 <div>
                                     ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
-                                    <button onclick="aggiungiAlCarrello('${datiDevice[i+2]}')">
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
                                         <img src="immagini/carrello.png" class="carrello">
                                     </button>
                                 </div>
@@ -167,7 +167,7 @@
                                 <img src="immagini/${filtrati[i].item.Img}" class="imgCerca">
                                 <div>
                                     ${filtrati[i].item.Marca} ${filtrati[i].item.Modello}
-                                    <button onclick="aggiungiAlCarrello('${filtrati[i].item}')">
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(filtrati[i].item)})' class="carrell">
                                         <img src="immagini/carrello.png" class="carrello">
                                     </button>
                                 </div>
