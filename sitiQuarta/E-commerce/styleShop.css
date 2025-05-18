@@ -68,10 +68,10 @@ body::-webkit-scrollbar {
     transition: all 0.3s ease-in-out;
 }
 .carrell {
-    background: none;
     border: none;
+    background: none;
     padding: 0;
-    outline: none;
+    margin: 0;
     cursor: pointer;
 }
 .carrello {
