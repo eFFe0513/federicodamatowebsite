@@ -62,6 +62,7 @@
                 }
                 let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:"utente.png"};
                 localStorage.setItem("accountRegistrato", JSON.stringify(nuovoAccount));
+                window.location.href = "Autenticazione.html";
             }
         </script>
     </body>
