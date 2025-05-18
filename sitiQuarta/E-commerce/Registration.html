@@ -66,8 +66,6 @@
                 let email = document.getElementById("email").value.trim();
                 let password = document.getElementById("password").value;
                 let conferma = document.getElementById("passwordComferma").value;
-                const input = document.getElementById("immagine");
-                const file = input.files[0];
                 let img = localStorage.getItem("imgProfilo");
                 if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
                     return alert("Compila correttamente tutti i campi");
