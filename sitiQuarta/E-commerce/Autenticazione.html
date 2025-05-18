@@ -13,13 +13,20 @@
             <br><center><h1>Join the virtual reality community</h1></center>
             <center><h5 class="h5Titolo">Autenticazione a due fattori</h5></center>
             <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
+            <center>
                 <table width="75%" cellspacing="20px">
                     <tr>
                         <td>
                             <center>
                             <h5>Inserisci il codice ricevuto tramite email</h5>
                             <input type="text" id="codice" name="codice" placeholder="Codice di verifica"><br><br>
-                            <button type="button" onclick="convalida()" class="continua"><b>Continua</b></button><br><br>
+                            <button type="button" onclick="convalida()" class="continua" id="continua"><b>Continua</b></button><br><br>
                             <button type="button" onclick="sendEmail()" class="continua"><b>Reivia codice</b></button>
                             </center>
                         </td>
@@ -112,7 +119,7 @@
             // verifica codice
             async function convalida(){
                 if (document.getElementById("codice").value == random){
-                    const bottone = document.getElementById("LoginButton");
+                    const bottone = document.getElementById("continua");
                     const loader = document.getElementById("loader");
                     bottone.disabled = true;
                     loader.style.display = "block";
