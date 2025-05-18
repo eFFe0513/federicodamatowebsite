@@ -144,7 +144,9 @@
             }
             let oggettoAccount = JSON.parse(accountDecriptato);
             const img = document.getElementById('profilo');
-            img.src = oggettoAccount.Img;
+            console.log(oggettoAccount);
+            console.log(oggettoAccount.Img);
+            img.src = "immagini/" + oggettoAccount.Img;
         </script>
     </body>
 </html>
