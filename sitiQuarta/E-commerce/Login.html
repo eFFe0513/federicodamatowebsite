@@ -76,25 +76,27 @@
                     let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza,Email:email,Password:password,Img:img};
                     datiAccount.push(account);
                 }
-                (async function() {
-                    loader.style.display = "block";
-                        try {
-                            let accountCriptato = localStorage.getItem("accountCriptato");
-                            if (accountCriptato != null) {
-                                let account = accountCriptato.split("-");
-                                let accountDecriptato = "";
-                                for (let i = 0; i < account.length; i++){
-                                    let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
-                                    let numeroDecriptato = await risposta.text();
-                                    accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                if (localStorage.getItem("accountCriptato") != null){
+                    (async function() {
+                        loader.style.display = "block";
+                            try {
+                                let accountCriptato = localStorage.getItem("accountCriptato");
+                                if (accountCriptato != null) {
+                                    let account = accountCriptato.split("-");
+                                    let accountDecriptato = "";
+                                    for (let i = 0; i < account.length; i++){
+                                        let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
+                                        let numeroDecriptato = await risposta.text();
+                                        accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                                    }
+                                    let oggettoAccount = JSON.parse(accountDecriptato);
+                                    datiAccount.push(oggettoAccount);
                                 }
-                                let oggettoAccount = JSON.parse(accountDecriptato);
-                                datiAccount.push(oggettoAccount);
+                            } catch {
+                                alert("errore nel caricamento delle risorse");
                             }
-                        } catch {
-                            alert("errore nel caricamento delle risorse");
-                        }
-                })();
+                    })();
+                }
                 document.getElementById("LoginButton").disabled = false;
                 loader.style.display = "none";
             })
