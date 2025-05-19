@@ -47,7 +47,6 @@
             fetch(nomeFile)
             .then(response => response.text())
             .then(risultato => {
-                loader.style.display = "block";
                 let contatore = risultato.split("{").length - 1;
                 for (let i = 0; i < contatore; i++) {
                     risultato = risultato.slice(2, risultato.length);
@@ -75,17 +74,20 @@
                     datiAccount.push(account);
                 }
                 (async function() {
+                    loader.style.display = "block";
                         try {
                             let accountCriptato = localStorage.getItem("accountCriptato");
-                            let account = accountCriptato.split("-");
-                            let accountDecriptato = "";
-                            for (let i = 0; i < account.length; i++){
-                                let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
-                                let numeroDecriptato = await risposta.text();
-                                accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                            if (accountCriptato != null) {
+                                let account = accountCriptato.split("-");
+                                let accountDecriptato = "";
+                                for (let i = 0; i < account.length; i++){
+                                    let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
+                                    let numeroDecriptato = await risposta.text();
+                                    accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                                }
+                                let oggettoAccount = JSON.parse(accountDecriptato);
+                                datiAccount.push(oggettoAccount);
                             }
-                            let oggettoAccount = JSON.parse(accountDecriptato);
-                            datiAccount.push(oggettoAccount);
                         } catch {
                             alert("errore nel caricamento delle risorse");
                         }
