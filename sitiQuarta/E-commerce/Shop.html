@@ -100,7 +100,7 @@
             }
 
             function caricaDevice(device){
-                localStorage.setItem("device", device);
+                localStorage.setItem("device", JSON.stringify(device));
                 let cronologia = JSON.parse(localStorage.getItem("cronologia")) || [];
                 cronologia.push(device);
                 localStorage.setItem("cronologia", JSON.stringify(cronologia));

@@ -49,7 +49,6 @@
     <script>
         const img = document.getElementById("imgProfilo");
         const user = document.getElementById("username");
-        img.src = "immagini/" + localStorage.getItem("imgProfilo");
         loader.style.display = "block";
         (async function() {
                 try {
@@ -62,6 +61,7 @@
                         accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
                     }
                     let oggettoAccount = JSON.parse(accountDecriptato);
+                    img.src = "immagini/" + oggettoAccount.Img;
                     user.textContent = "@" + oggettoAccount.Username;
                     loader.style.display = "none";
                 } catch {
