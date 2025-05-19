@@ -44,6 +44,9 @@
             const loader = document.getElementById("loader");
             let datiAccount = [];
             let nomeFile = "datiAccounts.txt";
+            if (localStorage.getItem('imgProfilo') == null){
+                localStorage.setItem('imgProfilo', "utente.png");
+            }
             fetch(nomeFile)
             .then(response => response.text())
             .then(risultato => {
