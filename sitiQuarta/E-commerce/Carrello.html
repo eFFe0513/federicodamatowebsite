@@ -47,7 +47,7 @@
         elenco.innerHTML = "<p>Il tuo carrello è vuoto</p>";
     } else {
         carrello.forEach((item, index) => {
-            let prezzo = item.Prezzo ? parseFloat(item.Prezzo) : 299.99;
+            let prezzo = Number(item.Prezzo);
             totale += prezzo;
 
             const div = document.createElement("div");
