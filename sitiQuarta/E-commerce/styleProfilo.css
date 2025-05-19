@@ -83,55 +83,29 @@ body::-webkit-scrollbar {
         transform: translateY(0);
     }
 }
-.prodotto-container {
-    width: 90%;
-    margin: auto;
-    text-align: center;
+.profilo-container {
     padding-top: 100px;
-    animation: fade-in 1.5s ease-in-out;
+    text-align: center;
     animation: fade-in 1.5s ease-in-out;
 }
-.img-prodotto {
-    width: 50%;
-    max-width: 400px;
-    border-radius: 30px;
+.profilo-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
-.nome-prodotto {
-    font-size: 32px;
+.username {
+    font-size: 28px;
     font-weight: bold;
-    margin-top: 20px;
-}
-.marca-prodotto {
-    font-size: 24px;
-    color: gray;
-}
-.specifiche {
-    margin-top: 50px;
-    text-align: left;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f5f5f5;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
     animation: fade-in 1.5s ease-in-out;
 }
-.specifiche h2 {
-    font-size: 26px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-.specifiche p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-.bottoni {
+.bottoni-profilo {
     margin-top: 30px;
 }
 .btn {
+    margin-top: 30px;
     animation: fade-in 1.5s ease-in-out;
     padding: 12px 20px;
     margin: 10px;
@@ -141,8 +115,49 @@ body::-webkit-scrollbar {
     cursor: pointer;
     background-color: #000000;
     color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+.elimina {
+    margin-top: 30px;
+    animation: fade-in 1.5s ease-in-out;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
     transition: background-color 0.3s ease;
 }
 .btn:hover {
     background-color: #131313;
+}
+.elimina:hover {
+    background-color: #db0202;
+}
+#loader {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 80%, 100% { opacity: 0; }
+    40%          { opacity: 1; }
 }

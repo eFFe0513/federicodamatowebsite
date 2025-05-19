@@ -82,7 +82,6 @@ td {
     position: absolute;
     transform: translate(-35px, -5px);
 }
-
 #loader {
     display: none;
     text-align: center;
