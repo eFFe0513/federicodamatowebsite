@@ -87,10 +87,12 @@ body::-webkit-scrollbar {
 }
 .tabella {
     width: 95%;
+    animation: fade-in 1.5s ease-in-out;
 }
 .img {
     width: 70%;
     height: 70%;
+    animation: fade-in 1.5s ease-in-out;
 }
 .barraRicerca {
     width: 100%;
@@ -100,6 +102,7 @@ body::-webkit-scrollbar {
     font-weight: bold;
     border-radius: 40px;
     border: 3px;
+    animation: fade-in 1.5s ease-in-out;
 }
 .cerca {
     padding: 14px 20px;
@@ -109,6 +112,7 @@ body::-webkit-scrollbar {
     border-radius: 40px;
     transition: 1s;
     float: right;
+    animation: fade-in 1.5s ease-in-out;
 }
 .cerca:hover {
     background-color: rgb(199, 199, 199);
@@ -116,11 +120,29 @@ body::-webkit-scrollbar {
 }
 .tabellaCerca {
     width: 90%;
+    animation: fade-in 1.5s ease-in-out;
 }
 .imgCerca {
     width: 400px;
+    animation: fade-in 1.5s ease-in-out;
 }
 td{
     width: 30%;
     height: 40%;
+}
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
