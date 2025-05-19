@@ -90,6 +90,7 @@ body::-webkit-scrollbar {
         .contenitore-carrello {
             padding-top: 100px;
             text-align: center;
+            animation: fade-in 1.5s ease-in-out;
         }
         .item-carrello {
             background-color: #f5f5f5;
@@ -106,6 +107,7 @@ body::-webkit-scrollbar {
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
+            animation: fade-in 1.5s ease-in-out;
         }
         .item-info {
             text-align: left;
@@ -132,6 +134,7 @@ body::-webkit-scrollbar {
             background-color: black;
             color: white;
             transition: background-color 0.3s ease;
+            animation: fade-in 1.5s ease-in-out;
         }
         .btn-carrello:hover {
             background-color: #131313;
