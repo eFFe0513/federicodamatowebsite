@@ -30,6 +30,7 @@
         <img src="immagini/prodottoVuoto.jpg" id="immagine" alt="prodotto" class="img-prodotto">
         <div class="nome-prodotto" id="modelloT"></div>
         <div class="marca-prodotto" id="marcaT"></div>
+        <div class="marca-prodotto" id="prezzo"></div>
 
         <div class="bottoni">
             <button class="btn" onclick="aggiungiPreferiti()">❤️ Aggiungi ai preferiti</button>
@@ -65,6 +66,7 @@
         const lenti = document.getElementById("lenti");
         const tipo = document.getElementById("tipo");
         const img = document.getElementById("immagine");
+        const prezzo = document.getElementById("prezzo");
         img.src = "immagini/" + prodotto.Img;
         marca.textContent = prodotto.Marca;
         modello.textContent = prodotto.Modello;
@@ -78,6 +80,7 @@
         risoluzione.textContent = prodotto.Risoluzione;
         lenti.textContent = prodotto.Lenti;
         tipo.textContent = prodotto.Tipo;
+        prezzo.textContent = prodotto.Prezzo;
 
         function aggiungiCarrello() {
                 let carrello = JSON.parse(localStorage.getItem("carrello")) || [];

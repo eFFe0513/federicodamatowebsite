@@ -111,7 +111,7 @@
                         let stringaOggetto = risultato.slice(0, indiceFineOggetto);
                         risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
                         let vett = [];
-                        for (let j = 0; j < 11; j++) {
+                        for (let j = 0; j < 12; j++) {
                             let inizioAtt = stringaOggetto.indexOf('"');
                             stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
                             let fineAtt = stringaOggetto.indexOf('"');
@@ -130,7 +130,8 @@
                         let lenti = vett[8];
                         let tipo = vett[9];
                         let img = vett [10];
-                        let device = {Marca:marca,Modello:modello,AnnoUscita:annoUscita,Memoria:memoria,Ram:ram,Processore:processore,Display:display,Risoluzione:risoluzione,Lenti:lenti,Tipo:tipo,Img:img};
+                        let prezzo = vett[11];
+                        let device = {Marca:marca,Modello:modello,AnnoUscita:annoUscita,Memoria:memoria,Ram:ram,Processore:processore,Display:display,Risoluzione:risoluzione,Lenti:lenti,Tipo:tipo,Img:img,Prezzo:prezzo};
                         datiDevice.push(device);
                     }
                     localStorage.setItem("datiDevice", JSON.stringify(datiDevice));

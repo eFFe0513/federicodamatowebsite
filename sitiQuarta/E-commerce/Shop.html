@@ -161,7 +161,7 @@
                     }
                 } else {
                     const fuse = new Fuse(datiDevice, {
-                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo']
+                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Prezzo']
                     });
                     let filtrati = fuse.search(cerca);
                     console.log(filtrati);

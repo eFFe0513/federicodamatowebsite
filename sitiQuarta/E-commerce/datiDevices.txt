@@ -10,7 +10,8 @@
     risoluzione: "1832 × 1920 per occhio",
     lenti: "Fresnel",
     tipo: "Standalone",
-    img: "metaQ2.jpg"
+    img: "metaQ2.jpg",
+    prezzo: "200€"
   },
   {
     marca: "Meta",
@@ -23,7 +24,8 @@
     risoluzione: "1800 × 1920 per occhio",
     lenti: "Fresnel",
     tipo: "Standalone",
-    img: "metaQPro.jpg"
+    img: "metaQPro.jpg",
+    prezzo: "800€"
   },
   {
     marca: "Valve",
@@ -36,7 +38,8 @@
     risoluzione: "1440 × 1600 per occhio",
     lenti: "Aspherical",
     tipo: "Tethered",
-    img: "valveIndex.png"
+    img: "valveIndex.png",
+    prezzo: "500€"
   },
   {
     marca: "HTC",
@@ -49,7 +52,8 @@
     risoluzione: "2448 × 2448 per occhio",
     lenti: "Fresnel",
     tipo: "Tethered",
-    img: "htcV.jpg"
+    img: "htcV.jpg",
+    prezzo: "400€"
   },
   {
     marca: "Sony",
@@ -62,7 +66,8 @@
     risoluzione: "2000 × 2040 per occhio",
     lenti: "Glass",
     tipo: "Tethered",
-    img: "psVr2.jpg"
+    img: "psVr2.jpg",
+    prezzo: "400€"
   },
   {
     marca: "HP",
@@ -75,7 +80,8 @@
     risoluzione: "2160 × 2160 per occhio",
     lenti: "Aspherical",
     tipo: "Tethered",
-    img: "hpRv.png"
+    img: "hpRv.png",
+    prezzo: "200€"
   },
   {
     marca: "Pico",
@@ -88,7 +94,8 @@
     risoluzione: "2160 × 2160 per occhio",
     lenti: "Pancake",
     tipo: "Standalone",
-    img: "pico4.png"
+    img: "pico4.png",
+    prezzo: "300€"
   },
   {
     marca: "Samsung",
@@ -101,7 +108,8 @@
     risoluzione: "1440 × 1600 per occhio",
     lenti: "Aspherical",
     tipo: "Tethered",
-    img: "smOd.jpg"
+    img: "smOd.jpg",
+    prezzo: "150€"
   },
   {
     marca: "Oculus",
@@ -114,7 +122,8 @@
     risoluzione: "1280 × 1440 per occhio",
     lenti: "Aspherical",
     tipo: "Tethered",
-    img: "oculusRS.png"
+    img: "oculusRS.png",
+    prezzo: "300€"
   },
   {
     marca: "Varjo",
@@ -127,6 +136,7 @@
     risoluzione: "1920 × 1920 foveato + 2880 × 2720",
     lenti: "Custom",
     tipo: "Tethered",
-    img: "xr3.png"
+    img: "xr3.png",
+    prezzo: "2000€"
   }
 ]
