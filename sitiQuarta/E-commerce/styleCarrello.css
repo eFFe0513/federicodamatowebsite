@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
+.kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translateX(10px);
+}
+nav li {
+    float: left;
+}
+nav li a {
+    color: rgb(175, 175, 175);
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-family: Roboto;
+    transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+    transform: scale(1.05);
+}
+nav li ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+}
+nav li:hover ul.dropdown {
+    display: block;
+}
+nav li ul.dropdown li {
+    float: none;
+}
+nav li ul.dropdown li a {
+    display: block;
+    color: black;
+}
+body {
+    background-color: white;
+    margin: 0;
+    font-family: Roboto;
+    color: black;
+    font-size: 18px;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.casella:hover {
+    background-color: rgb(210, 210, 210);
+}
+.profilo {
+    position: fixed;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+    animation: fade-in 1.5s ease-in-out;
+}
+.profilo:hover {
+    transform: scale(1.05);
+}
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        .contenitore-carrello {
+            padding-top: 100px;
+            text-align: center;
+        }
+        .item-carrello {
+            background-color: #f5f5f5;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+        .item-carrello img {
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .item-info {
+            text-align: left;
+        }
+        .item-info p {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .totale {
+            font-size: 24px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .bottoni-carrello {
+            margin-top: 20px;
+        }
+        .btn-carrello {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: black;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-carrello:hover {
+            background-color: #131313;
+        }
