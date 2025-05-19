@@ -55,7 +55,7 @@
                 cell1.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i])})'><img src="immagini/${datiDevice[i].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i].Marca} ${datiDevice[i].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
@@ -68,7 +68,7 @@
                         cell2.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i+1].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+1])})'><img src="immagini/${datiDevice[i+1].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
@@ -81,7 +81,7 @@
                         cell3.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i+2].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+2])})'><img src="immagini/${datiDevice[i+2].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
@@ -97,6 +97,10 @@
                 let carrello = JSON.parse(localStorage.getItem("carrello")) || [];
                 carrello.push(device);
                 localStorage.setItem("carrello", JSON.stringify(carrello));
+            }
+
+            function caricaDevice(device){
+                localStorage.setItem("device", device);
             }
 
 
@@ -115,7 +119,7 @@
                         cell1.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i])})'><img src="immagini/${datiDevice[i].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i].Marca} ${datiDevice[i].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
@@ -128,7 +132,7 @@
                         cell2.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i+1].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+1])})'><img src="immagini/${datiDevice[i+1].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
@@ -141,7 +145,7 @@
                         cell3.innerHTML = `
                             <center>
                             <div>
-                                <img src="immagini/${datiDevice[i+2].Img}" class="img">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+2])})'><img src="immagini/${datiDevice[i+2].Img}" class="img"></a>
                                 <div>
                                     ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
@@ -165,7 +169,7 @@
                         cell1.innerHTML = `
                             <center>
                             <div widht="65%">
-                                <img src="immagini/${filtrati[i].item.Img}" class="imgCerca">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(filtrati[i].item)})'><img src="immagini/${filtrati[i].item.Img}" class="imgCerca"></a>
                                 <div>
                                     ${filtrati[i].item.Marca} ${filtrati[i].item.Modello}
                                     <button onclick='aggiungiAlCarrello(${JSON.stringify(filtrati[i].item)})' class="carrell">

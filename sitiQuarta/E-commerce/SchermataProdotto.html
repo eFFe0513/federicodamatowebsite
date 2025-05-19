@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Vr Community</title>
+    <link rel="stylesheet" href="styleSchermataProdotto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="Homepage.html" class="casella"><strong>Vr</strong></a></li>
+            <li><a href="Shop.html" class="casella">Shop</a></li>
+            <li><a href="#" class="casella">Carrello</a></li>
+            <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+            <li><a href="#" class="casella">Altro</a>
+                <ul class="dropdown">
+                    <li><a href="#" class="casella">Preferiti</a></li>
+                    <li><a href="#" class="casella">Cronologia</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
+        </ul>
+    </nav>
+
+    <div class="prodotto-container">
+        <img src="immagini/prodottoVuoto.jpg" id="immagine" alt="prodotto" class="img-prodotto">
+        <div class="nome-prodotto" id="modelloT"></div>
+        <div class="marca-prodotto" id="marcaT"></div>
+
+        <div class="bottoni">
+            <button class="btn" onclick="aggiungiPreferiti()">❤️ Aggiungi ai preferiti</button>
+            <button class="btn" onclick="aggiungiCarrello()">🛒 Aggiungi al carrello</button>
+        </div>
+
+        <div class="specifiche">
+            <h2>Specifiche Tecniche</h2>
+            <p><strong>Marca:</strong><span id="marca"></span></p>
+            <p><strong>Modello:</strong><span id="modello"></span></p>
+            <p><strong>Anno di Uscita:</strong><span id="annoUscita"></span></p>
+            <p><strong>Memoria:</strong><span id="memoria"></span></p>
+            <p><strong>RAM:</strong><span id="ram"></span></p>
+            <p><strong>Processore:</strong><span id="processore"></span></p>
+            <p><strong>Display:</strong><span id="display"></span></p>
+            <p><strong>Risoluzione:</strong><span id="risoluzione"></span></p>
+            <p><strong>Lenti:</strong><span id="lenti"></span></p>
+            <p><strong>Tipo:</strong><span id="tipo"></span></p>
+        </div>
+    </div>
+    <script>
+        const prodotto = JSON.parse(localStorage.getItem("device"));
+        const marca = document.getElementById("marca");
+        const modello = document.getElementById("modello");
+        const marcaT = document.getElementById("marcaT");
+        const modelloT = document.getElementById("modelloT");
+        const annoUscita = document.getElementById("annoUscita");
+        const memoria = document.getElementById("memoria");
+        const ram = document.getElementById("ram");
+        const processore = document.getElementById("processore");
+        const display = document.getElementById("display");
+        const risoluzione = document.getElementById("risoluzione");
+        const lenti = document.getElementById("lenti");
+        const tipo = document.getElementById("tipo");
+        const img = document.getElementById("immagine");
+        img.src = "immagini/" + prodotto.Img;
+        marca.textContent = prodotto.Marca;
+        modello.textContent = prodotto.Modello;
+        marcaT.textContent = prodotto.Marca;
+        modelloT.textContent = prodotto.Modello;
+        annoUscita.textContent = prodotto.AnnoUscita;
+        memoria.textContent = prodotto.Memoria;
+        ram.textContent = prodotto.Ram;
+        processore.textContent = prodotto.Processore;
+        display.textContent = prodotto.Display;
+        risoluzione.textContent = prodotto.Risoluzione;
+        lenti.textContent = prodotto.Lenti;
+        tipo.textContent = prodotto.Tipo;
+
+        function aggiungiCarrello() {
+                let carrello = JSON.parse(localStorage.getItem("carrello")) || [];
+                let device = JSON.parse(localStorage.getItem("prodotto"));
+                carrello.push(device);
+                localStorage.setItem("carrello", JSON.stringify(carrello));
+        }
+        function aggiungiPreferiti() {
+                let preferiti = JSON.parse(localStorage.getItem("preferiti")) || [];
+                let device = JSON.parse(localStorage.getItem("prodotto"));
+                preferiti.push(device);
+                localStorage.setItem("preferiti", JSON.stringify(preferiti));
+        }
+    </script>
+</body>
+</html>
