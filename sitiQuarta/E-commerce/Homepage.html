@@ -95,8 +95,10 @@
         <script>
                 let carrello = [];
                 let preferiti = [];
+                let cronologia = [];
                 localStorage.setItem("carrello", JSON.stringify(carrello));
                 localStorage.setItem("preferiti", JSON.stringify(preferiti));
+                localStorage.setItem("cronologia", JSON.stringify(cronologia));
                 let datiDevice = [];
                 let nomeFile = "datiDevices.txt";
                 fetch(nomeFile)
