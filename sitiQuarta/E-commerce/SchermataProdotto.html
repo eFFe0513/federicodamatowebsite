@@ -81,13 +81,13 @@
 
         function aggiungiCarrello() {
                 let carrello = JSON.parse(localStorage.getItem("carrello")) || [];
-                let device = JSON.parse(localStorage.getItem("prodotto"));
+                let device = JSON.parse(localStorage.getItem("device"));
                 carrello.push(device);
                 localStorage.setItem("carrello", JSON.stringify(carrello));
         }
         function aggiungiPreferiti() {
                 let preferiti = JSON.parse(localStorage.getItem("preferiti")) || [];
-                let device = JSON.parse(localStorage.getItem("prodotto"));
+                let device = JSON.parse(localStorage.getItem("device"));
                 preferiti.push(device);
                 localStorage.setItem("preferiti", JSON.stringify(preferiti));
         }
