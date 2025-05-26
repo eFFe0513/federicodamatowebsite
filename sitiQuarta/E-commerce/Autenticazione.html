@@ -79,7 +79,7 @@
                     To: account.Email,
                     From: "vrcommunityservice@gmail.com",
                     Subject: "Codice di verifica",
-                    Body: "Ecco il tuo codice di verifica → " + randomCode
+                    Body: "Ecco il tuo codice di verifica → " + random
                     })
                     .then(message => {
                     alert("Email inviata con successo");
@@ -90,13 +90,13 @@
                 });
 
             function sendEmail() {
-                randomCode = genera8CifreStringa();
+                random = genera8CifreStringa();
                 Email.send({
                     SecureToken: "598c1079-ad30-46ed-9068-fe9dbc6790f0",
                     To: account.Email,
                     From: "vrcommunityservice@gmail.com",
                     Subject: "Codice di verifica",
-                    Body: "Ecco il tuo codice di verifica → " + randomCode
+                    Body: "Ecco il tuo codice di verifica → " + random
                     })
                     .then(message => {
                     alert("Email inviata con successo");
