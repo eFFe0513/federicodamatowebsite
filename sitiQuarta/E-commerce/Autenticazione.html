@@ -2,7 +2,7 @@
     <head>
         <title>Autenticazione</title>
         <link rel="stylesheet" href="styleAutenticazione.css">
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
                             <h5>Inserisci il codice ricevuto tramite email</h5>
                             <input type="text" id="codice" name="codice" placeholder="Codice di verifica"><br><br>
                             <button type="button" onclick="convalida()" class="continua" id="continua"><b>Continua</b></button><br><br>
-                            <button type="button" onclick="sendEmail()" class="continua"><b>Reivia codice</b></button>
+                            <button type="button" onclick="sendEmail()" class="continua"><b>Invia il codice</b></button>
                             </center>
                         </td>
                         <td>
@@ -73,40 +73,22 @@
             }
             let random = genera8CifreStringa();
             let account = JSON.parse(localStorage.getItem("accountRegistrato"));
+            emailjs.init('XV-YfCAv3YROJz2gW');
             
-            Email.send({
-                    SecureToken: "598c1079-ad30-46ed-9068-fe9dbc6790f0",
-                    To: account.Email,
-                    From: "vrcommunityservice@gmail.com",
-                    Subject: "Codice di verifica",
-                    Body: "Ecco il tuo codice di verifica → " + random
-                    })
-                    .then(message => {
-                    alert("Email inviata con successo");
-                    })
-                    .catch(err => {
-                    console.error("Errore invio email:", err);
-                    alert("Invio email fallito");
-                });
-
             function sendEmail() {
-                random = genera8CifreStringa();
-                Email.send({
-                    SecureToken: "598c1079-ad30-46ed-9068-fe9dbc6790f0",
-                    To: account.Email,
-                    From: "vrcommunityservice@gmail.com",
-                    Subject: "Codice di verifica",
-                    Body: "Ecco il tuo codice di verifica → " + random
-                    })
-                    .then(message => {
-                    alert("Email inviata con successo");
-                    })
-                    .catch(err => {
-                    console.error("Errore invio email:", err);
-                    alert("Invio email fallito");
+                const templateParams = {
+                to_email: account.Email,
+                message: random
+                };
+
+                emailjs.send('service_s6fu4yg', 'template_2fwrke3', templateParams)
+                .then(() => alert("Email inviata!"))
+                .catch(err => {
+                    console.error(err);
+                    alert("Invio fallito");
                 });
             }
-            
+
             async function cripta(dato) {
                 let testoCriptato = "";
                 let account = JSON.stringify(dato);
