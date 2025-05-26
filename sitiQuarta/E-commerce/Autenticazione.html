@@ -77,9 +77,11 @@
             
             function sendEmail() {
                 const templateParams = {
-                to_email: account.Email,
-                message: random
+                email: account.Email,
+                passcode: random
                 };
+
+                console.log('Invio EmailJS con params:', templateParams);
 
                 emailjs.send('service_s6fu4yg', 'template_2fwrke3', templateParams)
                 .then(() => alert("Email inviata!"))
