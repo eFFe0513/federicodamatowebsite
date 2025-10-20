@@ -1,0 +1,103 @@
+body {
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+    margin: 20px;
+    text-align: center; /* centra i contenuti principali */
+}
+
+h1 {
+    color: #343a40;
+}
+
+h2 {
+    color: #495057;
+    margin-top: 30px;
+}
+
+.contenitore {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Tabella principale JSON */
+#tabellaUtenti {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+#tabellaUtenti th,
+#tabellaUtenti td {
+    border: 1px solid #ddd; /* Bordi visibili solo qui */
+    padding: 10px;
+    text-align: center; /* centra testo orizzontalmente */
+    vertical-align: middle; /* centra testo verticalmente */
+    word-wrap: break-word;
+}
+#tabellaUtenti th {
+    background-color: #e9ecef;
+}
+
+/* Tabella dei pulsanti / input: senza bordi */
+table tr td {
+    border: none;
+    text-align: center; /* centra i contenuti */
+}
+
+/* Pulsanti */
+button {
+    padding: 12px 18px;
+    cursor: pointer;
+    background-color: rgb(218, 217, 217);
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    transition: 0.4s;
+    margin: 8px 5px;
+}
+button:hover {
+    background-color: rgb(199, 199, 199);
+    transform: scale(1.05);
+}
+
+/* Input */
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 15px;
+    margin-top: 0px;
+    background-color: transparent;
+    border: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+ul li {
+    padding: 5px 10px;
+    border-bottom: none;
+}
+
+ul::-webkit-scrollbar {
+    width: 8px;
+}
+ul::-webkit-scrollbar-thumb {
+    background-color: #adb5bd;
+    border-radius: 4px;
+}
+ul::-webkit-scrollbar-track {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+
+

@@ -1,0 +1,122 @@
+[
+    {
+        "nome": "Luca",
+        "cognome": "Rossi",
+        "classe": "5B",
+        "nascita": "04-08-2007"
+    },
+    {
+        "nome": "Giulia",
+        "cognome": "Bianchi",
+        "classe": "5B",
+        "nascita": "15-01-2008"
+    },
+    {
+        "nome": "Marco",
+        "cognome": "Verdi",
+        "classe": "5B",
+        "nascita": "21-03-2007"
+    },
+    {
+        "nome": "Sara",
+        "cognome": "Ferrari",
+        "classe": "5B",
+        "nascita": "18-05-2007"
+    },
+    {
+        "nome": "Alessandro",
+        "cognome": "Russo",
+        "classe": "5B",
+        "nascita": "24-06-2006"
+    },
+    {
+        "nome": "Chiara",
+        "cognome": "Esposito",
+        "classe": "5B",
+        "nascita": "28-07-2007"
+    },
+    {
+        "nome": "Matteo",
+        "cognome": "Conti",
+        "classe": "5B",
+        "nascita": "23-09-2007"
+    },
+    {
+        "nome": "Martina",
+        "cognome": "Colombo",
+        "classe": "5B",
+        "nascita": "01-12-2007"
+    },
+    {
+        "nome": "Davide",
+        "cognome": "Romano",
+        "classe": "5B",
+        "nascita": "28-11-2007"
+    },
+    {
+        "nome": "Elisa",
+        "cognome": "Ricci",
+        "classe": "5B",
+        "nascita": "08-10-2007"
+    },
+    {
+        "nome": "Giorgio",
+        "cognome": "Marchetti",
+        "classe": "5B",
+        "nascita": "24-04-2006"
+    },
+    {
+        "nome": "Alice",
+        "cognome": "Moretti",
+        "classe": "5B",
+        "nascita": "06-02-2007"
+    },
+    {
+        "nome": "Simone",
+        "cognome": "Galli",
+        "classe": "5B",
+        "nascita": "05-08-2006"
+    },
+    {
+        "nome": "Valentina",
+        "cognome": "Costa",
+        "classe": "5B",
+        "nascita": "18-01-2008"
+    },
+    {
+        "nome": "Andrea",
+        "cognome": "Fontana",
+        "classe": "5B",
+        "nascita": "13-05-2007"
+    },
+    {
+        "nome": "Francesca",
+        "cognome": "Greco",
+        "classe": "5B",
+        "nascita": "24-09-2007"
+    },
+    {
+        "nome": "Gabriele",
+        "cognome": "Rizzo",
+        "classe": "5B",
+        "nascita": "21-03-2007"
+    },
+    {
+        "nome": "Ilaria",
+        "cognome": "Mancini",
+        "classe": "5B",
+        "nascita": "25-10-2007"
+    },
+    {
+        "nome": "Riccardo",
+        "cognome": "Lombardi",
+        "classe": "5B",
+        "nascita": "06-11-2007"
+    },
+    {
+        "nome": "Camilla",
+        "cognome": "Barbieri",
+        "classe": "5B",
+        "nascita": "17-08-2007"
+    }
+]
