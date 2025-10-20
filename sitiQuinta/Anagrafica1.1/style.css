@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
     background-color: #f8f9fa;
     margin: 20px;
-    text-align: center; /* centra i contenuti principali */
+    text-align: center;
 }
 
 h1 {
@@ -23,7 +23,6 @@ h2 {
     margin: auto;
 }
 
-/* Tabella principale JSON */
 #tabellaUtenti {
     table-layout: fixed;
     border-collapse: collapse;
@@ -32,23 +31,21 @@ h2 {
 }
 #tabellaUtenti th,
 #tabellaUtenti td {
-    border: 1px solid #ddd; /* Bordi visibili solo qui */
+    border: 1px solid #ddd;
     padding: 10px;
-    text-align: center; /* centra testo orizzontalmente */
-    vertical-align: middle; /* centra testo verticalmente */
+    text-align: center;
+    vertical-align: middle;
     word-wrap: break-word;
 }
 #tabellaUtenti th {
     background-color: #e9ecef;
 }
 
-/* Tabella dei pulsanti / input: senza bordi */
 table tr td {
     border: none;
-    text-align: center; /* centra i contenuti */
+    text-align: center;
 }
 
-/* Pulsanti */
 button {
     padding: 12px 18px;
     cursor: pointer;
@@ -64,7 +61,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Input */
 input[type="text"],
 input[type="date"] {
     padding: 10px;

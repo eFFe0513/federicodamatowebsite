@@ -6,7 +6,7 @@ function parseData(dataStr) {
     return new Date(parti[2], parti[1] - 1, parti[0]);
 }
 
-// --- 1️⃣ Carica JSON automaticamente all'apertura con XMLHttpRequest ---
+// Carica JSON automaticamente all'apertura con XMLHttpRequest
 window.addEventListener("DOMContentLoaded", function() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "Classe5B.json", true);
@@ -19,25 +19,31 @@ window.addEventListener("DOMContentLoaded", function() {
     };
 });
 
-// --- 2️⃣ Mostra tabella ---
+// Mostra tabella
 function mostraTabella(lista) {
     const tbody = document.querySelector("#tabellaUtenti tbody");
     tbody.innerHTML = "";
-    lista.forEach(s => {
+    for (let i = 0; i < lista.length; i++) {
+        const s = lista[i];
         const tr = document.createElement("tr");
         tr.innerHTML = `<td>${s.nome}</td><td>${s.cognome}</td><td>${s.classe}</td><td>${s.nascita}</td>`;
         tbody.appendChild(tr);
-    });
+    }
 }
 
-// --- 3️⃣ Filtro per iniziale cognome ---
+// Filtro per iniziale cognome
 document.getElementById("filtraBtn").addEventListener("click", function() {
     const lettera = document.getElementById("lettera").value.toUpperCase();
-    const filtrati = studenti.filter(s => s.cognome.toUpperCase().startsWith(lettera));
+    const filtrati = [];
+    for (let i = 0; i < studenti.length; i++) {
+        if (studenti[i].cognome.toUpperCase().startsWith(lettera)) {
+            filtrati.push(studenti[i]);
+        }
+    }
     mostraTabella(filtrati);
 });
 
-// --- 4️⃣ Mostra maggiorenni e minorenni ---
+// Mostra maggiorenni e minorenni
 function calcolaEta(nascitaStr) {
     const nascita = parseData(nascitaStr);
     const oggi = new Date();
@@ -50,16 +56,26 @@ function calcolaEta(nascitaStr) {
 }
 
 document.getElementById("maggiorenniBtn").addEventListener("click", function() {
-    const filtrati = studenti.filter(s => calcolaEta(s.nascita) >= 18);
+    const filtrati = [];
+    for (let i = 0; i < studenti.length; i++) {
+        if (calcolaEta(studenti[i].nascita) >= 18) {
+            filtrati.push(studenti[i]);
+        }
+    }
     mostraTabella(filtrati);
 });
 
 document.getElementById("minorenniBtn").addEventListener("click", function() {
-    const filtrati = studenti.filter(s => calcolaEta(s.nascita) < 18);
+    const filtrati = [];
+    for (let i = 0; i < studenti.length; i++) {
+        if (calcolaEta(studenti[i].nascita) < 18) {
+            filtrati.push(studenti[i]);
+        }
+    }
     mostraTabella(filtrati);
 });
 
-// --- 5️⃣ Verifica generazione ---
+// Verifica generazione
 document.getElementById("generazioneBtn").addEventListener("click", function() {
     const dataInput = document.getElementById("dataInput").value;
     const output = document.getElementById("generazioneOutput");
@@ -79,3 +95,4 @@ document.getElementById("generazioneBtn").addEventListener("click", function() {
     else generazione = "Data non riconosciuta";
     output.innerHTML = `<b>${generazione}</b>`;
 });
+
