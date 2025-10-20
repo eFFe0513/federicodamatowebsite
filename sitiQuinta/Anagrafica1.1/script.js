@@ -1,25 +1,20 @@
-let studenti = []; // Array con i dati della classe
+let studenti = [];
 
 // Funzione per convertire "dd-mm-yyyy" in Date valida
 function parseData(dataStr) {
-    const parti = dataStr.split("-"); // ["dd","mm","yyyy"]
-    return new Date(parti[2], parti[1]-1, parti[0]); // anno, mese(0-11), giorno
+    const parti = dataStr.split("-");
+    return new Date(parti[2], parti[1] - 1, parti[0]);
 }
 
-// --- 1️⃣ Carica JSON al click ---
-document.getElementById("caricaBtn").addEventListener("click", function() {
+// --- 1️⃣ Carica JSON automaticamente all'apertura con XMLHttpRequest ---
+window.addEventListener("DOMContentLoaded", function() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "Classe5B.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             studenti = JSON.parse(this.responseText);
             mostraTabella(studenti);
-            // Pulisco le liste
-            document.getElementById("risultatiLettera").innerHTML = "";
-            document.getElementById("maggiorenniList").innerHTML = "";
-            document.getElementById("minorenniList").innerHTML = "";
-            document.getElementById("generazioneOutput").innerHTML = "";
         }
     };
 });
@@ -39,13 +34,7 @@ function mostraTabella(lista) {
 document.getElementById("filtraBtn").addEventListener("click", function() {
     const lettera = document.getElementById("lettera").value.toUpperCase();
     const filtrati = studenti.filter(s => s.cognome.toUpperCase().startsWith(lettera));
-    const listaUl = document.getElementById("risultatiLettera");
-    listaUl.innerHTML = "";
-    filtrati.forEach(s => {
-        const li = document.createElement("li");
-        li.textContent = s.cognome + " " + s.nome;
-        listaUl.appendChild(li);
-    });
+    mostraTabella(filtrati);
 });
 
 // --- 4️⃣ Mostra maggiorenni e minorenni ---
@@ -61,27 +50,13 @@ function calcolaEta(nascitaStr) {
 }
 
 document.getElementById("maggiorenniBtn").addEventListener("click", function() {
-    const listaUl = document.getElementById("maggiorenniList");
-    listaUl.innerHTML = "";
-    studenti.forEach(s => {
-        if (calcolaEta(s.nascita) >= 18) {
-            const li = document.createElement("li");
-            li.textContent = s.cognome + " " + s.nome;
-            listaUl.appendChild(li);
-        }
-    });
+    const filtrati = studenti.filter(s => calcolaEta(s.nascita) >= 18);
+    mostraTabella(filtrati);
 });
 
 document.getElementById("minorenniBtn").addEventListener("click", function() {
-    const listaUl = document.getElementById("minorenniList");
-    listaUl.innerHTML = "";
-    studenti.forEach(s => {
-        if (calcolaEta(s.nascita) < 18) {
-            const li = document.createElement("li");
-            li.textContent = s.cognome + " " + s.nome;
-            listaUl.appendChild(li);
-        }
-    });
+    const filtrati = studenti.filter(s => calcolaEta(s.nascita) < 18);
+    mostraTabella(filtrati);
 });
 
 // --- 5️⃣ Verifica generazione ---
