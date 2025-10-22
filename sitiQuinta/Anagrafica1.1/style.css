@@ -3,6 +3,23 @@ body {
     background-color: #f8f9fa;
     margin: 20px;
     text-align: center;
+    background-image: url('immagini/sfondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-position: top right;
+    animation: movimentoSfondo 10s infinite;
+}
+
+@keyframes movimentoSfondo {
+    0% {
+        background-position: top right;
+    }
+    50% {
+        background-position: bottom left;
+    }
+    100% {
+        background-position: top right;
+    }
 }
 
 h1 {
