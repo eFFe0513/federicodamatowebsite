@@ -1,6 +1,6 @@
 let studenti = [];
 
-// Funzione per convertire "dd-mm-yyyy" in Date valida
+// Funzione per convertire "dd-mm-yyyy" in una data valida
 function parseData(dataStr) {
     const parti = dataStr.split("-");
     return new Date(parti[2], parti[1] - 1, parti[0]);
