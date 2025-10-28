@@ -1,8 +1,8 @@
 let studenti = [];
 
 // Funzione per convertire "dd-mm-yyyy" in una data valida
-function parseData(dataStr) {
-    const parti = dataStr.split("-");
+function convertiData(data) {
+    const parti = data.split("-");
     return new Date(parti[2], parti[1] - 1, parti[0]);
 }
 
@@ -45,7 +45,7 @@ document.getElementById("filtraBtn").addEventListener("click", function() {
 
 // Mostra maggiorenni e minorenni
 function calcolaEta(nascitaStr) {
-    const nascita = parseData(nascitaStr);
+    const nascita = convertiData(nascitaStr);
     const oggi = new Date();
     let eta = oggi.getFullYear() - nascita.getFullYear();
     if (
