@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Anagrafica 1.1</title>
+</head>
+<body>
+    <h1>Anagrafica Classe 5B</h1>
+    <center>
+    <table width="100%">
+        <tr>
+            <td>
+                <input type="text" id="lettera" placeholder="Inserisci iniziale cognome"><br>
+                <button id="filtraBtn">Filtra</button>
+                <ul id="risultatiLettera"></ul>
+            </td>
+            <td>
+                <button id="maggiorenniBtn">Mostra maggiorenni</button>
+                <ul id="maggiorenniList"></ul>
+                <button id="minorenniBtn">Mostra minorenni</button>
+                <ul id="minorenniList"></ul>
+            </td>
+        </tr>
+    </table>
+    </center>
+    <table id="tabellaUtenti">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Classe</th>
+            <th>Data di nascita</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
