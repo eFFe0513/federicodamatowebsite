@@ -85,7 +85,7 @@
                                     let account = accountCriptato.split("-");
                                     let accountDecriptato = "";
                                     for (let i = 0; i < account.length; i++){
-                                        let risposta = await fetch(`https://cripta.glitch.me/decripta?codiceCifrato=${account[i]}`);
+                                        let risposta = await fetch(`https://cripta-ecommerce.onrender.com/decripta?codiceCifrato=${account[i]}`);
                                         let numeroDecriptato = await risposta.text();
                                         accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
                                     }
@@ -107,7 +107,7 @@
                 let account = JSON.stringify(dato);
                 for (let i = 0; i < account.length; i++) {
                     let carattere = account.charAt(i);
-                    let risposta = await fetch(`https://cripta.glitch.me/cripta?valore=${carattere.charCodeAt(0)}`);
+                    let risposta = await fetch(`https://cripta-ecommerce.onrender.com/cripta?valore=${carattere.charCodeAt(0)}`);
                     let numeroCriptato = await risposta.text();
                     testoCriptato += numeroCriptato + "-";
                 }

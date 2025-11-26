@@ -98,7 +98,7 @@
                 let account = JSON.stringify(dato);
                 for (let i = 0; i < account.length; i++) {
                     let carattere = account.charAt(i);
-                    let risposta = await fetch(`https://cripta.glitch.me/cripta?valore=${carattere.charCodeAt(0)}`);
+                    let risposta = await fetch(`https://cripta-ecommerce.onrender.com/cripta?valore=${carattere.charCodeAt(0)}`);
                     let numeroCriptato = await risposta.text();
                     testoCriptato += numeroCriptato + "-";
                 }
