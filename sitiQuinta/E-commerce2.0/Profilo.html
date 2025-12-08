@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Vr Community - Profilo Utente</title>
+    <link rel="stylesheet" href="styleProfilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="Homepage.html" class="casella"><strong>Vr</strong></a></li>
+            <li><a href="Shop.html" class="casella">Shop</a></li>
+            <li><a href="Carrello.html" class="casella">Carrello</a></li>
+            <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+            <li><a href="#" class="casella">Altro</a>
+                <ul class="dropdown">
+                    <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                    <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+                </ul>
+            </li>
+            <li><a href="Profilo"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
+        </ul>
+    </nav>
+
+    <div class="profilo-container fade-in">
+        <img id="imgProfilo" src="immagini/utente.png" alt="Profilo" class="profilo-img">
+        <div class="username" id="username">@Username</div>
+
+        <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+        </center>
+
+        <div class="bottoni-profilo">
+            <button class="btn" onclick="vaiAPreferiti()">Preferiti</button>
+            <button class="btn" onclick="vaiACronologia()">Cronologia</button>
+            <button class="btn" onclick="logout()">Esci</button>
+            <button class="elimina" onclick="eliminaAccount()">Elimina Account</button>
+        </div>
+    </div>
+
+    <script>
+        const img = document.getElementById("imgProfilo");
+        const user = document.getElementById("username");
+        loader.style.display = "block";
+        (async function() {
+                try {
+                    let accountCriptato = localStorage.getItem("accountCriptato");
+                    let account = accountCriptato.split("-");
+                    let accountDecriptato = "";
+                    for (let i = 0; i < account.length; i++){
+                        let risposta = await fetch(`https://cripta-ecommerce.onrender.com/decripta?codiceCifrato=${account[i]}`);
+                        let numeroDecriptato = await risposta.text();
+                        accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                    }
+                    let oggettoAccount = JSON.parse(accountDecriptato);
+                    img.src = "immagini/" + oggettoAccount.Img;
+                    user.textContent = "@" + oggettoAccount.Username;
+                    loader.style.display = "none";
+                } catch {
+                    alert("errore nel caricamento delle risorse");
+                }
+        })();
+
+        function vaiAPreferiti() {
+            window.location.href = "Preferiti.html";
+        }
+
+        function vaiACronologia() {
+            window.location.href = "Cronologia.html";
+        }
+
+        function logout() {
+            alert("Logout effettuato");
+            window.location.href = "Login.html";
+        }
+
+        function eliminaAccount() {
+            if (confirm("Sei sicuro di voler eliminare l'account?")) {
+                localStorage.clear();
+                alert("Account eliminato");
+                window.location.href = "Login.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

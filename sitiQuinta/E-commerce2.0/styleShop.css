@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
+.kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translateX(10px);
+}
+nav li {
+    float: left;
+}
+nav li a {
+    color: rgb(175, 175, 175);
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-family: Roboto;
+    transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+    transform: scale(1.05);
+}
+nav li ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+}
+nav li:hover ul.dropdown {
+    display: block;
+}
+nav li ul.dropdown li {
+    float: none;
+}
+nav li ul.dropdown li a {
+    display: block;
+    color: black;
+}
+body {
+    background-color: white;
+    margin: 0;
+    font-family: Roboto;
+    color: black;
+    font-size: 18px;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.casella:hover {
+    background-color: rgb(210, 210, 210);
+}
+.profilo {
+    position: fixed;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.carrell {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.carrello {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+    transform: translate(10px,3px);
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+}
+.profilo:hover, .carrello:hover {
+    transform: scale(1.05);
+}
+.tabella {
+    width: 95%;
+    animation: fade-in 1.5s ease-in-out;
+}
+.img {
+    width: 70%;
+    height: 70%;
+    animation: fade-in 1.5s ease-in-out;
+}
+.barraRicerca {
+    width: 100%;
+    padding: 16px 20px;
+    cursor: pointer;
+    background-color: rgba(230, 227, 227, 0.74);
+    font-weight: bold;
+    border-radius: 40px;
+    border: 3px;
+    animation: fade-in 1.5s ease-in-out;
+}
+.cerca {
+    padding: 14px 20px;
+    cursor: pointer;
+    background-color: rgb(230, 227, 227);
+    font-weight: bold;
+    border-radius: 40px;
+    transition: 1s;
+    float: right;
+    animation: fade-in 1.5s ease-in-out;
+}
+.cerca:hover {
+    background-color: rgb(199, 199, 199);
+    transform: scale(1.1);
+}
+.tabellaCerca {
+    width: 90%;
+    animation: fade-in 1.5s ease-in-out;
+}
+.imgCerca {
+    width: 400px;
+    animation: fade-in 1.5s ease-in-out;
+}
+td{
+    width: 30%;
+    height: 40%;
+}
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="styleLogin.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
+    </head>
+    <body>
+        <center>
+            <br><br><br><center><h1>Join the virtual reality community</h1></center><br><br>
+            <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
+            <center>
+                <table width="75%" cellspacing="20px">
+                    <tr>
+                        <td>
+                            <center>
+                            <input type="text" id="email" name="email" placeholder="Email"><br><br>
+                            <input type="password" id="password" name="password" placeholder="Password"><br><br>
+                            <button type="button" id="LoginButton" onclick="login()" class="continua" disabled><b>Continua</b></button>
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                            <button type="button" onclick="nonDisponibile()" class="pulsante"><img src="immagini/google.png" alt="google" class="icona"><b>Continua con Gooogle</b></button><br><br>
+                            <button type="button" onclick="nonDisponibile()" class="pulsante"><img src="immagini/apple.png" alt="apple" class="icona"><b>Continua con Apple</b></button><br><br>
+                            <button type="button" onclick="registrazione()" class="pulsante"><img src="immagini/plus.png" alt="plus" class="icona"><b>Non hai un account?</b></button>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </center>
+        <script>
+            const bottone = document.getElementById("LoginButton");
+            const loader = document.getElementById("loader");
+            let datiAccount = [];
+            let nomeFile = "datiAccounts.txt";
+            if (localStorage.getItem('imgProfilo') == null){
+                localStorage.setItem('imgProfilo', "utente.png");
+            }
+            fetch(nomeFile)
+            .then(response => response.text())
+            .then(risultato => {
+                let contatore = risultato.split("{").length - 1;
+                for (let i = 0; i < contatore; i++) {
+                    risultato = risultato.slice(2, risultato.length);
+                    let indiceFineOggetto = risultato.indexOf("}");
+                    let stringaOggetto = risultato.slice(0, indiceFineOggetto);
+                    risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
+                    let vett = [];
+                    for (let j = 0; j < 8; j++) {
+                        let inizioAtt = stringaOggetto.indexOf('"');
+                        stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
+                        let fineAtt = stringaOggetto.indexOf('"');
+                        let attributo = stringaOggetto.slice(0, fineAtt);
+                        vett.push(attributo);
+                        stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
+                    }
+                    let username = vett[0];
+                    let nome = vett[1];
+                    let cognome = vett[2];
+                    let dataNascita = vett[3];
+                    let residenza = vett[4];
+                    let email = vett[5];
+                    let password = vett[6];
+                    let img = vett [7];
+                    let account = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:dataNascita,Residenza:residenza,Email:email,Password:password,Img:img};
+                    datiAccount.push(account);
+                }
+                if (localStorage.getItem("accountCriptato") != null){
+                    (async function() {
+                        loader.style.display = "block";
+                            try {
+                                let accountCriptato = localStorage.getItem("accountCriptato");
+                                if (accountCriptato != null) {
+                                    let account = accountCriptato.split("-");
+                                    let accountDecriptato = "";
+                                    for (let i = 0; i < account.length; i++){
+                                        let risposta = await fetch(`https://cripta-ecommerce.onrender.com/decripta?codiceCifrato=${account[i]}`);
+                                        let numeroDecriptato = await risposta.text();
+                                        accountDecriptato += String.fromCharCode(Number(numeroDecriptato));
+                                    }
+                                    let oggettoAccount = JSON.parse(accountDecriptato);
+                                    datiAccount.push(oggettoAccount);
+                                }
+                            } catch {
+                                alert("errore nel caricamento delle risorse");
+                            }
+                    })();
+                }
+                document.getElementById("LoginButton").disabled = false;
+                loader.style.display = "none";
+            })
+            .catch(error => console.error('Errore nel caricamento del file:', error));
+
+            async function cripta(dato) {
+                let testoCriptato = "";
+                let account = JSON.stringify(dato);
+                for (let i = 0; i < account.length; i++) {
+                    let carattere = account.charAt(i);
+                    let risposta = await fetch(`https://cripta-ecommerce.onrender.com/cripta?valore=${carattere.charCodeAt(0)}`);
+                    let numeroCriptato = await risposta.text();
+                    testoCriptato += numeroCriptato + "-";
+                }
+                testoCriptato = testoCriptato.slice(0, -1);
+                return testoCriptato;
+            }
+
+            async function login() {
+                bottone.disabled = true;
+                loader.style.display = "block";
+                let username = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                try {
+                    for (let i = 0; i < datiAccount.length; i++) {
+                        if (datiAccount[i].Username === username) {
+                            controllo = true;
+                            if (datiAccount[i].Password === password) {
+                                let account = await cripta(datiAccount[i]);
+                                localStorage.setItem("accountCriptato", account);
+                                datiAccount = null;
+                                return window.location.href = "Homepage.html";
+                            } else {
+                                alert("Password errata, riprova");
+                                return;
+                            }
+                        }
+                    }
+                    alert("Account non registrato");
+                } catch (e) {
+                    console.error(e);
+                    alert("Si è verificato un errore durante il login");
+                } finally {
+                    loader.style.display = "none";
+                    bottone.disabled = false;
+                }
+            }
+
+            function registrazione(){
+                window.location.href = "Registration.html";
+            }
+
+            function nonDisponibile(){
+                alert("Questa funzione non è attualmente disponibile");
+            }
+        </script>
+    </body>
+</html>

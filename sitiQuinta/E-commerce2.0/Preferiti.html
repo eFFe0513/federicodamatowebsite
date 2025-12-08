@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Vr Community - Preferiti</title>
+    <link rel="stylesheet" href="styleCronoPrefe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="Homepage.html" class="casella"><strong>Vr</strong></a></li>
+            <li><a href="Shop.html" class="casella">Shop</a></li>
+            <li><a href="Carrello.html" class="casella">Carrello</a></li>
+            <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+            <li><a href="#" class="casella">Altro</a>
+                <ul class="dropdown">
+                    <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                    <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+                </ul>
+            </li>
+            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" class="profilo"></a></li>
+        </ul>
+    </nav>
+
+    <div class="contenitore-preferiti" id="contenitorePreferiti">
+        <h1>I tuoi Preferiti</h1>
+        <div id="listaPreferiti"></div>
+        <button class="btn btn-elimina" onclick="svuotaPreferiti()">Elimina tutti i preferiti</button>
+    </div>
+
+    <script>
+        const listaPreferiti = document.getElementById("listaPreferiti");
+        const preferiti = JSON.parse(localStorage.getItem("preferiti")) || [];
+
+        if (preferiti.length === 0) {
+            listaPreferiti.innerHTML = "<p>Nessun prodotto aggiunto ai preferiti</p>";
+        } else {
+            preferiti.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "preferito";
+                div.innerHTML = `
+                    <p><strong>Preferito #${index + 1}</strong></p>
+                    <p><strong>Marca:</strong> ${item.Marca}</p>
+                    <p><strong>Modello:</strong> ${item.Modello}</p>
+                `;
+                listaPreferiti.appendChild(div);
+            });
+        }
+
+        function svuotaPreferiti() {
+            if (confirm("Sei sicuro di voler eliminare tutti i preferiti?")) {
+                localStorage.removeItem("preferiti");
+                location.reload();
+            }
+        }
+
+        const img = document.getElementById('profilo');
+        img.src = "immagini/" + localStorage.getItem("imgProfilo");
+    </script>
+</body>
+</html>

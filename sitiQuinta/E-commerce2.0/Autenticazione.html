@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autenticazione</title>
+        <link rel="stylesheet" href="styleAutenticazione.css">
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
+    </head>
+    <body>
+        <center>
+            <br><center><h1>Join the virtual reality community</h1></center>
+            <center><h5 class="h5Titolo">Autenticazione a due fattori</h5></center>
+            <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
+            <center>
+                <table width="75%" cellspacing="20px">
+                    <tr>
+                        <td>
+                            <center>
+                            <h5>Inserisci il codice ricevuto tramite email</h5>
+                            <input type="text" id="codice" name="codice" placeholder="Codice di verifica"><br><br>
+                            <button type="button" onclick="convalida()" class="continua" id="continua"><b>Continua</b></button><br><br>
+                            <button type="button" onclick="sendEmail()" class="continua"><b>Invia il codice</b></button>
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                                <div class="slider">
+                                    <div class="slides" id="slideContainer">
+                                        <img src="immagini/img1.jpg" alt="Immagine 1">
+                                        <img src="immagini/img2.jpg" alt="Immagine 2">
+                                        <img src="immagini/img3.jpg" alt="Immagine 3">
+                                    </div>
+                                    <div class="controls">
+                                        <button onclick="prevSlide()">&#10094;</button>
+                                        <button onclick="nextSlide()">&#10095;</button>
+                                    </div>
+                                </div>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </center>
+        <script>
+            // scorrimento immagini
+            let index = 0;
+            const slides = document.getElementById("slideContainer");
+            const totalSlides = slides.children.length;
+            function showSlide(i) {
+                index = (i + totalSlides) % totalSlides;
+                slides.style.transform = `translateX(${-index * 407}px)`;
+            }
+            function nextSlide() {
+                showSlide(index + 1);
+            }
+            function prevSlide() {
+                showSlide(index - 1);
+            }
+            setInterval(nextSlide, 3500);
+
+
+            function genera8CifreStringa() {
+                const randomNumber = Math.floor(Math.random() * 100_000_000);
+                return String(randomNumber).padStart(8, '0');
+            }
+            let random = genera8CifreStringa();
+            let account = JSON.parse(localStorage.getItem("accountRegistrato"));
+            emailjs.init('XV-YfCAv3YROJz2gW');
+            
+            function sendEmail() {
+                const templateParams = {
+                email: account.Email,
+                passcode: random
+                };
+
+                console.log('Invio EmailJS con params:', templateParams);
+
+                emailjs.send('service_s6fu4yg', 'template_2fwrke3', templateParams)
+                .then(() => alert("Email inviata!"))
+                .catch(err => {
+                    console.error(err);
+                    alert("Invio fallito");
+                });
+            }
+
+            async function cripta(dato) {
+                let testoCriptato = "";
+                let account = JSON.stringify(dato);
+                for (let i = 0; i < account.length; i++) {
+                    let carattere = account.charAt(i);
+                    let risposta = await fetch(`https://cripta-ecommerce.onrender.com/cripta?valore=${carattere.charCodeAt(0)}`);
+                    let numeroCriptato = await risposta.text();
+                    testoCriptato += numeroCriptato + "-";
+                }
+                testoCriptato = testoCriptato.slice(0, -1);
+                return testoCriptato;
+            }
+
+            // verifica codice
+            async function convalida(){
+                if (document.getElementById("codice").value == random){
+                    const bottone = document.getElementById("continua");
+                    const loader = document.getElementById("loader");
+                    bottone.disabled = true;
+                    loader.style.display = "block";
+                    let accountStringa = await cripta(account);
+                    localStorage.setItem("accountRegistrato", null);
+                    localStorage.setItem("accountCriptato", accountStringa);
+                    window.location.href = "Homepage.html"
+                } else {
+                    alert("Codice errato");
+                }
+            }
+        </script>
+    </body>
+</html>

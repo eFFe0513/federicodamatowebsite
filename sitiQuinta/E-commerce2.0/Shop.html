@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vr Community - Shop</title>
+        <link rel="stylesheet" href="styleShop.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+        <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+    </head>
+    <body>
+        <nav>
+			<ul>
+				<li><a href="Homepage.html" class="casella"><strong>Vr</strong></a> </li>
+				<li><a href="Shop.html" class="casella" style="color: black;">Shop</a></li>
+                <li><a href="Carrello.html" class="casella">Carrello</a></li>
+                <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+				<li><a href="#" class="casella">Altro</a>
+                    <ul class="dropdown">
+                        <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                        <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+                    </ul>
+                </li>
+                <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
+			</ul>
+		</nav>
+        <br><br><br><br>
+        <center>
+            <table class="tabellaCerca">
+                <tr>
+                    <td>
+                        <center><input type="text" id="barraRicerca" class="barraRicerca" placeholder="🔎Vuoi trovare qualcosa? Scrivi qui"></center>
+                    </td>
+                    <td>
+                        <button class="cerca" onclick="cerca()"><b>Cerca</b></button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <center>
+            <table id="tabella" class="tabella">
+			    <tbody>
+                </tbody>
+		    </table>
+        </center>
+        <script>
+            let datiDevice = JSON.parse(localStorage.getItem("datiDevice"));
+            for (let i = 0; i < datiDevice.length; i = i + 3){
+                let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                let newRow = table.insertRow();
+                let cell1 = newRow.insertCell(0);
+                let cell2 = newRow.insertCell(1);
+                let cell3 = newRow.insertCell(2);
+                cell1.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i])})'><img src="immagini/${datiDevice[i].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i].Marca} ${datiDevice[i].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell2.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+1])})'><img src="immagini/${datiDevice[i+1].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell3.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+2])})'><img src="immagini/${datiDevice[i+2].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+            }
+
+            function aggiungiAlCarrello(device) {
+                let carrello = JSON.parse(localStorage.getItem("carrello")) || [];
+                carrello.push(device);
+                localStorage.setItem("carrello", JSON.stringify(carrello));
+            }
+
+            function caricaDevice(device){
+                localStorage.setItem("device", JSON.stringify(device));
+                let cronologia = JSON.parse(localStorage.getItem("cronologia")) || [];
+                cronologia.push(device);
+                localStorage.setItem("cronologia", JSON.stringify(cronologia));
+            }
+
+
+            function cerca(){
+                document.getElementById('tabella').getElementsByTagName('tbody')[0].innerHTML = '';
+                const cerca = document.getElementById("barraRicerca").value;
+                console.log(cerca);
+                if (cerca == ""){
+                    let datiDevice = JSON.parse(localStorage.getItem("datiDevice"));
+                    for (let i = 0; i < datiDevice.length; i = i + 3){
+                        let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                        let newRow = table.insertRow();
+                        let cell1 = newRow.insertCell(0);
+                        let cell2 = newRow.insertCell(1);
+                        let cell3 = newRow.insertCell(2);
+                        cell1.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i])})'><img src="immagini/${datiDevice[i].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i].Marca} ${datiDevice[i].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell2.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+1])})'><img src="immagini/${datiDevice[i+1].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i+1].Marca} ${datiDevice[i+1].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+1])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                        cell3.innerHTML = `
+                            <center>
+                            <div>
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(datiDevice[i+2])})'><img src="immagini/${datiDevice[i+2].Img}" class="img"></a>
+                                <div>
+                                    ${datiDevice[i+2].Marca} ${datiDevice[i+2].Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(datiDevice[i+2])})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                    }
+                } else {
+                    const fuse = new Fuse(datiDevice, {
+                        keys: ['Marca', 'Modello','AnnoUscita','Memoria','Ram','Processore','Display','Risoluzione','Lenti','Tipo','Prezzo']
+                    });
+                    let filtrati = fuse.search(cerca);
+                    console.log(filtrati);
+                    for (let i = 0; i < filtrati.length; i++){
+                        let table = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+                        let newRow = table.insertRow();
+                        let cell1 = newRow.insertCell(0);
+                        cell1.innerHTML = `
+                            <center>
+                            <div widht="65%">
+                                <a href="SchermataProdotto.html" onclick='caricaDevice(${JSON.stringify(filtrati[i].item)})'><img src="immagini/${filtrati[i].item.Img}" class="imgCerca"></a>
+                                <div>
+                                    ${filtrati[i].item.Marca} ${filtrati[i].item.Modello}
+                                    <button onclick='aggiungiAlCarrello(${JSON.stringify(filtrati[i].item)})' class="carrell">
+                                        <img src="immagini/carrello.png" class="carrello">
+                                    </button>
+                                </div>
+                            </div>
+                            </center>
+                        `;
+                    }
+                }
+            }
+            const img = document.getElementById('profilo');
+            img.src = "immagini/" + localStorage.getItem("imgProfilo");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Vr Community - Scopri di Più</title>
+    <link rel="stylesheet" href="styleScopri.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="Homepage.html" class="casella"><strong>Vr</strong></a></li>
+            <li><a href="Shop.html" class="casella">Shop</a></li>
+            <li><a href="Carrello.html" class="casella">Carrello</a></li>
+            <li><a href="Scopri.html" class="casella" style="color: black;">Scopri di più</a></li>
+            <li><a href="#" class="casella">Altro</a>
+                <ul class="dropdown">
+                    <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                    <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+                </ul>
+            </li>
+            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" class="profilo"></a></li>
+        </ul>
+    </nav>
+    <main class="contenuto">
+        <img src="immagini/scopri1.png" alt="scopri1" class="scopri1">
+        <img src="immagini/scopri2.png" alt="scopri2" class="scopri2">
+        <section class="titolo">
+            <h1 class="fade-in">Cos'è Vr Community Web?</h1>
+        </section>
+        <section class="testo fade-in-delay">
+            <p>
+                "Vr Community Web" è una piattaforma web interattiva e innovativa dedicata agli
+                appassionati e agli operatori della realtà virtuale. La piattaforma consente agli utenti di
+                esplorare e confrontare vari dispositivi VR grazie a interfacce intuitive, offrendo dettagli
+                tecnici e descrizioni approfondite senza compromettere la facilità d'uso.
+            </p>
+            <p>
+                Gli utenti possono accedere in modo sicuro tramite credenziali tradizionali o account esterni come Google e
+                Apple, e il sistema di verifica a due fattori garantisce un ulteriore livello di sicurezza.
+            </p>
+            <p>
+                Inoltre, "Vr Community Web" integra funzionalità di e-commerce che permettono di gestire il carrello,
+                procedere al checkout e completare transazioni in maniera affidabile, assicurando una gestione fluida e
+                sicura degli acquisti.
+            </p>
+            <p>
+                La piattaforma offre anche la possibilità di personalizzare il profilo utente, mantenere una cronologia delle
+                ricerche, seguire brand e rivenditori, e ricevere notifiche in tempo reale su aggiornamenti e offerte nel settore
+                della realtà virtuale.
+            </p>
+            <p>
+                In sintesi, "Vr Community Web" rappresenta un ecosistema digitale completo, pensato per connettere gli utenti
+                alle ultime novità del mondo VR, con un'attenzione particolare alla sicurezza, all'usabilità e all'esperienza utente
+                su ogni dispositivo.
+            </p>
+        </section>
+    </main>
+    <script>
+        const img = document.getElementById('profilo');
+        img.src = "immagini/" + localStorage.getItem("imgProfilo");
+    </script>
+</body>
+</html>

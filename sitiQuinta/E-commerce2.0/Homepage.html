@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vr Community</title>
+        <link rel="stylesheet" href="styleHomepage.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+    </head>
+    <body>
+        <nav>
+			<ul>
+				<li><a href="Homepage.html" class="casella" style="color: black;"><strong>Vr</strong></a> </li>
+				<li><a href="Shop.html" class="casella">Shop</a></li>
+                <li><a href="Carrello.html" class="casella">Carrello</a></li>
+                <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+				<li><a href="#" class="casella">Altro</a>
+                    <ul class="dropdown">
+                        <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                        <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+                    </ul>
+                </li>
+                <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
+			</ul>
+		</nav>
+        <br><br><br><br>
+        <center><img src="immagini/startImg.jpg" class="startImg"></center>
+        <center>
+            <table>
+                <tr>
+                    <td colspan="4">
+                        <a href="#"><img src="immagini/freccia.png" alt="freccia" class="freccia"></a><b class="titolo">Vr brands</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/meta.png" alt="meta" class="logo2"></center>
+                        <br>
+                        <center class="titolo">Meta</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/pico.png" alt="pico" class="logo2"></center>
+                        <br>
+                        <center class="titolo">Pico</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/psVr.png" alt="psVr" class="logo2"></center>
+                        <br>
+                        <center class="titolo">Playstation Vr</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/apple.png" alt="apple" class="logo2"></center>
+                        <br>
+                        <center class="titolo">Apple</center>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <a href="Shop.html"><img src="immagini/freccia.png" alt="freccia" class="freccia"></a><b class="titolo">Ricondizionati</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/metaQ2.jpg" alt="meta" class="logo"></center>
+                        <br>
+                        <center class="titolo">Meta Quest 2</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/pico4.png" alt="pico" class="logo"></center>
+                        <br>
+                        <center class="titolo">Pico 4</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/metaQ3.png" alt="meta" class="logo"></center>
+                        <br>
+                        <center class="titolo">Meta Quest 3</center>
+                    </td>
+                    <td>
+                        <br><br>
+                        <center><img src="immagini/pimaxC.png" alt="pimax" class="logo"></center>
+                        <br>
+                        <center class="titolo">Pimax Crystal Light</center>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <script>
+                //let carrello = [];
+                //let preferiti = [];
+                //let cronologia = [];
+                //localStorage.setItem("carrello", JSON.stringify(carrello));
+                //localStorage.setItem("preferiti", JSON.stringify(preferiti));
+                //localStorage.setItem("cronologia", JSON.stringify(cronologia));
+                let datiDevice = [];
+                let nomeFile = "datiDevices.txt";
+                fetch(nomeFile)
+                .then(response => response.text())
+                .then(risultato => {
+                    let contatore = risultato.split("{").length - 1;
+                    for (let i = 0; i < contatore; i++) {
+                        risultato = risultato.slice(2, risultato.length);
+                        let indiceFineOggetto = risultato.indexOf("}");
+                        let stringaOggetto = risultato.slice(0, indiceFineOggetto);
+                        risultato = risultato.slice(indiceFineOggetto + 1, risultato.length);
+                        let vett = [];
+                        for (let j = 0; j < 12; j++) {
+                            let inizioAtt = stringaOggetto.indexOf('"');
+                            stringaOggetto = stringaOggetto.slice(inizioAtt + 1, stringaOggetto.length);
+                            let fineAtt = stringaOggetto.indexOf('"');
+                            let attributo = stringaOggetto.slice(0, fineAtt);
+                            vett.push(attributo);
+                            stringaOggetto = stringaOggetto.slice(fineAtt + 1, stringaOggetto.length);
+                        }
+                        let marca = vett[0];
+                        let modello = vett[1];
+                        let annoUscita = vett[2];
+                        let memoria = vett[3];
+                        let ram = vett[4];
+                        let processore = vett[5];
+                        let display = vett[6];
+                        let risoluzione = vett[7];
+                        let lenti = vett[8];
+                        let tipo = vett[9];
+                        let img = vett [10];
+                        let prezzo = vett[11];
+                        let device = {Marca:marca,Modello:modello,AnnoUscita:annoUscita,Memoria:memoria,Ram:ram,Processore:processore,Display:display,Risoluzione:risoluzione,Lenti:lenti,Tipo:tipo,Img:img,Prezzo:prezzo};
+                        datiDevice.push(device);
+                    }
+                    localStorage.setItem("datiDevice", JSON.stringify(datiDevice));
+                })
+                .catch(error => console.error('Errore nel caricamento del file:', error));
+                const img = document.getElementById('profilo');
+                img.src = "immagini/" + localStorage.getItem("imgProfilo");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Vr Community - Carrello</title>
+    <link rel="stylesheet" href="styleCarrello.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/VrIcon.png" type="image/x-icon">
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="Homepage.html" class="casella"><strong>Vr</strong></a></li>
+        <li><a href="Shop.html" class="casella">Shop</a></li>
+        <li><a href="Carrello.html" class="casella">Carrello</a></li>
+        <li><a href="Scopri.html" class="casella">Scopri di più</a></li>
+        <li><a href="#" class="casella">Altro</a>
+            <ul class="dropdown">
+                <li><a href="Preferiti.html" class="casella">Preferiti</a></li>
+                <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
+            </ul>
+        </li>
+        <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" class="profilo"></a></li>
+    </ul>
+</nav>
+
+<div class="contenitore-carrello">
+    <h1>Il tuo Carrello</h1>
+    <div id="elencoCarrello"></div>
+    <div class="totale">Totale: €<span id="totaleCarrello">0</span></div>
+    <div class="bottoni-carrello">
+        <button class="btn-carrello" onclick="acquista()">🛒 Acquista</button>
+        <button class="btn-carrello" onclick="scaricaRicevuta()">🧾 Scarica ricevuta</button>
+    </div>
+</div>
+
+<script>
+    const elenco = document.getElementById("elencoCarrello");
+    const totaleHTML = document.getElementById("totaleCarrello");
+    const carrello = JSON.parse(localStorage.getItem("carrello")) || [];
+
+    let totale = 0;
+
+    if (carrello.length === 0) {
+        elenco.innerHTML = "<p>Il tuo carrello è vuoto</p>";
+    } else {
+        carrello.forEach((item, index) => {
+            let prezzo = item.Prezzo ? parseFloat(item.Prezzo) : 299.99;
+            totale += prezzo;
+            const div = document.createElement("div");
+            div.className = "item-carrello";
+            div.innerHTML = `
+                <img src="immagini/${item.Img}" alt="${item.Modello}">
+                <div class="item-info">
+                    <p><strong>Prodotto #${index + 1}</strong></p>
+                    <p><strong>Marca:</strong> ${item.Marca}</p>
+                    <p><strong>Modello:</strong> ${item.Modello}</p>
+                    <p><strong>Prezzo:</strong> €${prezzo.toFixed(2)}</p>
+                </div>
+            `;
+            elenco.appendChild(div);
+        });
+
+        totaleHTML.textContent = totale.toFixed(2);
+    }
+
+    function acquista() {
+        alert("Acquisto completato! Grazie per aver scelto Vr Community");
+        localStorage.removeItem("carrello");
+        location.reload();
+    }
+
+    function scaricaRicevuta() {
+        let contenuto = "📦 RICEVUTA - Vr Community Shop Service\n\n";
+        carrello.forEach((item, index) => {
+            let prezzo = item.Prezzo ? parseFloat(item.Prezzo) : 299.99;
+            contenuto += `Prodotto #${index + 1}\nMarca: ${item.Marca}\nModello: ${item.Modello}\nPrezzo: €${prezzo.toFixed(2)}\n\n`;
+        });
+        contenuto += `TOTALE: €${totale.toFixed(2)}\n\nFirmato: Vr Community Shop Service`;
+
+        const blob = new Blob([contenuto], { type: "text/plain;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "ricevuta_VR_Community.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    const img = document.getElementById('profilo');
+    img.src = "immagini/" + localStorage.getItem("imgProfilo");
+</script>
+</body>
+</html>

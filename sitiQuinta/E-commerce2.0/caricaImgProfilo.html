@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleziona Immagine Profilo</title>
+    <link rel="stylesheet" href="styleRegistration.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+        }
+        .gallery img {
+            width: 40%;
+            height: auto;
+            border: 4px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .selected {
+            border-color: #000;
+        }
+        #btnContinua {
+            font-family: Kanit;
+            color: black;
+            padding: 14px 20px;
+            cursor: pointer;
+            background-color: rgb(218, 217, 217);
+            font-weight: bold;
+            border-radius: 40px;
+            border: none;
+            transition: 1s;
+        }
+        #btnContinua:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        #btnContinua:hover:not(:disabled) {
+            background-color: rgb(199, 199, 199);
+            transform: scale(1.1);
+        }
+    </style>
+    </head>
+    <body>
+    <center>
+        <h1>Join the virtual reality community</h1>
+        <h5>Seleziona un'immagine profilo</h5>
+        <div class="gallery">
+            <center><img src="immagini/avatar1.png" alt="Avatar 1" data-name="avatar1.png"></center>
+            <center><img src="immagini/avatar2.png" alt="Avatar 2" data-name="avatar2.png"></center>
+            <center><img src="immagini/avatar3.png" alt="Avatar 3" data-name="avatar3.png"></center>
+            <center><img src="immagini/avatar4.png" alt="Avatar 4" data-name="avatar4.png"></center>
+            <center><img src="immagini/avatar5.png" alt="Avatar 5" data-name="avatar5.png"></center>
+            <center><img src="immagini/avatar6.png" alt="Avatar 6" data-name="avatar6.png"></center>
+        </div>
+        <button id="btnContinua" disabled>Continua registrazione</button>
+    </center>
+    <script>
+        const immagini = document.querySelectorAll('.gallery img');
+        const btn = document.getElementById('btnContinua');
+        let selezionata = null;
+        immagini.forEach(img => {
+        img.addEventListener('click', () => {
+            immagini.forEach(i => i.classList.remove('selected'));
+            img.classList.add('selected');
+            selezionata = img.getAttribute('data-name');
+            btn.disabled = false;
+        });
+        });
+        btn.addEventListener('click', () => {
+        if (selezionata) {
+            localStorage.setItem('imgProfilo', selezionata);
+            history.back();
+        }
+        });
+    </script>
+</body>
+</html>

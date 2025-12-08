@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up</title>
+        <link rel="stylesheet" href="styleRegistration.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;1,100;1,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="immagini/loginLogo.png" type="image/x-icon">
+    </head>
+    <body>
+        <center>
+            <br><center><h1>Join the virtual reality community</h1></center>
+            <center><h5>Sign Up</h5></center>
+            <center>
+                <div id="loader">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </center>
+            <center>
+                <table width="75%" cellspacing="20px">
+                    <tr>
+                        <td>
+                            <center>
+                            <input type="text" id="username" name="username" placeholder="Username"><br><br>
+                            <input type="text" id="nome" name="nome" placeholder="Nome"><br><br>
+                            <input type="text" id="cognome" name="cognome" placeholder="Cognome"><br><br>
+                            <input type="date" id="data" name="data" placeholder="Data di nascita"><br><br>
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                                <input type="text" id="citta" name="citta" placeholder="Luogo di residenza"><br><br>
+                                <input type="email" id="email" name="email" placeholder="Email"><br><br>
+                                <input type="password" id="password" name="password" placeholder="Password"><br><br>
+                                <input type="password" id="passwordComferma" name="passwordComferma" placeholder="Comferma password"><br><br>
+                            </center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <center><button type="button" id="CreaButton" onclick="crea()" class="continua"><b>Continua</b></button></center>
+                        </td>
+                        <td>
+                            <center>
+                                <a href="caricaImgProfilo.html">
+                                    <label class="pulsanteSovrapposto">
+                                        Seleziona immagine profilo
+                                    </label>
+                                </a>
+                            </center>
+                        </td>
+                    </tr>
+                </table><br>
+                <a href="TerminiCondizioni.html" style="color: black; font-weight: bold; font-family: Kanit;">Cliccando su registrati, stai accettando i Termini di Servizio, la Cookie Policy e la Privacy Policy</a>
+            </center>
+        </center>
+        <script>
+            function crea() {
+                let username = document.getElementById("username").value.trim();
+                let nome = document.getElementById("nome").value.trim();
+                let cognome = document.getElementById("cognome").value.trim();
+                let data = document.getElementById("data").value;
+                let citta = document.getElementById("citta").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let password = document.getElementById("password").value;
+                let conferma = document.getElementById("passwordComferma").value;
+                let img = localStorage.getItem("imgProfilo");
+                if (!username || !nome || !cognome || !data || !citta || !email || !password || password !== conferma) {
+                    return alert("Compila correttamente tutti i campi");
+                }
+                let nuovoAccount = {Username:username,Nome:nome,Cognome:cognome,DataDiNascita:data,Residenza:citta,Email:email,Password:password,Img:img};
+                localStorage.setItem("accountRegistrato", JSON.stringify(nuovoAccount));
+                window.location.href = "Autenticazione.html";
+            }
+        </script>
+    </body>
+</html>

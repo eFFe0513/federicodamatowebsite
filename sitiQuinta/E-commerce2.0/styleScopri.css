@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
+.kanit-extrabold {
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translateX(10px);
+}
+nav li {
+    float: left;
+}
+nav li a {
+    color: rgb(175, 175, 175);
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-family: Roboto;
+    transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+    transform: scale(1.05);
+}
+nav li ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+}
+nav li:hover ul.dropdown {
+    display: block;
+}
+nav li ul.dropdown li {
+    float: none;
+}
+nav li ul.dropdown li a {
+    display: block;
+    color: black;
+}
+body {
+    background-color: rgb(250, 250, 250);
+    margin: 0;
+    font-family: Roboto;
+    color: black;
+    font-size: 18px;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.casella:hover {
+    background-color: rgb(210, 210, 210);
+}
+.profilo {
+    position: fixed;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.contenuto {
+    padding: 60px 15% 40px;
+    line-height: 1.8;
+    animation: fade-in 1s ease-in-out;
+}
+.titolo h1 {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: slide-up 0.8s ease-in-out;
+}
+.testo p {
+    margin-bottom: 20px;
+    animation: fade-in 1.5s ease-in-out;
+}
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slide-up {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.scopri1, .scopri2 {
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+}
+.scopri1 {
+    left: -200px;
+    width: 150px;
+    height: auto;
+    animation-delay: 0.5s;
+    animation: slide-in-left 2s ease-out forwards;
+}
+.scopri2 {
+    right: -200px;
+    top: 30%;
+    width: 200px;
+    height: auto;
+    animation-delay: 1s;
+    animation: slide-in-right 2s ease-out forwards;
+}
+@keyframes slide-in-left {
+    to {
+        opacity: 1;
+        transform: translateX(200px);
+    }
+}
+@keyframes slide-in-right {
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
