@@ -25,73 +25,93 @@
 			</ul>
 		</nav>
         <br><br><br><br>
-        <center><img src="immagini/startImg.jpg" class="startImg"></center>
-        <center>
-            <table>
-                <tr>
-                    <td colspan="4">
-                        <a href="Vrbrands.html"><img src="immagini/freccia.png" alt="freccia" class="freccia"></a><b class="titolo">Vr brands</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/meta.png" alt="meta" class="logo2"></center>
-                        <br>
-                        <center class="titolo">Meta</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/pico.png" alt="pico" class="logo2"></center>
-                        <br>
-                        <center class="titolo">Pico</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/psVr.png" alt="psVr" class="logo2"></center>
-                        <br>
-                        <center class="titolo">Playstation Vr</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/apple.png" alt="apple" class="logo2"></center>
-                        <br>
-                        <center class="titolo">Apple</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <a href="Shop.html"><img src="immagini/freccia.png" alt="freccia" class="freccia"></a><b class="titolo">Ricondizionati</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/metaQ2.jpg" alt="meta" class="logo"></center>
-                        <br>
-                        <center class="titolo">Meta Quest 2</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/pico4.png" alt="pico" class="logo"></center>
-                        <br>
-                        <center class="titolo">Pico 4</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/metaQ3.png" alt="meta" class="logo"></center>
-                        <br>
-                        <center class="titolo">Meta Quest 3</center>
-                    </td>
-                    <td>
-                        <br><br>
-                        <center><img src="immagini/pimaxC.png" alt="pimax" class="logo"></center>
-                        <br>
-                        <center class="titolo">Pimax Crystal Light</center>
-                    </td>
-                </tr>
-            </table>
-        </center>
+        
+        <div class="container">
+            <!-- Immagine principale -->
+            <div class="main-image-container">
+                <img src="immagini/startImg.jpg" class="startImg" alt="VR Community">
+            </div>
+
+            <!-- Sezione VR Brands -->
+            <section class="section">
+                <div class="section-header">
+                    <a href="Vrbrands.html" class="section-link">
+                        <img src="immagini/freccia.png" alt="freccia" class="freccia">
+                        <h2 class="section-title">Vr brands</h2>
+                    </a>
+                </div>
+                
+                <div class="brands-grid">
+                    <div class="brand-card">
+                        <div class="brand-image-container">
+                            <img src="immagini/meta.png" alt="Meta" class="brand-logo">
+                        </div>
+                        <h3 class="brand-name">Meta</h3>
+                    </div>
+                    
+                    <div class="brand-card">
+                        <div class="brand-image-container">
+                            <img src="immagini/pico.png" alt="Pico" class="brand-logo">
+                        </div>
+                        <h3 class="brand-name">Pico</h3>
+                    </div>
+                    
+                    <div class="brand-card">
+                        <div class="brand-image-container">
+                            <img src="immagini/psVr.png" alt="Playstation VR" class="brand-logo">
+                        </div>
+                        <h3 class="brand-name">Playstation Vr</h3>
+                    </div>
+                    
+                    <div class="brand-card">
+                        <div class="brand-image-container">
+                            <img src="immagini/apple.png" alt="Apple" class="brand-logo">
+                        </div>
+                        <h3 class="brand-name">Apple</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Ricondizionati -->
+            <section class="section">
+                <div class="section-header">
+                    <a href="Shop.html" class="section-link">
+                        <img src="immagini/freccia.png" alt="freccia" class="freccia">
+                        <h2 class="section-title">Ricondizionati</h2>
+                    </a>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="immagini/metaQ2.jpg" alt="Meta Quest 2" class="product-image">
+                        </div>
+                        <h3 class="product-name">Meta Quest 2</h3>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="immagini/pico4.png" alt="Pico 4" class="product-image">
+                        </div>
+                        <h3 class="product-name">Pico 4</h3>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="immagini/metaQ3.png" alt="Meta Quest 3" class="product-image">
+                        </div>
+                        <h3 class="product-name">Meta Quest 3</h3>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="immagini/pimaxC.png" alt="Pimax Crystal Light" class="product-image">
+                        </div>
+                        <h3 class="product-name">Pimax Crystal Light</h3>
+                    </div>
+                </div>
+            </section>
+        </div>
         <script>
                 //let carrello = [];
                 //let preferiti = [];
