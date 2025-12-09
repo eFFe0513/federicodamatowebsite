@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
     padding: 0 20px;
 }
 
-/* Navbar */
+/* NAVBAR ORIGINALE */
 nav {
     position: fixed;
     top: 0;
@@ -38,59 +38,36 @@ nav {
     width: 100%;
     background-color: white;
     height: 60px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0 20px;
-    margin: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    padding: 0;
+    transform: translateX(10px);
 }
 
 nav li {
-    position: relative;
+    float: left;
 }
 
 nav li a {
     color: rgb(175, 175, 175);
     text-align: center;
-    padding: 8px 16px;
+    padding: 16px 16px;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto;
     transition: all 0.3s ease-in-out;
-    display: block;
-    border-radius: 8px;
-    font-weight: 500;
 }
 
 nav li a:hover {
-    background-color: rgb(240, 240, 240);
     transform: scale(1.05);
-    color: #333;
 }
 
-nav li a strong {
-    color: black;
-    font-size: 24px;
-}
-
-/* Dropdown */
 nav li ul.dropdown {
     display: none;
     position: absolute;
     background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    min-width: 180px;
-    top: 100%;
-    left: 0;
-    z-index: 1001;
-    padding: 10px 0;
+    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
 }
 
 nav li:hover ul.dropdown {
@@ -98,49 +75,40 @@ nav li:hover ul.dropdown {
 }
 
 nav li ul.dropdown li {
-    width: 100%;
+    float: none;
 }
 
 nav li ul.dropdown li a {
-    color: #333;
-    padding: 12px 20px;
-    text-align: left;
-    border-radius: 0;
+    display: block;
+    color: black;
 }
 
-nav li ul.dropdown li a:hover {
-    background-color: #f5f5f5;
+.casella:hover {
+    background-color: rgb(210, 210, 210);
 }
 
-/* Profilo */
+/* Profilo ORIGINALE */
 .profilo {
-    position: absolute !important;
+    position: fixed;
     right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     transition: all 0.3s ease-in-out;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
 .profilo:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 /* Immagine principale */
 .startImg {
-    width: 100%;
-    max-width: 1400px;
-    height: 500px;
-    border-radius: 30px;
+    width: 85%;
+    height: 60%;
+    border-radius: 40px;
     animation: fade-in 1.5s ease-in-out;
-    object-fit: cover;
     display: block;
     margin: 40px auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 /* Sezioni */
@@ -153,6 +121,7 @@ nav li ul.dropdown li a:hover {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
+    padding-left: 20px;
 }
 
 .section-link {
@@ -175,34 +144,48 @@ nav li ul.dropdown li a:hover {
     margin: 0;
 }
 
-/* Freccia */
+/* Freccia - STILE ORIGINALE */
 .freccia {
-    width: 44px;
-    height: 44px;
-    margin-right: 15px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    transform: translateY(19px);
     transition: all 0.3s ease-in-out;
+    animation: fade-in 1.5s ease-in-out;
+    z-index: -1;
+    margin-right: 15px;
+}
+
+.freccia:hover {
+    transform: translateY(19px) scale(1.1);
 }
 
 /* Freccia nera per pagina dettaglio */
 .freccia-nera {
-    width: 44px;
-    height: 44px;
-    margin-right: 15px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    transform: translateY(19px);
     transition: all 0.3s ease-in-out;
+    animation: fade-in 1.5s ease-in-out;
+    z-index: -1;
+    margin-right: 15px;
     filter: brightness(0) saturate(100%); /* Rende l'immagine nera */
 }
 
-.freccia:hover,
 .freccia-nera:hover {
-    transform: scale(1.1);
+    transform: translateY(19px) scale(1.1);
 }
 
 /* Grid per brands */
 .brands-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    padding: 20px 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 /* Grid per prodotti */
@@ -210,7 +193,8 @@ nav li ul.dropdown li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    padding: 20px 0;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 /* Card brand */
@@ -247,11 +231,9 @@ nav li ul.dropdown li a:hover {
     max-height: 100px;
     object-fit: contain;
     transition: all 0.3s ease;
-    filter: grayscale(30%);
 }
 
 .brand-card:hover .brand-logo {
-    filter: grayscale(0%);
     transform: scale(1.05);
 }
 
@@ -266,11 +248,11 @@ nav li ul.dropdown li a:hover {
 /* Card prodotto */
 .product-card {
     background: white;
-    border-radius: 25px;
+    border-radius: 40px; /* Stile originale */
     padding: 25px;
     text-align: center;
     transition: all 0.4s ease-in-out;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.205); /* Stile originale */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,8 +262,8 @@ nav li ul.dropdown li a:hover {
 }
 
 .product-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-image-container {
@@ -294,10 +276,10 @@ nav li ul.dropdown li a:hover {
 }
 
 .product-image {
-    max-width: 100%;
-    max-height: 180px;
+    width: 50%; /* Stile originale */
+    height: 50%; /* Stile originale */
     object-fit: contain;
-    border-radius: 15px;
+    border-radius: 40px; /* Stile originale */
     transition: all 0.3s ease;
 }
 
@@ -309,20 +291,13 @@ nav li ul.dropdown li a:hover {
     margin: 0;
 }
 
-/* Animazioni */
-@keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Titoli stile originale */
+.titolo {
+    font-size: 30px;
+    animation: fade-in 1.5s ease-in-out;
 }
 
-/* Stili per VR Brands page (modifiche per rimuovere pulsanti) */
-/* Questi stili sovrascrivono eventuali pulsanti nella pagina VrBrands */
+/* Stili per VR Brands page */
 #filtri-container,
 #ordinamento-container,
 .filtri-buttons,
@@ -340,31 +315,24 @@ img {
     display: block;
 }
 
-/* Fix per immagini che non si caricano */
-img[src*="immagini/"] {
-    content-visibility: auto;
+/* Animazioni */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Stile per immagini di fallback se non caricano */
-img:not([src]),
-img[src=""],
-img[src*="undefined"] {
-    background-color: #f0f0f0;
-    border: 2px dashed #ddd;
-    padding: 20px;
-    position: relative;
+.fade-in {
+    animation: fade-in 1s ease-in-out;
 }
 
-img:not([src])::after,
-img[src=""]::after,
-img[src*="undefined"]::after {
-    content: "Immagine non disponibile";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #999;
-    font-size: 14px;
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
 }
 
 /* Media Queries per responsività */
@@ -395,7 +363,8 @@ img[src*="undefined"]::after {
 
 @media (max-width: 992px) {
     .startImg {
-        height: 400px;
+        width: 90%;
+        height: 50%;
     }
     
     .brand-image-container {
@@ -406,14 +375,9 @@ img[src*="undefined"]::after {
         height: 180px;
     }
     
-    nav ul {
-        gap: 10px;
-        padding: 0 15px;
-    }
-    
-    nav li a {
-        padding: 8px 12px;
-        font-size: 16px;
+    .product-image {
+        width: 60%;
+        height: 60%;
     }
 }
 
@@ -423,19 +387,9 @@ img[src*="undefined"]::after {
         font-size: 16px;
     }
     
-    nav {
-        height: 55px;
-    }
-    
-    .profilo {
-        right: 15px;
-        width: 32px;
-        height: 32px;
-    }
-    
     .startImg {
-        height: 300px;
-        border-radius: 20px;
+        height: 40%;
+        border-radius: 30px;
         margin: 20px auto;
     }
     
@@ -449,15 +403,16 @@ img[src*="undefined"]::after {
     
     .freccia,
     .freccia-nera {
-        width: 36px;
-        height: 36px;
-        margin-right: 10px;
+        width: 35px;
+        height: 35px;
+        transform: translateY(15px);
     }
     
     .brands-grid,
     .products-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        padding: 10px;
     }
     
     .brand-card {
@@ -468,33 +423,24 @@ img[src*="undefined"]::after {
     .product-card {
         padding: 20px;
         min-height: 250px;
+        border-radius: 30px;
     }
     
     .brand-name,
     .product-name {
         font-size: 18px;
     }
+    
+    .product-image {
+        width: 70%;
+        height: 70%;
+    }
 }
 
 @media (max-width: 576px) {
-    nav ul {
-        flex-wrap: wrap;
-        padding: 5px 10px;
-        gap: 8px;
-    }
-    
-    nav li:not(:first-child):not(:last-child) {
-        display: none;
-    }
-    
-    nav li:first-child,
-    nav li:last-child {
-        display: block;
-    }
-    
     .startImg {
-        height: 200px;
-        border-radius: 15px;
+        height: 30%;
+        border-radius: 20px;
     }
     
     .section-title {
@@ -505,6 +451,7 @@ img[src*="undefined"]::after {
     .freccia-nera {
         width: 30px;
         height: 30px;
+        transform: translateY(13px);
     }
     
     .brand-image-container {
@@ -520,27 +467,13 @@ img[src*="undefined"]::after {
     }
     
     .product-image {
-        max-height: 140px;
+        width: 80%;
+        height: 80%;
     }
-}
-
-/* Stile per il dropdown su mobile */
-@media (max-width: 768px) {
-    nav li ul.dropdown {
-        position: fixed;
-        top: 55px;
-        left: 0;
-        width: 100%;
-        border-radius: 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    
+    .product-card {
+        border-radius: 25px;
     }
-}
-
-/* Stile per il logo VR nella navbar */
-nav li:first-child a {
-    font-size: 26px;
-    padding: 5px 15px;
-    color: #000;
 }
 
 /* Miglioramenti per l'accessibilità */
@@ -557,45 +490,4 @@ a:focus,
 button:focus {
     outline: 2px solid #4A90E2;
     outline-offset: 2px;
-}
-
-/* Supporto per dark mode se necessario */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1a1a1a;
-        color: #ffffff;
-    }
-    
-    nav {
-        background-color: #2d2d2d;
-    }
-    
-    nav li a {
-        color: #b0b0b0;
-    }
-    
-    nav li a:hover {
-        background-color: #3d3d3d;
-        color: #ffffff;
-    }
-    
-    nav li a strong {
-        color: #ffffff;
-    }
-    
-    .brand-card,
-    .product-card {
-        background-color: #2d2d2d;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .section-title,
-    .brand-name,
-    .product-name {
-        color: #ffffff;
-    }
-    
-    .freccia-nera {
-        filter: brightness(1) invert(1); /* Rende la freccia bianca in dark mode */
-    }
 }
