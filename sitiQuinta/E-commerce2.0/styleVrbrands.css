@@ -1,9 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
-.kanit-extrabold {
-    font-family: "Kanit", sans-serif;
-    font-weight: 800;
-    font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Reset e stili base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: white;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-size: 18px;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container principale */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
 nav {
     position: fixed;
     top: 0;
@@ -11,119 +38,564 @@ nav {
     width: 100%;
     background-color: white;
     height: 60px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
+
 nav ul {
     list-style-type: none;
-    padding: 0;
-    transform: translateX(10px);
+    padding: 0 20px;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
+
 nav li {
-    float: left;
+    position: relative;
 }
+
 nav li a {
     color: rgb(175, 175, 175);
     text-align: center;
-    padding: 16px 16px;
+    padding: 8px 16px;
     text-decoration: none;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     transition: all 0.3s ease-in-out;
+    display: block;
+    border-radius: 8px;
+    font-weight: 500;
 }
+
 nav li a:hover {
+    background-color: rgb(240, 240, 240);
     transform: scale(1.05);
+    color: #333;
 }
+
+nav li a strong {
+    color: black;
+    font-size: 24px;
+}
+
+/* Dropdown */
 nav li ul.dropdown {
     display: none;
     position: absolute;
     background-color: white;
-    box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-width: 180px;
+    top: 100%;
+    left: 0;
+    z-index: 1001;
+    padding: 10px 0;
 }
+
 nav li:hover ul.dropdown {
     display: block;
 }
+
 nav li ul.dropdown li {
-    float: none;
+    width: 100%;
 }
+
 nav li ul.dropdown li a {
-    display: block;
-    color: black;
+    color: #333;
+    padding: 12px 20px;
+    text-align: left;
+    border-radius: 0;
 }
-body {
-    background-color: white;
-    margin: 0;
-    font-family: Roboto;
-    color: black;
-    font-size: 18px;
+
+nav li ul.dropdown li a:hover {
+    background-color: #f5f5f5;
 }
-body::-webkit-scrollbar {
-    display: none;
+
+/* Profilo */
+.profilo {
+    position: absolute !important;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 50%;
+    object-fit: cover;
 }
-.casella:hover {
-    background-color: rgb(210, 210, 210);
+
+.profilo:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Immagine principale */
 .startImg {
-    width: 95%;
-    height: 70%;
-    border-radius: 40px;
+    width: 100%;
+    max-width: 1400px;
+    height: 500px;
+    border-radius: 30px;
+    animation: fade-in 1.5s ease-in-out;
+    object-fit: cover;
+    display: block;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Sezioni */
+.section {
+    margin: 60px 0;
     animation: fade-in 1.5s ease-in-out;
 }
-.profilo {
-    position: fixed;
-    right: 30px;
-    width: 30px;
-    height: 30px;
-    transition: all 0.3s ease-in-out;
 
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
 }
-.profilo:hover {
+
+.section-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.section-link:hover {
+    transform: translateX(5px);
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+}
+
+/* Freccia */
+.freccia {
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Freccia nera per pagina dettaglio */
+.freccia-nera {
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    transition: all 0.3s ease-in-out;
+    filter: brightness(0) saturate(100%); /* Rende l'immagine nera */
+}
+
+.freccia:hover,
+.freccia-nera:hover {
+    transform: scale(1.1);
+}
+
+/* Grid per brands */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Grid per prodotti */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 20px 0;
+}
+
+/* Card brand */
+.brand-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+}
+
+.brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.brand-image-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.brand-logo {
+    max-width: 180px;
+    max-height: 100px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: grayscale(30%);
+}
+
+.brand-card:hover .brand-logo {
+    filter: grayscale(0%);
     transform: scale(1.05);
 }
-table {
-    width: 95%;
-    height: 50%;
-    animation: fade-in 1.5s ease-in-out;
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #444;
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
 }
-.freccia {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    transform: translateY(19px);
-    transition: all 0.3s ease-in-out;
-    animation: fade-in 1.5s ease-in-out;
-    z-index: -1;
+
+/* Card prodotto */
+.product-card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-height: 300px;
 }
-.titolo {
-    font-size: 30px;
-    animation: fade-in 1.5s ease-in-out;
+
+.product-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
-.logo {
-    width: 50%;
-    height: 50%;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.205);
-    border-radius: 40px;
-    animation: fade-in 1.5s ease-in-out;
+
+.product-image-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
 }
-.logo2 {
-    width: 50%;
-    height: 50%;
-    animation: fade-in 1.5s ease-in-out;
+
+.product-image {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 15px;
+    transition: all 0.3s ease;
 }
-td {
-    width: 25%;
+
+.product-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #444;
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
 }
-.fade-in {
-    animation: fade-in 1s ease-in-out;
-}
-.fade-in-delay {
-    animation: fade-in 2s ease-in-out;
-}
+
+/* Animazioni */
 @keyframes fade-in {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Stili per VR Brands page (modifiche per rimuovere pulsanti) */
+/* Questi stili sovrascrivono eventuali pulsanti nella pagina VrBrands */
+#filtri-container,
+#ordinamento-container,
+.filtri-buttons,
+.filter-buttons,
+.sort-buttons,
+.pulsanti-filtro,
+.bottoni-filtro {
+    display: none !important;
+}
+
+/* Forza il caricamento delle immagini */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix per immagini che non si caricano */
+img[src*="immagini/"] {
+    content-visibility: auto;
+}
+
+/* Stile per immagini di fallback se non caricano */
+img:not([src]),
+img[src=""],
+img[src*="undefined"] {
+    background-color: #f0f0f0;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    position: relative;
+}
+
+img:not([src])::after,
+img[src=""]::after,
+img[src*="undefined"]::after {
+    content: "Immagine non disponibile";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #999;
+    font-size: 14px;
+}
+
+/* Media Queries per responsività */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .brand-card,
+    .product-card {
+        min-height: 200px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 992px) {
+    .startImg {
+        height: 400px;
+    }
+    
+    .brand-image-container {
+        height: 100px;
+    }
+    
+    .product-image-container {
+        height: 180px;
+    }
+    
+    nav ul {
+        gap: 10px;
+        padding: 0 15px;
+    }
+    
+    nav li a {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 55px;
+        font-size: 16px;
+    }
+    
+    nav {
+        height: 55px;
+    }
+    
+    .profilo {
+        right: 15px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .startImg {
+        height: 300px;
+        border-radius: 20px;
+        margin: 20px auto;
+    }
+    
+    .section {
+        margin: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .freccia,
+    .freccia-nera {
+        width: 36px;
+        height: 36px;
+        margin-right: 10px;
+    }
+    
+    .brands-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .brand-card {
+        padding: 20px;
+        min-height: 180px;
+    }
+    
+    .product-card {
+        padding: 20px;
+        min-height: 250px;
+    }
+    
+    .brand-name,
+    .product-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    nav ul {
+        flex-wrap: wrap;
+        padding: 5px 10px;
+        gap: 8px;
+    }
+    
+    nav li:not(:first-child):not(:last-child) {
+        display: none;
+    }
+    
+    nav li:first-child,
+    nav li:last-child {
+        display: block;
+    }
+    
+    .startImg {
+        height: 200px;
+        border-radius: 15px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .freccia,
+    .freccia-nera {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .brand-image-container {
+        height: 80px;
+    }
+    
+    .product-image-container {
+        height: 150px;
+    }
+    
+    .brand-logo {
+        max-width: 120px;
+    }
+    
+    .product-image {
+        max-height: 140px;
+    }
+}
+
+/* Stile per il dropdown su mobile */
+@media (max-width: 768px) {
+    nav li ul.dropdown {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Stile per il logo VR nella navbar */
+nav li:first-child a {
+    font-size: 26px;
+    padding: 5px 15px;
+    color: #000;
+}
+
+/* Miglioramenti per l'accessibilità */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles per accessibilità */
+a:focus,
+button:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* Supporto per dark mode se necessario */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    nav {
+        background-color: #2d2d2d;
+    }
+    
+    nav li a {
+        color: #b0b0b0;
+    }
+    
+    nav li a:hover {
+        background-color: #3d3d3d;
+        color: #ffffff;
+    }
+    
+    nav li a strong {
+        color: #ffffff;
+    }
+    
+    .brand-card,
+    .product-card {
+        background-color: #2d2d2d;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-title,
+    .brand-name,
+    .product-name {
+        color: #ffffff;
+    }
+    
+    .freccia-nera {
+        filter: brightness(1) invert(1); /* Rende la freccia bianca in dark mode */
     }
 }
