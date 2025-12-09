@@ -119,7 +119,7 @@
                             if (riga === '') continue;
                             
                             // Divide la riga in campi
-                            let campi = parseCSVLine(riga);
+                            let campi = analizzaRigaCSV(riga);
                             
                             if (campi.length >= 12) {
                                 let marca = campi[0];
