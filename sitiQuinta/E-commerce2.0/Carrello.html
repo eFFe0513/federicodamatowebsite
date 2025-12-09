@@ -73,20 +73,64 @@
     }
 
     function scaricaRicevuta() {
-        let contenuto = "📦 RICEVUTA - Vr Community Shop Service\n\n";
+        // Crea HTML per la ricevuta
+        let html = `
+            <div style="padding: 20px; font-family: Arial, sans-serif;">
+                <h1>📦 RICEVUTA - Vr Community Shop Service</h1>
+                <p>Data: ${new Date().toLocaleDateString('it-IT')}</p>
+                <hr>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">#</th>
+                            <th style="text-align: left;">Prodotto</th>
+                            <th style="text-align: right;">Prezzo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
         carrello.forEach((item, index) => {
             let prezzo = item.Prezzo ? parseFloat(item.Prezzo) : 299.99;
-            contenuto += `Prodotto #${index + 1}\nMarca: ${item.Marca}\nModello: ${item.Modello}\nPrezzo: €${prezzo.toFixed(2)}\n\n`;
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.Marca} ${item.Modello}</td>
+                    <td style="text-align: right;">€${prezzo.toFixed(2)}</td>
+                </tr>
+            `;
         });
-        contenuto += `TOTALE: €${totale.toFixed(2)}\n\nFirmato: Vr Community Shop Service`;
-
-        const blob = new Blob([contenuto], { type: "text/plain;charset=utf-8" });
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "ricevuta_VR_Community.txt";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        
+        html += `
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="text-align: right; font-weight: bold; padding-top: 20px;">TOTALE:</td>
+                            <td style="text-align: right; font-weight: bold; padding-top: 20px;">€${totale.toFixed(2)}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr>
+                <p style="margin-top: 30px;">Firmato: Vr Community Shop Service</p>
+            </div>
+        `;
+        
+        // Converti in PDF
+        const element = document.createElement('div');
+        element.innerHTML = html;
+        document.body.appendChild(element);
+        
+        const opt = {
+            margin:       1,
+            filename:     `ricevuta_VR_Community_${Date.now()}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        
+        html2pdf().set(opt).from(element).save().then(() => {
+            document.body.removeChild(element);
+        });
     }
     const img = document.getElementById('profilo');
     img.src = "immagini/" + localStorage.getItem("imgProfilo");
