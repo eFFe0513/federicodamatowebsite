@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
 /* NAVBAR ORIGINALE */
 nav {
     position: fixed;
-    top: 0;
+    top: 15px;
     left: 0;
     width: 100%;
     background-color: white;
@@ -104,7 +104,7 @@ nav li ul.dropdown li a {
 .tabellaCerca {
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 10px auto;
     animation: fade-in 1.5s ease-in-out;
     border-spacing: 20px;
 }
