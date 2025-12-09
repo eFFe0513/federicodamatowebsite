@@ -2,42 +2,42 @@
 <marche>
     <marca>
         <nome>Meta</nome>
-        <immagine>immagini/meta.jpg</immagine>
+        <immagine>immagini/meta.png</immagine>
         <descrizione>Meta, precedentemente conosciuta come Facebook, è indiscutibilmente il leader globale nel mercato della realtà virtuale consumer. Con l'acquisizione di Oculus nel 2014, Meta ha democratizzato l'accesso alla VR attraverso dispositivi standalone come Oculus Quest 2 e Quest 3, che non richiedono PC o console. L'ecosistema Meta offre oltre 500 titoli su Meta Quest Store, con esperienze che vanno dal gaming immersivo (Beat Saber, Resident Evil 4 VR) alle applicazioni productivity (Horizon Workrooms) e social (Horizon Worlds). La piattaforma supporta anche il PC VR via cavo USB-C o wireless con Air Link. Recentemente, Meta ha lanciato Quest Pro per il mercato enterprise con eye-tracking e color passthrough avanzato, posizionandosi come protagonista del metaverso con investimenti superiori ai 10 miliardi di dollari annuali in ricerca e sviluppo.</descrizione>
         <valutazione>4.5</valutazione>
         <acquistiAnnuali>8500000</acquistiAnnuali>
     </marca>
     <marca>
         <nome>Pico</nome>
-        <immagine>immagini/pico.jpg</immagine>
+        <immagine>immagini/pico.png</immagine>
         <descrizione>Pico Interactive, acquisita nel 2021 da ByteDance (proprietaria di TikTok), è diventata il principale competitor di Meta nel mercato VR globale. Originariamente focalizzata sul mercato enterprise cinese, Pico ha lanciato Pico 4 nel 2022 come diretto rivale di Meta Quest 2, offrendo specifiche tecniche superiori come risoluzione più alta (2160x2160 per occhio), design più equilibrato e campo visivo più ampio (105°). La piattaforma Pico OS supporta sia gaming che applicazioni business, con un'app store in rapida crescita. Particolarmente forte in Asia, Pico sta espandendo la sua presenza in Europa con partnership strategiche. Recentemente ha lanciato Pico 4 Enterprise per settori come formazione medica, design industriale e retail virtuale, sfruttando l'integrazione con l'ecosistema ByteDance per contenuti social e entertainment innovativi.</descrizione>
         <valutazione>4.2</valutazione>
         <acquistiAnnuali>1200000</acquistiAnnuali>
     </marca>
     <marca>
         <nome>PS VR</nome>
-        <immagine>immagini/psvr.jpg</immagine>
+        <immagine>immagini/psVr.png</immagine>
         <descrizione>PlayStation VR di Sony rappresenta il punto di ingresso più accessibile alla VR di alta qualità per i possessori di console. Lanciato nel 2016 per PS4 e aggiornato come PS VR2 nel 2023 per PS5, questo sistema vanta un catalogo esclusivo di titoli AAA sviluppati dagli studi first-party Sony come "Horizon Call of the Mountain", "Gran Turismo 7" e "Resident Evil Village VR". PS VR2 introduce tecnologie all'avanguardia: display OLED HDR 4K (2000x2040 per occhio), eye-tracking, feedback aptico sui controller Sense e risposta tattile sul visore. L'integrazione con PlayStation Network offre oltre 100 titoli al lancio, sfruttando l'architettura PS5 per grafiche quasi photorealistic. Con 5 milioni di unità vendute della prima generazione, PS VR continua a essere la piattaforma VR più popolare per il gaming console, grazie al prezzo competitivo e all'ecosistema PlayStation consolidato.</descrizione>
         <valutazione>4.3</valutazione>
         <acquistiAnnuali>3200000</acquistiAnnuali>
     </marca>
     <marca>
         <nome>HTC VR</nome>
-        <immagine>immagini/htc.jpg</immagine>
+        <immagine>immagini/htcvr.png</immagine>
         <descrizione>HTC Vive è stato il pioniere che ha portato la VR high-end ai consumatori nel 2016, sviluppato in collaborazione con Valve. La serie Vive ha definito gli standard per il room-scale tracking grazie ai lighthouse basestation che offrono precisione sub-millimetrica. Dopo il successo del Vive originale, HTC si è specializzata nel mercato enterprise con dispositivi come Vive Pro 2 (risoluzione 5K), Vive Focus 3 (standalone enterprise) e il rivoluzionario Vive XR Elite (ibrido consumer/enterprise). HTC domina settori verticali come formazione professionale (Vive Sync per meeting VR), healthcare (simulazioni chirurgiche), architettura (visualizzazione progetti) e automotive (design virtuale). La piattaforma Viveport offre 2000+ applicazioni e il servizio di subscription Infinity. Recentemente, HTC ha lanciato soluzioni di metaverso aziendale e sviluppa tecnologie come il tracking facciale e eye-tracking per esperienze social avanzate.</descrizione>
         <valutazione>4.4</valutazione>
         <acquistiAnnuali>950000</acquistiAnnuali>
     </marca>
     <marca>
         <nome>Valve VR</nome>
-        <immagine>immagini/valve.jpg</immagine>
+        <immagine>immagini/valvevr.jpg</immagine>
         <descrizione>Valve Index rappresenta l'apice della VR per PC gaming, progettato per gli enthusiast che cercano la massima fedeltà e performance. Lanciato nel 2019 come erede del sistema Vive originale, Index introduce innovazioni rivoluzionarie: controller "Knuckles" con tracking individuale delle dita e grip pressure sensing, display dual LCD con refresh rate fino a 144Hz (il più alto del mercato), audio off-ear ad alta fedeltà e campo visivo di 130°. Integrato perfettamente con SteamVR, Index beneficia del più vasto catalogo di contenuti PC VR (oltre 6000 titoli) e di features software avanzate come Motion Smoothing e Workshop integration. Valve utilizza Index come piattaforma di ricerca per future tecnologie, inclusi prototipi di lenti varifocal e wireless adapter. Sebbene il prezzo sia premium, Index rimane la scelta preferita di sviluppatori, professionisti e hardcore gamer per la qualità costruttiva, l'ergonomia eccezionale e il supporto a lungo termine da parte di Valve.</descrizione>
         <valutazione>4.7</valutazione>
         <acquistiAnnuali>650000</acquistiAnnuali>
     </marca>
     <marca>
         <nome>HP VR</nome>
-        <immagine>immagini/hp.jpg</immagine>
+        <immagine>immagini/hpvr.jpg</immagine>
         <descrizione>HP Reverb G2, sviluppato in collaborazione con Microsoft e Valve, offre la migliore risoluzione nel suo segmento di prezzo, rendendolo ideale per simulazione e visualization professionali. Con display LCD da 2160x2160 per occhio (totale 9.3 milioni di pixel), il G2 fornisce una chiarezza visiva senza pari per applicazioni che richiedono lettura di testo o dettagli fini, come CAD, medical imaging e virtual prototyping. Il sistema audio, co-sviluppato con Valve, utilizza speaker off-ear simili a Index per un soundstage immersivo. Integrato con Windows Mixed Reality e compatibile con SteamVR, il G2 supporta sia l'ecosistema Microsoft per productivity (Mesh, Teams) che il gaming PC. La versione Omnicept Edition aggiunge sensori biometrici per monitoraggio di frequenza cardiaca, espressioni facciali e pupil tracking, rivoluzionando ricerca UX, training con adaptive learning e esperienze social responsive. HP si concentra sul mercato enterprise ma mantiene accessibilità per prosumer.</descrizione>
         <valutazione>4.1</valutazione>
         <acquistiAnnuali>580000</acquistiAnnuali>
