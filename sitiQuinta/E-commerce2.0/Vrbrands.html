@@ -13,6 +13,7 @@
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 20px;
+                padding-top: 80px;
             }
             
             .page-title {
@@ -21,6 +22,7 @@
                 font-size: 2.5em;
                 margin-bottom: 40px;
                 color: #333;
+                animation: fade-in 1.5s ease-in-out;
             }
             
             .brands-grid {
@@ -28,6 +30,7 @@
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
                 gap: 30px;
                 margin-bottom: 50px;
+                animation: fade-in 1.5s ease-in-out;
             }
             
             .brand-card {
@@ -37,6 +40,7 @@
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                 background: white;
                 cursor: pointer;
+                animation: fade-in 2s ease-in-out;
             }
             
             .brand-card:hover {
@@ -47,8 +51,9 @@
             .brand-image {
                 width: 100%;
                 height: 200px;
-                object-fit: cover;
+                object-fit: contain;
                 background-color: #f5f5f5;
+                padding: 20px;
             }
             
             .brand-info {
@@ -59,17 +64,27 @@
                 font-size: 1.5em;
                 margin-bottom: 10px;
                 color: #2c3e50;
+                font-family: 'Kanit', sans-serif;
             }
             
             .brand-rating {
                 color: #f39c12;
                 font-weight: bold;
                 margin-bottom: 10px;
+                font-size: 1.2em;
             }
             
             .brand-sales {
                 color: #7f8c8d;
                 font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+            
+            .brand-desc {
+                color: #666;
+                font-size: 0.95em;
+                line-height: 1.5;
+                margin-top: 10px;
             }
             
             .message {
@@ -78,6 +93,7 @@
                 margin: 20px 0;
                 text-align: center;
                 display: none;
+                animation: fade-in 1s ease-in-out;
             }
             
             .success {
@@ -90,6 +106,35 @@
                 background-color: #f8d7da;
                 color: #721c24;
                 border: 1px solid #f5c6cb;
+            }
+            
+            .loading {
+                text-align: center;
+                padding: 40px;
+                font-size: 1.2em;
+                color: #666;
+                animation: pulse 2s infinite;
+            }
+            
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes pulse {
+                0%, 100% { opacity: 0.6; }
+                50% { opacity: 1; }
+            }
+            
+            /* Nascondi i pulsanti che non servono più */
+            .control-buttons {
+                display: none !important;
             }
         </style>
     </head>
@@ -109,7 +154,6 @@
                 <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
 			</ul>
 		</nav>
-        <br><br><br><br>
         
         <div class="brands-container">
             <h1 class="page-title">Brands VR</h1>
@@ -117,17 +161,9 @@
             <!-- Messaggi di stato -->
             <div id="messageBox" class="message"></div>
             
-            <!-- Pulsanti di controllo -->
-            <div style="text-align: center; margin-bottom: 30px;">
-                <button id="loadDataBtn" style="padding: 10px 20px; margin: 0 10px; cursor: pointer;">
-                    Carica Dati da XML
-                </button>
-                <button id="clearDataBtn" style="padding: 10px 20px; margin: 0 10px; cursor: pointer;">
-                    Pulisci Dati
-                </button>
-                <button id="showDataBtn" style="padding: 10px 20px; margin: 0 10px; cursor: pointer;">
-                    Mostra Brand
-                </button>
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" class="loading">
+                Caricamento dei brand VR in corso...
             </div>
             
             <!-- Container per i brand -->
@@ -152,50 +188,115 @@
                 }, 5000);
             }
             
-            // Carica XML automaticamente all'apertura con XMLHttpRequest
-            window.addEventListener("DOMContentLoaded", function() {
-                // Verifica se ci sono dati nel localStorage
-                const storedBrands = localStorage.getItem('vrBrands');
-                if (storedBrands) {
-                    brands = JSON.parse(storedBrands);
-                    showMessage('Dati caricati dal localStorage!', 'success');
-                }
-                
-                // Carica dati da XML
-                loadXMLData();
-            });
+            // Funzione per nascondere il loading indicator
+            function hideLoading() {
+                const loadingIndicator = document.getElementById('loadingIndicator');
+                loadingIndicator.style.display = 'none';
+            }
             
-            // Funzione per caricare dati da XML
+            // Funzione per gestire il fallback delle immagini
+            function handleImageError(img) {
+                img.src = 'immagini/default.jpg';
+                img.alt = 'Immagine non disponibile';
+                img.style.backgroundColor = '#f0f0f0';
+                img.style.padding = '20px';
+            }
+            
+            // Funzione per caricare dati da XML con controllo errori
             function loadXMLData() {
                 const xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("GET", "marcheVr.xml", true);
-                xmlhttp.send();
+                xmlhttp.timeout = 10000; // 10 secondi timeout
+                
+                xmlhttp.ontimeout = function() {
+                    showMessage('Timeout: impossibile caricare i dati XML', 'error');
+                    hideLoading();
+                    loadFromLocalStorage(); // Prova a caricare da localStorage
+                };
+                
+                xmlhttp.onerror = function() {
+                    showMessage('Errore di rete: impossibile caricare i dati XML', 'error');
+                    hideLoading();
+                    loadFromLocalStorage(); // Prova a caricare da localStorage
+                };
+                
                 xmlhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        const fileXML = this.responseXML;
-                        const listaMarche = fileXML.getElementsByTagName("marca");
-                        
-                        // Pulisci l'array brands
-                        brands = [];
-                        
-                        for (let i = 0; i < listaMarche.length; i++) {
-                            const m = listaMarche[i];
-                            brands.push({
-                                nome: m.getElementsByTagName("nome")[0].textContent,
-                                immagine: m.getElementsByTagName("immagine")[0].textContent,
-                                descrizione: m.getElementsByTagName("descrizione")[0].textContent,
-                                valutazione: parseFloat(m.getElementsByTagName("valutazione")[0].textContent),
-                                acquistiAnnuali: parseInt(m.getElementsByTagName("acquistiAnnuali")[0].textContent)
-                            });
+                    if (this.readyState === 4) {
+                        if (this.status === 200) {
+                            try {
+                                const fileXML = this.responseXML;
+                                if (!fileXML) {
+                                    throw new Error('XML non valido');
+                                }
+                                
+                                const listaMarche = fileXML.getElementsByTagName("marca");
+                                
+                                if (listaMarche.length === 0) {
+                                    throw new Error('Nessun brand trovato nel XML');
+                                }
+                                
+                                // Pulisci l'array brands
+                                brands = [];
+                                
+                                for (let i = 0; i < listaMarche.length; i++) {
+                                    const m = listaMarche[i];
+                                    const nome = m.getElementsByTagName("nome")[0];
+                                    const immagine = m.getElementsByTagName("immagine")[0];
+                                    const descrizione = m.getElementsByTagName("descrizione")[0];
+                                    const valutazione = m.getElementsByTagName("valutazione")[0];
+                                    const acquistiAnnuali = m.getElementsByTagName("acquistiAnnuali")[0];
+                                    
+                                    brands.push({
+                                        nome: nome ? nome.textContent : 'Brand sconosciuto',
+                                        immagine: immagine ? immagine.textContent : 'immagini/default.jpg',
+                                        descrizione: descrizione ? descrizione.textContent : 'Nessuna descrizione disponibile',
+                                        valutazione: valutazione ? parseFloat(valutazione.textContent) : 0,
+                                        acquistiAnnuali: acquistiAnnuali ? parseInt(acquistiAnnuali.textContent) : 0
+                                    });
+                                }
+                                
+                                // Salva nel localStorage
+                                localStorage.setItem('vrBrands', JSON.stringify(brands));
+                                showMessage('Dati caricati correttamente!', 'success');
+                                hideLoading();
+                                mostraBrands();
+                                
+                            } catch (error) {
+                                console.error('Errore nel parsing XML:', error);
+                                showMessage('Errore nel formato XML: ' + error.message, 'error');
+                                hideLoading();
+                                loadFromLocalStorage(); // Prova a caricare da localStorage
+                            }
+                        } else {
+                            showMessage(`Errore ${this.status}: impossibile caricare il file XML`, 'error');
+                            hideLoading();
+                            loadFromLocalStorage(); // Prova a caricare da localStorage
                         }
-                        
-                        // Salva nel localStorage
-                        localStorage.setItem('vrBrands', JSON.stringify(brands));
-                        showMessage('Dati caricati da XML e salvati nel localStorage!', 'success');
-                    } else if (this.readyState === 4 && this.status !== 200) {
-                        showMessage('Errore nel caricamento del file XML', 'error');
                     }
                 };
+                
+                xmlhttp.send();
+            }
+            
+            // Funzione per caricare dati dal localStorage
+            function loadFromLocalStorage() {
+                const storedBrands = localStorage.getItem('vrBrands');
+                if (storedBrands) {
+                    try {
+                        brands = JSON.parse(storedBrands);
+                        if (brands.length > 0) {
+                            showMessage('Dati caricati dal localStorage!', 'success');
+                            hideLoading();
+                            mostraBrands();
+                        } else {
+                            showMessage('Nessun dato disponibile nel localStorage', 'error');
+                        }
+                    } catch (error) {
+                        showMessage('Errore nel formato dei dati localStorage', 'error');
+                    }
+                } else {
+                    showMessage('Nessun dato disponibile. Caricamento automatico fallito.', 'error');
+                }
             }
             
             // Funzione per mostrare i brand
@@ -203,10 +304,30 @@
                 const brandsGrid = document.getElementById('brandsGrid');
                 brandsGrid.innerHTML = '';
                 
-                if (brands.length === 0) {
-                    brandsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Nessun brand disponibile. Carica i dati dal XML.</p>';
+                if (!brands || brands.length === 0) {
+                    brandsGrid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                            <p style="font-size: 1.2em; color: #666; margin-bottom: 20px;">
+                                Nessun brand disponibile al momento.
+                            </p>
+                            <button onclick="location.reload()" style="
+                                padding: 10px 20px;
+                                background-color: #3498db;
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 1em;
+                            ">
+                                Ricarica la pagina
+                            </button>
+                        </div>
+                    `;
                     return;
                 }
+                
+                // Ordina i brand per valutazione (decrescente)
+                brands.sort((a, b) => b.valutazione - a.valutazione);
                 
                 for (let i = 0; i < brands.length; i++) {
                     const brand = brands[i];
@@ -214,17 +335,33 @@
                     // Formatta il numero di acquisti
                     const acquistiFormattati = new Intl.NumberFormat('it-IT').format(brand.acquistiAnnuali);
                     
+                    // Crea stelle per la valutazione
+                    let stelle = '';
+                    const valutazioneIntera = Math.floor(brand.valutazione);
+                    for (let s = 0; s < 5; s++) {
+                        if (s < valutazioneIntera) {
+                            stelle += '★';
+                        } else {
+                            stelle += '☆';
+                        }
+                    }
+                    
                     // Crea la card del brand
                     const card = document.createElement('div');
                     card.className = 'brand-card';
                     card.setAttribute('data-index', i);
                     
                     card.innerHTML = `
-                        <img src="${brand.immagine}" alt="${brand.nome}" class="brand-image" onerror="this.src='immagini/default.jpg'">
+                        <img src="${brand.immagine}" alt="${brand.nome}" 
+                             class="brand-image" 
+                             onerror="handleImageError(this)">
                         <div class="brand-info">
                             <h3 class="brand-name">${brand.nome}</h3>
-                            <div class="brand-rating">★ ${brand.valutazione}/5</div>
-                            <p class="brand-sales">${acquistiFormattati} acquisti annuali</p>
+                            <div class="brand-rating" title="${brand.valutazione}/5">
+                                ${stelle} ${brand.valutazione}/5
+                            </div>
+                            <p class="brand-sales"><strong>${acquistiFormattati}</strong> acquisti annuali</p>
+                            <p class="brand-desc">${brand.descrizione}</p>
                         </div>
                     `;
                     
@@ -234,44 +371,43 @@
                         apriPaginaDettaglio(index);
                     });
                     
+                    // Aggiungi ritardo per animazione
+                    card.style.animationDelay = `${i * 0.1}s`;
                     brandsGrid.appendChild(card);
                 }
             }
             
             // Funzione per aprire la pagina di dettaglio
             function apriPaginaDettaglio(index) {
-                // Salva il brand selezionato nel localStorage
-                localStorage.setItem('selectedBrand', JSON.stringify(brands[index]));
-                
-                // Reindirizza alla pagina di dettaglio
-                // Cambia "dettaglio.html" con il nome della tua pagina dettaglio
-                window.location.href = `dettaglio.html?brand=${encodeURIComponent(brands[index].nome)}`;
+                if (index >= 0 && index < brands.length) {
+                    // Salva il brand selezionato nel localStorage
+                    localStorage.setItem('selectedBrand', JSON.stringify(brands[index]));
+                    
+                    // Reindirizza alla pagina di dettaglio
+                    window.location.href = `dettaglio.html?brand=${encodeURIComponent(brands[index].nome)}`;
+                } else {
+                    showMessage('Errore: brand non trovato', 'error');
+                }
             }
             
-            // Pulsante per caricare i dati
-            document.getElementById("loadDataBtn").addEventListener("click", function() {
+            // Carica tutto automaticamente all'apertura della pagina
+            window.addEventListener("DOMContentLoaded", function() {
+                // Aggiorna immagine profilo se disponibile
+                const img = document.getElementById('profilo');
+                const userImg = localStorage.getItem("imgProfilo");
+                if (userImg) {
+                    img.src = "immagini/" + userImg;
+                }
+                
+                // Inizia il caricamento automatico
                 loadXMLData();
             });
             
-            // Pulsante per mostrare i dati
-            document.getElementById("showDataBtn").addEventListener("click", function() {
-                mostraBrands();
+            // Gestione offline: tenta di caricare dal localStorage se offline
+            window.addEventListener('offline', function() {
+                showMessage('Sei offline. Caricamento dati dal cache...', 'error');
+                loadFromLocalStorage();
             });
-            
-            // Pulsante per pulire i dati
-            document.getElementById("clearDataBtn").addEventListener("click", function() {
-                localStorage.removeItem('vrBrands');
-                brands = [];
-                document.getElementById('brandsGrid').innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Dati eliminati. Carica nuovamente i dati dal XML.</p>';
-                showMessage('Dati eliminati dal localStorage!', 'success');
-            });
-            
-            // Mostra i brand all'avvio se disponibili
-            if (brands.length > 0) {
-                setTimeout(() => {
-                    mostraBrands();
-                }, 1000);
-            }
         </script>
     </body>
 </html>
