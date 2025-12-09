@@ -1,9 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap');
-.kanit-extrabold {
-    font-family: "Kanit", sans-serif;
-    font-weight: 800;
-    font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Reset e stili base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: white;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-size: 18px;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container principale */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NAVBAR ORIGINALE */
 nav {
     position: fixed;
     top: 0;
@@ -12,14 +39,17 @@ nav {
     background-color: white;
     height: 60px;
 }
+
 nav ul {
     list-style-type: none;
     padding: 0;
     transform: translateX(10px);
 }
+
 nav li {
     float: left;
 }
+
 nav li a {
     color: rgb(175, 175, 175);
     text-align: center;
@@ -28,38 +58,36 @@ nav li a {
     font-family: Roboto;
     transition: all 0.3s ease-in-out;
 }
+
 nav li a:hover {
     transform: scale(1.05);
 }
+
 nav li ul.dropdown {
     display: none;
     position: absolute;
     background-color: white;
     box-shadow: 0px 3px 5px 0px rgb(0, 0, 0);
 }
+
 nav li:hover ul.dropdown {
     display: block;
 }
+
 nav li ul.dropdown li {
     float: none;
 }
+
 nav li ul.dropdown li a {
     display: block;
     color: black;
 }
-body {
-    background-color: white;
-    margin: 0;
-    font-family: Roboto;
-    color: black;
-    font-size: 18px;
-}
-body::-webkit-scrollbar {
-    display: none;
-}
+
 .casella:hover {
     background-color: rgb(210, 210, 210);
 }
+
+/* Profilo ORIGINALE */
 .profilo {
     position: fixed;
     right: 30px;
@@ -67,77 +95,180 @@ body::-webkit-scrollbar {
     height: 30px;
     transition: all 0.3s ease-in-out;
 }
+
+.profilo:hover {
+    transform: scale(1.05);
+}
+
+/* Barra di ricerca migliorata */
+.tabellaCerca {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    animation: fade-in 1.5s ease-in-out;
+    border-spacing: 20px;
+}
+
+.barraRicerca {
+    width: 100%;
+    padding: 18px 25px;
+    background-color: rgba(240, 240, 240, 0.9);
+    font-weight: 500;
+    border-radius: 50px;
+    border: 2px solid #e0e0e0;
+    font-size: 16px;
+    animation: fade-in 1.5s ease-in-out;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.barraRicerca:focus {
+    outline: none;
+    border-color: #666;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.barraRicerca::placeholder {
+    color: #999;
+}
+
+/* Pulsante cerca migliorato */
+.cerca {
+    padding: 16px 35px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    animation: fade-in 1.5s ease-in-out;
+    min-width: 120px;
+}
+
+.cerca:hover {
+    background-color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabella prodotti */
+.tabella {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fade-in 1.5s ease-in-out;
+    border-collapse: separate;
+    border-spacing: 30px 40px;
+}
+
+.tabella tbody tr {
+    margin-bottom: 40px;
+}
+
+td {
+    width: 30%;
+    vertical-align: top;
+}
+
+/* Card prodotto */
+.tabella td > center > div {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.08);
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tabella td > center > div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Immagini prodotto */
+.img {
+    width: 70%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: contain;
+    animation: fade-in 1.5s ease-in-out;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.tabella td > center > div:hover .img {
+    transform: scale(1.05);
+}
+
+/* Nome prodotto */
+.tabella td > center > div > div {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Kanit', sans-serif;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* Pulsante carrello */
 .carrell {
     border: none;
     background: none;
     padding: 0;
     margin: 0;
     cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.3s ease;
 }
 
 .carrello {
-    position: relative;
-    width: 25px;
-    height: 25px;
-    border-radius: 20px;
-    transform: translate(10px,3px);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     transition: all 0.3s ease-in-out;
-    z-index: -1;
+    filter: brightness(0.8);
 }
-.profilo:hover, .carrello:hover {
-    transform: scale(1.05);
+
+.carrell:hover .carrello {
+    transform: scale(1.2);
+    filter: brightness(1);
 }
-.tabella {
-    width: 95%;
-    animation: fade-in 1.5s ease-in-out;
-}
-.img {
-    width: 70%;
-    height: 70%;
-    animation: fade-in 1.5s ease-in-out;
-}
-.barraRicerca {
-    width: 100%;
-    padding: 16px 20px;
-    cursor: pointer;
-    background-color: rgba(230, 227, 227, 0.74);
-    font-weight: bold;
-    border-radius: 40px;
-    border: 3px;
-    animation: fade-in 1.5s ease-in-out;
-}
-.cerca {
-    padding: 14px 20px;
-    cursor: pointer;
-    background-color: rgb(230, 227, 227);
-    font-weight: bold;
-    border-radius: 40px;
-    transition: 1s;
-    float: right;
-    animation: fade-in 1.5s ease-in-out;
-}
-.cerca:hover {
-    background-color: rgb(199, 199, 199);
-    transform: scale(1.1);
-}
-.tabellaCerca {
-    width: 90%;
-    animation: fade-in 1.5s ease-in-out;
-}
+
+/* Stile per risultati di ricerca */
 .imgCerca {
     width: 400px;
+    max-width: 100%;
+    height: 250px;
+    object-fit: contain;
     animation: fade-in 1.5s ease-in-out;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
-td{
-    width: 30%;
-    height: 40%;
+
+/* Per risultati di ricerca singoli */
+.tabella tbody tr td:only-child {
+    width: 100%;
+    text-align: center;
 }
-.fade-in {
-    animation: fade-in 1s ease-in-out;
+
+.tabella tbody tr td:only-child > center > div {
+    max-width: 500px;
+    margin: 0 auto;
 }
-.fade-in-delay {
-    animation: fade-in 2s ease-in-out;
-}
+
+/* Animazioni */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -147,4 +278,183 @@ td{
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+
+.fade-in-delay {
+    animation: fade-in 2s ease-in-out;
+}
+
+/* Media Queries per responsività */
+@media (max-width: 1200px) {
+    .tabella {
+        width: 98%;
+        border-spacing: 20px 30px;
+    }
+    
+    .tabellaCerca {
+        width: 95%;
+    }
+    
+    .img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 992px) {
+    .tabella {
+        border-spacing: 15px 25px;
+    }
+    
+    td {
+        width: 50%;
+        display: inline-block;
+    }
+    
+    .tabella tbody tr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .tabella tbody tr td {
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+    
+    .barraRicerca {
+        padding: 16px 20px;
+    }
+    
+    .cerca {
+        padding: 14px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 55px;
+        font-size: 16px;
+    }
+    
+    .tabellaCerca {
+        margin: 30px auto;
+    }
+    
+    .tabella {
+        width: 100%;
+        border-spacing: 10px 20px;
+    }
+    
+    .tabella tbody tr td {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .tabella td > center > div {
+        padding: 20px;
+        min-height: 300px;
+    }
+    
+    .img {
+        width: 80%;
+        height: 160px;
+    }
+    
+    .imgCerca {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .barraRicerca {
+        padding: 14px 18px;
+        font-size: 15px;
+    }
+    
+    .cerca {
+        padding: 12px 20px;
+        font-size: 15px;
+        min-width: 100px;
+    }
+    
+    .tabella td > center > div > div {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tabellaCerca {
+        width: 100%;
+        padding: 0 15px;
+    }
+    
+    .tabella td > center > div {
+        padding: 15px;
+        min-height: 280px;
+        border-radius: 20px;
+    }
+    
+    .img {
+        width: 85%;
+        height: 140px;
+    }
+    
+    .imgCerca {
+        height: 180px;
+    }
+    
+    .barraRicerca {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .cerca {
+        padding: 10px 16px;
+        font-size: 14px;
+        min-width: 80px;
+    }
+    
+    .carrello {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Stile per il dropdown su mobile */
+@media (max-width: 768px) {
+    nav li ul.dropdown {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Miglioramenti per l'accessibilità */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles per accessibilità */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* Stile per link Shop evidenziato */
+nav li a[href="Shop.html"] {
+    color: black;
+    font-weight: 600;
 }
