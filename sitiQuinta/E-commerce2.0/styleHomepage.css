@@ -61,8 +61,8 @@ body::-webkit-scrollbar {
     background-color: rgb(210, 210, 210);
 }
 .startImg {
-    width: 95%;
-    height: 70%;
+    width: 85%;
+    height: 60%;
     border-radius: 40px;
     animation: fade-in 1.5s ease-in-out;
 }
