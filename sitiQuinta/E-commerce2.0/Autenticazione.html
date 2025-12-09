@@ -114,52 +114,10 @@
                     const loader = document.getElementById("loader");
                     bottone.disabled = true;
                     loader.style.display = "block";
-                    
-                    // prendere dal local storage accountRegistrato e inserirlo su un file json se il codice di verifica inserito è corretto (nome del file json: datiAccountsRegistrati)
-                    // verificare prima di salvare che email, nome utente e password siano differenti da quelli di un altro account
-                    
-                    try {
-                        // Prende l'account dalla pagina precedente
-                        const accountRegistrato = JSON.parse(localStorage.getItem("accountRegistrato"));
-                        
-                        if (!accountRegistrato) {
-                            alert("Errore: dati account non trovati");
-                            bottone.disabled = false;
-                            loader.style.display = "none";
-                            return;
-                        }
-                        
-                        // Verifica con il server se esistono già account con gli stessi dati
-                        const response = await fetch('salva_account.php', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                nuovoAccount: accountRegistrato
-                            })
-                        });
-                        
-                        const risultato = await response.json();
-                        
-                        if (!risultato.success) {
-                            alert(risultato.message || "Impossibile salvare l'account");
-                            bottone.disabled = false;
-                            loader.style.display = "none";
-                            return;
-                        }
-                        
-                        // Procede con la crittografia
-                        let accountStringa = await cripta(account);
-                        localStorage.setItem("accountRegistrato", null);
-                        localStorage.setItem("accountCriptato", accountStringa);
-                        window.location.href = "Homepage.html";
-                        
-                    } catch (error) {
-                        console.error("Errore:", error);
-                        alert("Errore di connessione al server");
-                        bottone.disabled = false;
-                        loader.style.display = "none";
-                    }
-                    
+                    let accountStringa = await cripta(account);
+                    localStorage.setItem("accountRegistrato", null);
+                    localStorage.setItem("accountCriptato", accountStringa);
+                    window.location.href = "Homepage.html"
                 } else {
                     alert("Codice errato");
                 }
