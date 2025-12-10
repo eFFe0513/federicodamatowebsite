@@ -21,7 +21,7 @@
                     <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
                 </ul>
             </li>
-            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" class="profilo"></a></li>
+            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
         </ul>
     </nav>
 
@@ -34,6 +34,8 @@
     <script>
         const listaPreferiti = document.getElementById("listaPreferiti");
         const preferiti = JSON.parse(localStorage.getItem("preferiti")) || [];
+        const img = document.getElementById('profilo');
+        img.src = "immagini/" + localStorage.getItem("imgProfilo");
 
         if (preferiti.length === 0) {
             listaPreferiti.innerHTML = "<p>Nessun prodotto aggiunto ai preferiti</p>";
@@ -56,9 +58,6 @@
                 location.reload();
             }
         }
-
-        const img = document.getElementById('profilo');
-        img.src = "immagini/" + localStorage.getItem("imgProfilo");
     </script>
 </body>
 </html>

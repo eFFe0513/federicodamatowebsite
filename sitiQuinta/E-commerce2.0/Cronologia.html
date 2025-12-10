@@ -21,7 +21,7 @@
                     <li><a href="Cronologia.html" class="casella">Cronologia</a></li>
                 </ul>
             </li>
-            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" class="profilo"></a></li>
+            <li><a href="Profilo.html"><img src="immagini/utente.png" alt="profilo" id="profilo" class="profilo"></a></li>
         </ul>
     </nav>
 
@@ -34,6 +34,8 @@
     <script>
         const listaCronologia = document.getElementById("listaCronologia");
         const cronologia = JSON.parse(localStorage.getItem("cronologia")) || [];
+        const img = document.getElementById('profilo');
+        img.src = "immagini/" + localStorage.getItem("imgProfilo");
 
         if (cronologia.length === 0) {
             listaCronologia.innerHTML = "<p>Nessun prodotto visualizzato</p>";
@@ -55,9 +57,6 @@
                 location.reload();
             }
         }
-
-        const img = document.getElementById('profilo');
-        img.src = "immagini/" + localStorage.getItem("imgProfilo");
     </script>
 </body>
 </html>
