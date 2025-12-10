@@ -37,7 +37,8 @@
         <button class="btn-carrello" onclick="scaricaRicevuta()">🧾 Scarica ricevuta</button>
     </div>
 </div>
-<br><br><br><div id="listaStorico"></div>
+<br><br><div id="listaStorico" class="contenitore-storico"></div>
+
 
 <script>
     const elenco = document.getElementById("elencoCarrello");
@@ -154,16 +155,15 @@
 
     function stampaStorico(st) {
         const container = document.getElementById("listaStorico");
-        container.innerHTML = ""; // pulizia eventuale
+        container.innerHTML = "";
 
         st.forEach(prodotto => {
-            // stampo solo alcune info (marca, modello, prezzo, immagine)
             const box = document.createElement("div");
-            box.className = "itemStorico";
+            box.className = "item-storico";
 
             box.innerHTML = `
-                <div class="card">
-                    <img src="immagini/${prodotto.img}" alt="${prodotto.modello}" class="imgStorico">
+                <img src="immagini/${prodotto.img}" alt="${prodotto.modello}">
+                <div class="info-storico">
                     <h3>${prodotto.marca} ${prodotto.modello}</h3>
                     <p><strong>Prezzo:</strong> ${prodotto.prezzo}</p>
                     <p><strong>Tipo:</strong> ${prodotto.tipo}</p>
@@ -173,6 +173,7 @@
             container.appendChild(box);
         });
     }
+
 </script>
 </body>
 </html>

@@ -139,3 +139,52 @@ body::-webkit-scrollbar {
         .btn-carrello:hover {
             background-color: #131313;
         }
+
+/* ------------------------- */
+/*   STORICO ORDINI - STYLE  */
+/* ------------------------- */
+
+.contenitore-storico {
+    padding-top: 100px;
+    text-align: center;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.item-storico {
+    background-color: #f5f5f5;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.item-storico:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.item-storico img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.info-storico {
+    text-align: left;
+}
+
+.info-storico h3 {
+    margin: 0;
+    font-size: 22px;
+    font-family: Roboto;
+}
+
+.info-storico p {
+    margin: 5px 0;
+    font-size: 18px;
+}
