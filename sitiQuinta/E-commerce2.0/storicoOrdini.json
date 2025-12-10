@@ -1,0 +1,72 @@
+[
+  {
+    "marca": "Meta",
+    "modello": "Quest 2",
+    "annoUscita": "2020",
+    "memoria": "256Gb",
+    "ram": "6Gb",
+    "processore": "Snapdragon XR2",
+    "display": "LCD",
+    "risoluzione": "1832 × 1920 per occhio",
+    "lenti": "Fresnel",
+    "tipo": "Standalone",
+    "img": "metaQ2.jpg",
+    "prezzo": "200€"
+  },
+  {
+    "marca": "Meta",
+    "modello": "Quest Pro",
+    "annoUscita": "2022",
+    "memoria": "256Gb",
+    "ram": "12Gb",
+    "processore": "Snapdragon XR2+",
+    "display": "Mini-LED",
+    "risoluzione": "1800 × 1920 per occhio",
+    "lenti": "Fresnel",
+    "tipo": "Standalone",
+    "img": "metaQPro.jpg",
+    "prezzo": "800€"
+  },
+  {
+    "marca": "Valve",
+    "modello": "Index",
+    "annoUscita": "2019",
+    "memoria": "N/A",
+    "ram": "N/A",
+    "processore": "PC-Dependent",
+    "display": "IPS LCD",
+    "risoluzione": "1440 × 1600 per occhio",
+    "lenti": "Aspherical",
+    "tipo": "Tethered",
+    "img": "valveIndex.png",
+    "prezzo": "500€"
+  },
+  {
+    "marca": "Sony",
+    "modello": "PlayStation VR2",
+    "annoUscita": "2023",
+    "memoria": "N/A",
+    "ram": "N/A",
+    "processore": "PS5-Dependent",
+    "display": "OLED",
+    "risoluzione": "2000 × 2040 per occhio",
+    "lenti": "Glass",
+    "tipo": "Tethered",
+    "img": "psVr2.jpg",
+    "prezzo": "400€"
+  },
+  {
+    "marca": "Pico",
+    "modello": "4",
+    "annoUscita": "2022",
+    "memoria": "128Gb",
+    "ram": "8Gb",
+    "processore": "Snapdragon XR2",
+    "display": "Fast-LCD",
+    "risoluzione": "2160 × 2160 per occhio",
+    "lenti": "Pancake",
+    "tipo": "Standalone",
+    "img": "pico4.png",
+    "prezzo": "300€"
+  }
+]

@@ -37,6 +37,7 @@
         <button class="btn-carrello" onclick="scaricaRicevuta()">🧾 Scarica ricevuta</button>
     </div>
 </div>
+<br><br><br><div id="listaStorico"></div>
 
 <script>
     const elenco = document.getElementById("elencoCarrello");
@@ -136,6 +137,44 @@
     }
     const img = document.getElementById('profilo');
     img.src = "immagini/" + localStorage.getItem("imgProfilo");
+
+    let storico = [];
+
+    // Carica JSON automaticamente all'apertura con XMLHttpRequest
+    window.addEventListener("DOMContentLoaded", function() {
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "storicoOrdini.json", true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                storico = JSON.parse(this.responseText);
+                // funzione che stampa lo storico dei prodotti acquistati
+                stampaStorico(storico);
+            }
+        };
+    });
+
+    function stampaStorico(st) {
+        const container = document.getElementById("listaStorico");
+        container.innerHTML = ""; // pulizia eventuale
+
+        st.forEach(prodotto => {
+            // stampo solo alcune info (marca, modello, prezzo, immagine)
+            const box = document.createElement("div");
+            box.className = "itemStorico";
+
+            box.innerHTML = `
+                <div class="card">
+                    <img src="img/${prodotto.img}" alt="${prodotto.modello}" class="imgStorico">
+                    <h3>${prodotto.marca} ${prodotto.modello}</h3>
+                    <p><strong>Prezzo:</strong> ${prodotto.prezzo}</p>
+                    <p><strong>Tipo:</strong> ${prodotto.tipo}</p>
+                </div>
+            `;
+
+            container.appendChild(box);
+        });
+    }
 </script>
 </body>
 </html>

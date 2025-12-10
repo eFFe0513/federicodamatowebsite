@@ -168,7 +168,7 @@
                             
                             // Controlla se il carattere è una virgoletta
                             if (carattereCorrente === '"') {
-                                // Se siamo tra virgolette e c'è un'altra virgoletta subito dopo
+                                // Se tra virgolette e c'è un'altra virgoletta subito dopo
                                 if (dentroVirgolette && posizione + 1 < riga.length && riga[posizione + 1] === '"') {
                                     campoInCorso += '"';         // Aggiungi virgoletta singola
                                     posizione++;                  // Salta la prossima virgoletta
@@ -188,7 +188,7 @@
                             }
                         }
                         
-                        // Per non dimentica l'ultimo campo dopo l'ultima virgola
+                        // Caso in cui l'ultimo campo dopo l'ultima virgola
                         campiEstratti.push(campoInCorso);
                         
                         return campiEstratti;
