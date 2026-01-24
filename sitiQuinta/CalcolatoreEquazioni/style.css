@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.calcolatore-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: white;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cellaEquazione {
+    flex: 1;
+    min-width: 250px;
+    padding: 16px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.cellaEquazione:focus {
+    background: white;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 12px 30px rgba(102,126,234,0.4);
+    transform: translateY(-2px);
+}
+
+.cellaEquazione::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+button {
+    padding: 16px 32px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(254,202,87,0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(254,202,87,0.5);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+#risultato {
+    min-height: 24px;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+#risultato.errore {
+    background: rgba(255,107,107,0.2);
+    color: #6e1616;
+    border-color: rgba(255,107,107,0.4);
+}
+
+#risultato.successo {
+    background: rgba(46,204,113,0.2);
+    color: #010f1b;
+    border-color: rgba(0, 0, 0, 0.466);
+}
+
+#avviso {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.8em;
+}
+
+@media (max-width: 480px) {
+    .calcolatore-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+}

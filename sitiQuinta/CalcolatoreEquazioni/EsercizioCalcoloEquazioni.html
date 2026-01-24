@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcola equazioni</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calcolatore-container">
+        <h1>Risolutore Equazioni</h1>
+        <p>Utilizzare gli spazi come nel formato d'esempio per un corretto funzionamento</p>
+        <p> Formato di esempio --> + x2 - 4 (segno|spazio|prodotto|x|esponente)</p>
+        <div class="input-group">
+            <input type="text" id="cellaEquazione" class="cellaEquazione" placeholder="+ 3x2 + x - 4">
+            <button onclick="calcolatore()">Risolvi</button>
+        </div>
+        <div id="risultato"></div>
+    </div>
+    <div id="avviso">Il tempo di calcolo varia in base alla complessità dei calcoli</div>
+    <script src="script.js"></script>
+</body>
+</html>
