@@ -1,0 +1,51 @@
+<definitions name = "ConversionService"
+             targetNamespace = ""
+             xmlns = "http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns = ""
+             xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+
+    <message name = "ConvertRequest">
+        <part name = "value" type = "xsd:float"/>
+        <part name = "fromUnit" type = "xsd:string"/>
+        <part name = "toUnit" type = "xsd:string"/>
+    </message>
+
+    <message name = "ConvertResponse">
+        <part name = "result" type = "xsd:float"/>
+    </message>
+
+    <portType name = "Convert_PortType">
+        <operation name = "convert">
+            <input message = "tns:ConvertRequest"/>
+            <output message = "tns:ConvertResponse"/>
+        </operation>
+    </portType>
+
+    <binding name = "Convert_Binding" type = "tns:Convert_PortType">
+        <soap:binding style = "rpc"
+                      transport = "http://schemas.xmlsoap.org/soap/http"/>
+        <operation name = "convert">
+            <soap:operation soapAction = "convert"/>
+            <input>
+                <soap:body
+                        encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace = "urn:examples:conversionservice"
+                        use = "encoded"/>
+            </input>
+            <output>
+                <soap:body
+                        encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace = "urn:examples:conversionservice"
+                        use = "encoded"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name = "Convert_Service">
+        <documentation>Conversione Metri ↔ Pollici</documentation>
+        <port binding = "tns:Convert_Binding" name = "Convert_Port">
+            <soap:address location="http://fdwebsite.infinityfree.me/SOAP/server.php" />
+        </port>
+    </service>
+</definitions>
