@@ -1,9 +1,9 @@
 <definitions name = "ConversionService"
-             targetNamespace = ""
-             xmlns = "http://schemas.xmlsoap.org/wsdl/"
-             xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns = ""
-             xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+            targetNamespace = ""
+            xmlns = "http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns = ""
+            xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
 
     <message name = "ConvertRequest">
         <part name = "value" type = "xsd:float"/>
@@ -24,7 +24,7 @@
 
     <binding name = "Convert_Binding" type = "tns:Convert_PortType">
         <soap:binding style = "rpc"
-                      transport = "http://schemas.xmlsoap.org/soap/http"/>
+                    transport = "http://schemas.xmlsoap.org/soap/http"/>
         <operation name = "convert">
             <soap:operation soapAction = "convert"/>
             <input>
