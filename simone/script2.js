@@ -1,5 +1,6 @@
+// Stampa il messaggio criptato quando la pagina viene caricata
 const messaggioCifrato = JSON.parse(localStorage.getItem("messaggio_cifrato"));
-document.getElementById("messaggioCifrato").innerHTML = messaggioCifrato.join(", ");
+document.getElementById("messaggioCifrato").innerHTML = messaggioCifrato.join(",");
 
 // Funzione per esponenziazione modulare (base^exp % mod)
 function modExp(base, exp, mod) {
