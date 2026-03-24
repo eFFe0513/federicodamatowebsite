@@ -19,6 +19,7 @@ async function decriptRSA() {
     const n = Number(chiave_privata.n);
 
     const c = JSON.parse(localStorage.getItem("messaggio_cifrato"));
+    document.getElementById("messaggioCifrato").innerHTML = c;
 
     let m = [];
     for (let i = 0; i < c.length; i++) {
