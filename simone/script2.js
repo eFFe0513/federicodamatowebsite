@@ -1,6 +1,10 @@
-// Stampa il messaggio criptato
-const messaggioCifrato = JSON.parse(localStorage.getItem("messaggio_cifrato"));
-document.getElementById("messaggioCifrato").innerHTML = messaggioCifrato.join("");
+// Stampa il messaggio criptato dopo il caricamento della pagina
+document.addEventListener("DOMContentLoaded", function() {
+    const messaggioCifrato = JSON.parse(localStorage.getItem("messaggio_cifrato"));
+    console.log(messaggioCifrato);
+    console.log(messaggioCifrato.join(""));
+    document.getElementById("messaggioCifrato").innerHTML = messaggioCifrato.join("");
+});
 
 // Funzione per esponenziazione modulare (base^exp % mod)
 function modExp(base, exp, mod) {
