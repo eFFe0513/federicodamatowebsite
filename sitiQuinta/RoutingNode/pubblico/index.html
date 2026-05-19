@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portale Iscrizioni</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="contenitore-form">
+        <h1>Scegli il tuo Piano</h1>
+        <p>Inserisci i tuoi dati e seleziona l'iscrizione</p>
+
+        <form method="POST">
+            <input type="text" id="nome" name="nome" placeholder="Il tuo Nome" required>
+            <input type="text" id="cognome" name="cognome" placeholder="Il tuo Cognome" required>
+
+            <button type="submit" class="btn-base" formaction="/p1">Iscrizione Base</button>
+            <button type="submit" class="btn-premium" formaction="/p2">Iscrizione Premium</button>
+            <button type="submit" class="btn-vip" formaction="/p3">Iscrizione VIP</button>
+        </form>
+    </div>
+
+</body>
+</html>
