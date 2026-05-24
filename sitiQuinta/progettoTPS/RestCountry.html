@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🌍 Esplora i Paesi del Mondo | REST Countries API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="restcountry">
+<div class="contenitore">
+    <div class="intestazione">
+        <h1>🌐 Esplora i Paesi del Mondo</h1>
+        <p>Dati aggiornati da REST Countries • Tabella interattiva con bandiere e informazioni</p>
+    </div>
+
+    <div class="controlli">
+        <div class="ricerca-box">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="ricercaInput" placeholder="Cerca per nome del paese (es. Italy, France, Japan)" autocomplete="off">
+        </div>
+        <div class="statistiche" id="infoStatistiche">Caricamento paesi...</div>
+    </div>
+
+    <div id="contenitoreTabella">
+        <div class="area-messaggi">
+            <div class="spinner-caricamento"></div>
+            <p>Richiesta in corso a restcountries.com ...</p>
+        </div>
+    </div>
+    <div class="nota-piede">
+        ⚡ Dati forniti da REST Countries v3.1 • Aggiornamento automatico con ricerca in tempo reale
+    </div>
+</div>
+
+<script>
+    // URL API REST Countries
+    const URL_API = 'https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags';
+
+    let tuttiIPaesi = [];       // archivio grezzo
+    let paesiFiltrati = [];     // archivio filtrato
+    let caricamentoInCorso = true;
+    let errorePresente = false;
+    let messaggioErrore = '';
+
+    const contenitoreTabella = document.getElementById('contenitoreTabella');
+    const campoRicerca = document.getElementById('ricercaInput');
+    const elementStatistiche = document.getElementById('infoStatistiche');
+
+    // Formatta numero popolazione
+    function formattaPopolazione(pop) {
+        if (pop === undefined || pop === null) return '?';
+        return pop.toLocaleString('it-IT');
+    }
+
+    // Estrae nome comune paese
+    function ottieniNomePaese(paese) {
+        return paese.name?.common || paese.name?.official || 'Nome sconosciuto';
+    }
+
+    // Estrae prima capitale disponibile
+    function ottieniCapitale(paese) {
+        if (paese.capital && Array.isArray(paese.capital) && paese.capital.length > 0) {
+            return paese.capital[0];
+        }
+        return '—';
+    }
+
+    // Genera tabella HTML dinamica
+    function generaTabella(paesiDaRenderizzare) {
+        if (!paesiDaRenderizzare || paesiDaRenderizzare.length === 0) {
+            return `
+                <div class="area-messaggi">
+                    <div style="font-size: 1.2rem; opacity:0.7;">🏝️</div>
+                    <p style="margin-top: 0.75rem; color: #4b6b87;">Nessun paese corrisponde alla tua ricerca.<br>Prova con un altro nome.</p>
+                </div>
+            `;
+        }
+
+        let righe = '';
+        for (const paese of paesiDaRenderizzare) {
+            const nome = ottieniNomePaese(paese);
+            const capitale = ottieniCapitale(paese);
+            const regione = paese.region || '—';
+            const popolazione = paese.population !== undefined ? paese.population : 0;
+            const urlBandiera = paese.flags?.png || paese.flags?.svg || '';
+            const altBandiera = `Bandiera di ${nome}`;
+
+            righe += `
+                <tr>
+                    <td style="width: 70px;">
+                        ${urlBandiera ? `<img src="${urlBandiera}" alt="${altBandiera}" class="immagine-bandiera" loading="lazy" onerror="this.src='https://placehold.co/44x33?text=🏳️'">` : '🏳️'}
+                    </td>
+                    <td><strong>${escapeHtml(nome)}</strong></td>
+                    <td class="capitale">${escapeHtml(capitale)}</td>
+                    <td><span class="etichetta-regione">${escapeHtml(regione)}</span></td>
+                    <td><span class="popolazione">👥 ${formattaPopolazione(popolazione)}</span></td>
+                </tr>
+            `;
+        }
+
+        return `
+            <div class="contenitore-tabella">
+                <table class="tabella-paesi">
+                    <thead>
+                        <tr>
+                            <th>Bandiera</th>
+                            <th>Nome Paese</th>
+                            <th>Capitale</th>
+                            <th>Regione</th>
+                            <th>Popolazione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${righe}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+
+    // Previene attacchi XSS
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // Mostra errore nell'interfaccia
+    function mostraErroreInTabella(messaggio) {
+        contenitoreTabella.innerHTML = `
+            <div class="area-messaggi messaggio-errore">
+                <strong>⚠️ Errore durante il caricamento dei dati</strong><br>
+                ${escapeHtml(messaggio)}<br><br>
+                <button id="pulsanteRiprova" style="background: #e2e8f0; border: none; padding: 8px 20px; border-radius: 40px; margin-top: 12px; font-weight: 600; cursor: pointer;">🔄 Riprova</button>
+            </div>
+        `;
+        const pulsanteRiprova = document.getElementById('pulsanteRiprova');
+        if (pulsanteRiprova) pulsanteRiprova.addEventListener('click', () => recuperaPaesi());
+        elementStatistiche.innerText = '⚠️ Errore caricamento';
+        errorePresente = true;
+    }
+
+    // Mostra indicatore di caricamento
+    function mostraCaricamento() {
+        contenitoreTabella.innerHTML = `
+            <div class="area-messaggi">
+                <div class="spinner-caricamento"></div>
+                <p>⏳ Caricamento dei paesi in corso...</p>
+            </div>
+        `;
+        elementStatistiche.innerText = 'Aggiornamento...';
+    }
+
+    // Recupera dati da API
+    async function recuperaPaesi() {
+        caricamentoInCorso = true;
+        errorePresente = false;
+        messaggioErrore = '';
+        mostraCaricamento();
+
+        try {
+            const risposta = await fetch(URL_API);
+            if (!risposta.ok) {
+                let infoExtra = '';
+                try {
+                    const corpoErrore = await risposta.text();
+                    if (corpoErrore) infoExtra = ` - ${corpoErrore.substring(0, 100)}`;
+                } catch(e) { }
+                throw new Error(`HTTP ${risposta.status}: Impossibile ottenere i paesi.${infoExtra}`);
+            }
+            const dati = await risposta.json();
+            if (!Array.isArray(dati) || dati.length === 0) {
+                throw new Error('La risposta API non contiene dati validi.');
+            }
+            tuttiIPaesi = dati;
+            paesiFiltrati = [...tuttiIPaesi];
+            aggiornaInterfacciaConFiltro();
+        } catch (err) {
+            console.error('Errore fetch:', err);
+            errorePresente = true;
+            messaggioErrore = err.message || 'Errore di rete o API non disponibile.';
+            let messaggioUtente = '';
+            if (messaggioErrore.includes('Failed to fetch') || messaggioErrore.includes('NetworkError')) {
+                messaggioUtente = '❌ Connessione di rete assente. Verifica la tua connessione a Internet.';
+            } else if (messaggioErrore.includes('HTTP 400') || messaggioErrore.includes('bad request')) {
+                messaggioUtente = '⚠️ Richiesta API non valida. Potrebbe essere temporaneo, riprova più tardi.';
+            } else if (messaggioErrore.includes('HTTP 404')) {
+                messaggioUtente = '🌍 Endpoint API non trovato. Il servizio potrebbe essere offline.';
+            } else {
+                messaggioUtente = `⚠️ Impossibile caricare i paesi: ${messaggioErrore}`;
+            }
+            mostraErroreInTabella(messaggioUtente);
+            elementStatistiche.innerText = 'Errore caricamento';
+            caricamentoInCorso = false;
+        } finally {
+            caricamentoInCorso = false;
+        }
+    }
+
+    // Aggiorna vista e statistiche
+    function aggiornaInterfacciaConFiltro() {
+        if (errorePresente) return;
+        if (tuttiIPaesi.length === 0 && !errorePresente) return;
+
+        const totaleFiltrati = paesiFiltrati.length;
+        const totaleOriginali = tuttiIPaesi.length;
+
+        if (campoRicerca.value.trim() !== '') {
+            elementStatistiche.innerHTML = `🔍 ${totaleFiltrati} risultati su ${totaleOriginali} paesi`;
+        } else {
+            elementStatistiche.innerHTML = `🌍 ${totaleOriginali} paesi nel mondo`;
+        }
+        const htmlTabella = generaTabella(paesiFiltrati);
+        contenitoreTabella.innerHTML = htmlTabella;
+    }
+
+    // Filtra in base al testo digitato
+    function filtraPaesiPerRicerca() {
+        if (errorePresente || tuttiIPaesi.length === 0) return;
+        const termineRicerca = campoRicerca.value.trim().toLowerCase();
+        if (termineRicerca === '') {
+            paesiFiltrati = [...tuttiIPaesi];
+        } else {
+            paesiFiltrati = tuttiIPaesi.filter(paese => {
+                const nomeComune = (paese.name?.common || '').toLowerCase();
+                const nomeUfficiale = (paese.name?.official || '').toLowerCase();
+                return nomeComune.includes(termineRicerca) || nomeUfficiale.includes(termineRicerca);
+            });
+        }
+        aggiornaInterfacciaConFiltro();
+    }
+
+    // Ascolta input utente
+    campoRicerca.addEventListener('input', () => {
+        filtraPaesiPerRicerca();
+    });
+
+    // Avvio caricamento iniziale
+    recuperaPaesi();
+</script>
+</body>
+</html>
